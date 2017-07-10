@@ -12,8 +12,7 @@ import { FruitHomeComponent } from './fruit-home/fruit-home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FruitHomeComponent,
-  
+    FruitHomeComponent
   ],
   imports: [
     BrowserModule,

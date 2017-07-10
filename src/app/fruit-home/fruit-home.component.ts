@@ -15,12 +15,12 @@ passcode;
   ngOnInit() {
   }
 
-  ValidateLogin(){
-     this.router.navigateByUrl('buyer'); 
-     localStorage.setItem('tabvalue',"active");
-      localStorage.setItem('tabvalue2',"inactive");
-      localStorage.setItem('fadevalue',"fade in active row");
-      localStorage.setItem('fadevalue2',"fade");
+  ValidateLogin() {
+     this.router.navigateByUrl('buyer');
+     localStorage.setItem('tabvalue', 'active');
+      localStorage.setItem('tabvalue2', 'inactive');
+      localStorage.setItem('fadevalue', 'fade in active row');
+      localStorage.setItem('fadevalue2', 'fade');
 //       var data = {
 //       userID: this.userID,
 //       passcode: this.passcode
@@ -28,9 +28,8 @@ passcode;
 //     let headers = new Headers({'Content-Type': 'text/plain'});
 //     let options = new RequestOptions({headers: headers});
 //     let body = JSON.stringify(data);
-  
 //     this.http.post('https://unileverbps.mybluemix.net/bps/TransactionManager?method=login', body, headers).subscribe(res => {
-//       console.log(res.json());   
+//       console.log(res.json());
 //       var username = res.json().UserID;
 //       console.log(username);
 
@@ -43,11 +42,10 @@ passcode;
 //       localStorage.setItem('tabvalue2',"inactive");
 //       localStorage.setItem('fadevalue',"fade in active row");
 //       localStorage.setItem('fadevalue2',"fade");
-//           this.router.navigateByUrl('invoice');    
+//           this.router.navigateByUrl('invoice');
 //        }else{
 //          alert("Invalid Username or Password");
-//        }      
+//        }
 // });
-    
   }
 }
