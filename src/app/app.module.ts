@@ -5,14 +5,28 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
-import { FruitHomeComponent } from './fruit-home/fruit-home.component';
+import { ContactComponent } from './contact/contact.component';
+import { ProductComponent } from './product/product.component';
+import { SearchComponent } from './search/search.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { UserService } from './user/user.service';
+import { ErrorComponent } from './error/error.component';
+import { ProductService } from './product/product.service';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FruitHomeComponent
+    ContactComponent,
+    ProductComponent,
+    SearchComponent,
+    HomeComponent,
+    LoginComponent,
+    UserComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +34,7 @@ import { FruitHomeComponent } from './fruit-home/fruit-home.component';
     HttpModule,
     RouterModule.forRoot(AppRoutes, { useHash: true })
   ],
-  providers: [],
+  providers: [UserService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

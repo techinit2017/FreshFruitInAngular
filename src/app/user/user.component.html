@@ -1,0 +1,16 @@
+<div>
+	<h2>{{userlist}}</h2>
+	<h2>{{errorMsg}}</h2>
+	<table class="table" *ngIf="!isEmptyObject(errorMsg)">
+		<tr *ngIf="iusers?.length > 0">
+			<th>USER_ID</th>
+			<th>USER_NAME</th>
+			<th>PASSWORD</th>
+		</tr>
+		<tr *ngFor="let u of iusers">
+			<td>{{u.userId}}</td>
+			<td>{{u.userName}}</td>
+			<td>{{u.password}}</td>
+		</tr>
+	</table>
+</div>
