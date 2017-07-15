@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -14,6 +15,8 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
 import { ErrorComponent } from './error/error.component';
 import { ProductService } from './product/product.service';
+import 'hammerjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -30,11 +33,15 @@ import { ProductService } from './product/product.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(AppRoutes, { useHash: true })
+    RouterModule.forRoot(AppRoutes, { useHash: true }),
   ],
   providers: [UserService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
