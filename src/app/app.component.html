@@ -1,9 +1,50 @@
-<ul>
-	<li><a [routerLink]="['/Home']">Home</a></li>
-	<li><a [routerLink]="['/Product']">Product</a></li>
-	<li><a [routerLink]="['/User']">User</a></li>
-	<li><a [routerLink]="['/Contact']">Contact Us</a></li>
-</ul>
 
-<router-outlet> </router-outlet>
+<div class="container">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Portfolio</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a [routerLink]="['/Home']">Home</a></li>
+					<li><a [routerLink]="['/Contact']">Contact Us</a></li>
+					<li><a href="#">Gallery</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a (click)="redirectNewUser()"><span class="glyphicon glyphicon-log-in"></span>
+							NewUser</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a (click)="redirect()"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
+				</ul>
 
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"></li>
+						<li><a [routerLink]="['/User']">User</a></li>
+						<li><a [routerLink]="['/Product']">Product</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<router-outlet> </router-outlet>
+
+
+<nav class="navbar navbar-inverse sfooterhome">
+	<ul class="nav navbar-nav">
+						<li class="active"></li>
+						<li><a [routerLink]="['/User']">Help</a></li>
+						<li><a [routerLink]="['/Product']">Mail Us</a></li>
+						<li><a [routerLink]="['/Product']">About US</a></li>
+					</ul>
+	</nav>
+</div>
