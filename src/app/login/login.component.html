@@ -1,3 +1,25 @@
-<p>
-  login works!
-</p>
+<div class="loginBackGround">
+<div>
+<Label>Login</Label>
+</div>
+			<form style="border: 1px solid #ccc" (ngSubmit)="login()">
+				<div style="padding: 80px">
+					<md-input-container>
+                      <input mdInput placeholder="Email or Phone Number" value="" >
+                   </md-input-container><br>
+                   <md-input-container>
+                      <input mdInput placeholder="Enter Password.." value="" >
+                   </md-input-container>
+                   <br> <br>
+					<div class="clearfix">
+						<button md-raised-button >Login</button>
+						<button md-raised-button>New User</button>
+					</div>
+					<br>
+					<div>
+						<br> <br> <span class="psw">Forgot <a href="#">password?</a></span>
+					</div>
+				</div>
+			</form>
+		</div>
+		

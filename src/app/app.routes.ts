@@ -40,7 +40,9 @@ export const AppRoutes: Routes = [
   {
     path: 'Login',
     component: LoginComponent
-  }, {path: '**', component: ErrorComponent}
+  },
+
+  {path: '**', component: ErrorComponent}
 
 
 ]

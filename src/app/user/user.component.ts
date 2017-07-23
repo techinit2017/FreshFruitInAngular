@@ -1,6 +1,8 @@
 import {IUser} from './user';
 import {UserService} from './user.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Injectable} from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user',
@@ -18,7 +20,6 @@ export class UserComponent implements OnInit {
     /*this.result = { user: [] };
     userService.getEntries().subscribe(res => this.result = res);
     console.log(this.result);*/
-
   }
 
   ngOnInit(): void {
@@ -30,6 +31,9 @@ export class UserComponent implements OnInit {
    */
   isEmptyObject(obj) {
     return (obj && (Object.keys(obj).length === 0));
+    
+    
+    
   }
   onTestPost() {
     this.userService.onTestPost().
