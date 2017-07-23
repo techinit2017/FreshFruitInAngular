@@ -1,3 +1,11 @@
+# Angular JS API
+http://devdocs.io/angular/
+Search Component
+https://docs.angularjs.org/api/ng/filter/filter
+
+#Grunt Installation
+npm install -g grunt-cli
+
 # FreshFruit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.

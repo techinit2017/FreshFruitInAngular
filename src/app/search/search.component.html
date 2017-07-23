@@ -1,3 +1,24 @@
+<h1>Search</h1>
+
 <p>
-  search works!
+	<input type="text" placeholder="Search" #newquery [value]="query"
+		(keydown.enter)="submit(newquery.value)" required [ngModel]="">
+	<button (click)="submit(newquery.value)">Search</button>
 </p>
+
+<div>
+	<h2>{{result}}</h2>
+	<h2>{{errorMsg}}</h2>
+
+	<table class="table" *ngIf="iProduct?.length > 0">
+		<tr>
+			<th>PRODUCT_ID</th>
+			<th>PRODUCT_NAME</th>
+		</tr>
+		<tr *ngFor="let prod of iProduct">
+			<td>{{prod.ProductID}}</td>
+			<td>{{prod.ProductName}}</td>
+			<td><img alt="{{prod.url}}" src="{{prod.url}}" height="150" width="150"/></td>
+		</tr>
+	</table>
+</div>

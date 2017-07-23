@@ -1,28 +1,25 @@
 [{ 
    "ProductID": 1, 
-   "ProductName": "Product1" 
+   "ProductName": "Apple",
+   "url": "assets/resources/apple.png"
 }, { 
    "ProductID": 2, 
-   "ProductName": "Product2" 
+   "ProductName": "Banana",
+    "url": "assets/resources/banana.png" 
 },{ 
    "ProductID": 3, 
-   "ProductName": "Product3" 
+   "ProductName": "Grapes",
+    "url": "assets/resources/grapes.png" 
 },{ 
    "ProductID": 4, 
-   "ProductName": "Product4" 
+   "ProductName": "Apple Green",
+   "url": "assets/resources/green_apple.png" 
 },{ 
    "ProductID": 5, 
-   "ProductName": "Product5" 
-},{ 
-   "ProductID": 6, 
-   "ProductName": "Product6" 
-},{ 
-   "ProductID": 7, 
-   "ProductName": "Product7" 
+   "ProductName": "Banana Yellaki",
+    "url": "assets/resources/yellaki_banana.png"  
 },{ 
    "ProductID": 8, 
-   "ProductName": "Product8" 
-},{ 
-   "ProductID": 9, 
-   "ProductName": "Product9" 
+   "ProductName": "Grapes Green",
+   "url": "assets/resources/green_grapes.png"   
 }] 

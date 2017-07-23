@@ -5,12 +5,14 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
+  providers: [ProductService],
 })
 export class ProductComponent implements OnInit {
   prodlist = 'Product';
   iProduct: IProduct[];
   errorMsg: string;
+  postData: string;
   constructor(private _productService: ProductService) {}
 
   ngOnInit() {

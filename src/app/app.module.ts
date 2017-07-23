@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormControlDirective, FormGroupDirective } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
 import { ErrorComponent } from './error/error.component';
 import { ProductService } from './product/product.service';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -26,15 +28,17 @@ import { ProductService } from './product/product.service';
     HomeComponent,
     LoginComponent,
     UserComponent,
-    ErrorComponent
+    ErrorComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes, { useHash: true })
   ],
-  providers: [UserService, ProductService],
+  providers: [FormControlDirective, FormGroupDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

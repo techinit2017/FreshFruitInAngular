@@ -5,12 +5,14 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  providers: [UserService],
 })
 export class UserComponent implements OnInit {
 
   userlist = 'List Of Users loaded';
   iusers: IUser[];
+  createuserOutput: string;
   errorMsg: string;
   constructor(private userService: UserService) {
     /*this.result = { user: [] };
@@ -21,12 +23,18 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getEntries()
-      .subscribe(iusers => this.iusers = iusers, err => this.errorMsg = <any>err);
+      .subscribe(iusers => this.iusers = iusers, err => this.errorMsg = <any>err, () => console.log('finished'));
   }
   /**
    * Check for Null or Empty String
    */
   isEmptyObject(obj) {
     return (obj && (Object.keys(obj).length === 0));
+  }
+  onTestPost() {
+    this.userService.onTestPost().
+      subscribe(data => this.createuserOutput = JSON.stringify(data),
+       err => this.errorMsg = <any>err,
+      () => console.log('Finished'))
   }
 }
