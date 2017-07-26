@@ -18,11 +18,11 @@
 					<li><a href="#">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a (click)="redirectNewUser()"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a [routerLink]="['/User']"><span class="glyphicon glyphicon-log-in"></span>
 							NewUser</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a (click)="redirect()"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="" [routerLink]="['/Login']"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
 				</ul>
 
@@ -39,7 +39,7 @@
 	</nav>
 	<router-outlet> </router-outlet>
 
-<nav class="navbar navbar-inverse sfooterhome">
+<nav class="navbar navbar-inverse">
 	<ul class="nav navbar-nav">
 						<li class="active"></li>
 						<li><a [routerLink]="['/User']">Help</a></li>
