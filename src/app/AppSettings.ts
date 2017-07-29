@@ -1,6 +1,6 @@
 export class AppSettings {
   // user End point
-  public static GET_USERS = 'http://localhost:8082/profile/getAllUsersProfile';
+  public static GET_USERS = 'assets/users.json';
   public static POST_USER_SAVE = 'http://localhost:8082/profile/create';
   
   public static USER_AUTH_SERVICE= 'http://localhost:8082/profile/login';
