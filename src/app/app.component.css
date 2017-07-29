@@ -4585,8 +4585,9 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
+  background-color: #004080;
   border-color: #080808;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;
@@ -6796,8 +6797,5 @@ button.close {
 
 
 .sfooterhome {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  bottom: 0;width: 83%
+  margin-top: 406px;
 }
