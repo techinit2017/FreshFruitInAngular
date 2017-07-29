@@ -1,0 +1,15 @@
+[
+	{
+		"ProductID": 1,
+		"ProductName": "Apple",
+		"url": "assets/resources/apple.png",
+		"brand": "XYZ",
+		"price": "100",
+		"prodtype": "FUJI",
+		"prodName": "Apple",
+		"quantity": 1000,
+		"avail": "YES",
+		"country": "UK"
+	}
+
+] 

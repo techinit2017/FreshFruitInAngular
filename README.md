@@ -6,6 +6,18 @@ https://docs.angularjs.org/api/ng/filter/filter
 #Grunt Installation
 npm install -g grunt-cli
 
+#UI Router installation
+ "@uirouter/angular": "^1.0.0-beta.6",
+ 	"@uirouter/visualizer": "^4.0.0",
+
+#Login and Session Management
+http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
+#Password and Confirm Password Validation
+https://scotch.io/@ibrahimalsurkhi/match-password-validation-with-angular-2
+#Password and Confirm Password Validation library
+
+https://www.npmjs.com/package/angular-password
+
 # FreshFruit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.

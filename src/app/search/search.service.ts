@@ -1,5 +1,6 @@
 import { AppSettings } from '../AppSettings';
 import { IProduct } from '../product/product';
+import { ISearch } from './search';
 import {Injectable} from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -23,6 +24,18 @@ export class SearchService {
       .do(data => console.log(JSON.stringify(data)))
       .catch(this.handleError);
   }
+  
+   /**
+   * Get list of Products
+   */
+  doSearch(searchObj: ISearch): Observable<IProduct[]> {
+    return this.http.get(AppSettings.SEARCH_PRODUCTS).map((response: Response) => <IProduct[]>response.json())
+      .do(data => console.log(JSON.stringify(data)))
+      .catch(this.handleError);
+  }
+  
+  
+  
   private handleError(error: Response) {
     console.error(error.status);
     // if (error.status === 404) {

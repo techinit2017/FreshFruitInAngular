@@ -29,11 +29,8 @@ export class UserService {
     // return Observable.throw(error.json().error());
     // return Observable.throw(new Error('Oops!! Some Problem bad luck !!'));
   }
-  onTestPost() {
-    const json = JSON.stringify({
-      'userName': 'admin',
-      'password': 'admin'
-    });
+  saveUser(value: any) {
+    const json = JSON.stringify(value);
     const param = json;
     const headers = new Headers({'Content-Type': 'application/json'});
      // headers.append('Content-Type', 'application/x-www-form-urlencoded');

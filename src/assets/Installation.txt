@@ -1,0 +1,4 @@
+#Angular JS MD5 Password encryption
+npm install angular-md5
+
+npm install ts-md5 --save

@@ -31,6 +31,7 @@ export class TestComponent implements OnInit {
 
   onSubmit() {
     this.payLoad = JSON.stringify(this.form.value);
+    console.log(this.form.value);
   }
 
 }

@@ -1,24 +1,111 @@
-<h1>Search</h1>
 
-<p>
-	<input type="text" placeholder="Search" #newquery [value]="query"
-		(keydown.enter)="submit(newquery.value)" required [ngModel]="">
-	<button (click)="submit(newquery.value)">Search</button>
-</p>
+	<h2>Search</h2>
+	<div class="rTable">
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">Country</div>
+			<div class="rTableCell">
+				<select name="price" class="form-control"
+					[(ngModel)]="searchObj.country">
+					<option *ngFor="let name of country" [value]="name">{{name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">Seller</div>
+			<div class="rTableCell">
+				<input type="text" placeholder="Brand"
+					class="form-control  rTableCell_2stCol"
+					[(ngModel)]="searchObj.seller" />
+			</div>
+		</div>
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">
+				Price <select name="price" class="rTableCell_select"
+					[(ngModel)]="searchObj.pricedlimit">
+					<option *ngFor="let value of priceDelimiter" [value]="value">{{value}}</option>
+				</select>
+			</div>
+			<div class="rTableCell">
+				<input type="text" placeholder="Price"
+					class="form-control rTableCell_2stCol"
+					[(ngModel)]="searchObj.price" />
+			</div>
+		</div>
 
-<div>
-	<h2>{{result}}</h2>
-	<h2>{{errorMsg}}</h2>
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">Product</div>
+			<div class="rTableCell rTableCell_2stCol">
+				<input type="text" placeholder="Type"
+					class="form-control rTableCell_2stCol"
+					[(ngModel)]="searchObj.product" />
+			</div>
+		</div>
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">Variety</div>
+			<div class="rTableCell">
+				<select name="price" class="chosen-select"
+					data-placeholder="Begin typing a name to filter..." multiple
+					[(ngModel)]="searchObj.variety">
+					<option *ngFor="let name of variety" [value]="name">{{name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">Quantity</div>
+			<div class="rTableCell">
+				<input type="text" placeholder="Quantity"
+					class="form-control rTableCell_2stCol"
+					[(ngModel)]="searchObj.quantity" />
+			</div>
+		</div>
 
-	<table class="table" *ngIf="iProduct?.length > 0">
-		<tr>
-			<th>PRODUCT_ID</th>
-			<th>PRODUCT_NAME</th>
-		</tr>
-		<tr *ngFor="let prod of iProduct">
-			<td>{{prod.ProductID}}</td>
-			<td>{{prod.ProductName}}</td>
-			<td><img alt="{{prod.url}}" src="{{prod.url}}" height="150" width="150"/></td>
-		</tr>
-	</table>
-</div>
+		<div class="rTableRow">
+			<div class="rTableCell rTableCell_1stCol">Availability</div>
+			<div class="rTableCell">
+				<select name="Availability" class="form-control rTableCell_2stCol"
+					[(ngModel)]="searchObj.avail">
+					<option *ngFor="let value of avail" [value]="value">{{value}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<button [disabled]="loading" class="btn btn-primary"
+			(click)="filterSearch(searchObj)">Search</button>
+		<img *ngIf="loading"
+			src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+		<button class="btn btn-primary" type="reset">Reset</button>
+	</div>
+
+
+
+	<!-- <div class="form-group">
+	<button [disabled]="loading" class="btn btn-primary"
+		(click)="submit(newquery.value)">Search</button>
+	<img *ngIf="loading"
+		src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+	
+
+</div> -->
+
+
+
+	<div>
+		<!-- <input type="text" placeholder="Search" #newquery [value]="query"
+		(keydown.enter)="submit(newquery.value)" required [ngModel]="" /> -->
+		<h2>{{result}}</h2>
+		<h2>{{errorMsg}}</h2>
+
+		<table class="table" *ngIf="iProduct?.length > 0">
+			<tr>
+				<th>PRODUCT_ID</th>
+				<th>PRODUCT_NAME</th>
+			</tr>
+			<tr *ngFor="let prod of iProduct">
+				<td>{{prod.ProductID}}</td>
+				<td>{{prod.ProductName}}</td>
+				<td><img alt="{{prod.url}}" src="{{prod.url}}" height="150"
+					width="150" /></td>
+			</tr>
+		</table>
+	</div>

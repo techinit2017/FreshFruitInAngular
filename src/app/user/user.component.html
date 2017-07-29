@@ -1,58 +1,83 @@
-<div>
+<div *ngIf="!isAdd">
+	<a class="btn btn-link" (click)="onAddClick()">AddUser</a>
 	<h2>{{userlist}}</h2>
 	<h2>{{errorMsg}}</h2>
 	<table class="table" *ngIf="!isEmptyObject(errorMsg)">
 		<tr *ngIf="iusers?.length > 0">
-			<th>USER_ID</th>
-			<th>USER_NAME</th>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>USER NAME</th>
 			<th>PASSWORD</th>
+			<th>Email</th>
+			<th>PhoneNo.</th>
+			<th>Alternate No.</th>
+			<th>UserType</th>
+			<th>Address</th>
 		</tr>
 		<tr *ngFor="let u of iusers">
-			<td>{{u.userId}}</td>
+			<td>{{u.id}}</td>
+			<td>{{u.firstName}}</td>
+			<td>{{u.lastName}}</td>
 			<td>{{u.userName}}</td>
 			<td>{{u.password}}</td>
+			<td>{{u.emailId}}</td>
+			<td>{{u.phoneNumber}}</td>
+			<td>{{u.secondaryContact}}</td>
+			<td>{{u.userType}}</td>
+			<td>{{u.address}}</td>
 		</tr>
 	</table>
-	<button (click)="onTestPost()">Add User</button>
-	<p>{{createuserOutput}}</p>
 </div>
 
-<form class="userregistration-form">
+<form class="userregistration-form" #f="ngForm" (ngSubmit)="onSubmit(f)"
+	*ngIf="isAdd" novalidate>
+	<a class="btn btn-link" (click)="onbackClick()">back</a>
 	<table class="example-full-width" cellspacing="0" width="300">
 		<tr>
 			<td><md-input-container class="userregistration-width">
-				<input mdInput placeholder="User Name" required> </md-input-container>
-			</td>
+				<input name="userName" ngModel mdInput placeholder="User Name"
+					required /> </md-input-container></td>
 		</tr>
 		<tr>
 			<td><md-input-container class="userregistration-width">
-				<input mdInput placeholder="First Name" required> </md-input-container>
-			</td>
+				<input type="password" name="password" ngModel mdInput
+					placeholder="Password" required /> </md-input-container></td>
 		</tr>
 		<tr>
 			<td><md-input-container class="userregistration-width">
-				<input mdInput placeholder="Last Name" required> </md-input-container>
-			</td>
+				<input name="firstName" ngModel mdInput placeholder="First Name"
+					required /> </md-input-container></td>
 		</tr>
 		<tr>
 			<td><md-input-container class="userregistration-width">
-				<input mdInput placeholder="Email Id:" required> </md-input-container></td>
+				<input name="lastName" ngModel mdInput placeholder="Last Name"
+					required /> </md-input-container></td>
+		</tr>
+		<tr>
+			<td><md-input-container class="userregistration-width">
+				<input name="emailId" ngModel mdInput placeholder="Email Id:"
+					required /> </md-input-container></td>
 		</tr>
 
 		<tr>
 			<td><md-input-container class="userregistration-width">
-				<span mdPrefix>+91 &nbsp;</span> <input type="tel" mdInput
-					placeholder="Contact Number">
-				</md-input-container></td>
+				<span mdPrefix>+91 &nbsp;</span> <input name="phoneNumber" ngModel
+					type="tel" mdInput placeholder="Contact Number" /> </md-input-container></td>
 		</tr>
 		<tr>
-			<td><md-radio-group> <md-radio-button value="1">Male</md-radio-button>&nbsp;&nbsp;
-			<md-radio-button value="2">Female</md-radio-button> </md-radio-group></td>
+			<td><md-input-container class="userregistration-width">
+				<input name="userType" ngModel mdInput placeholder="User Type"
+					required /> </md-input-container></td>
 		</tr>
 		&nbsp;&nbsp;
 		<tr>
-		  <md-button-toggle>Submit</md-button-toggle>
+			<td>
+				<button class="btn btn-primary">Save</button>
+				<button class="btn btn-primary" type="reset">Reset</button>
+			</td>
 		</tr>
 	</table>
-	
+
 </form>
+
