@@ -1,4 +1,26 @@
-#Angular JS MD5 Password encryption
+->>#Angular JS MD5 Password encryption
 npm install angular-md5
 
 npm install ts-md5 --save
+
+
+
+ ->>#Angular Material Installation 
+  
+  a) npm install --save @angular/material @angular/cdk
+   
+  b) npm install --save angular/material2-builds angular/cdk-builds
+   
+  c) npm install --save @angular/animations
+   
+  d) npm install --save hammerjs
+  
+  
+  
+ ->>Paginatation;
+ 
+  a) npm install underscore --save
+  b) install underscore
+  
+  
+  

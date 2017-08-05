@@ -14,7 +14,7 @@
 .package-gold {
     border: 1px solid goldenrod;
     background-color: #fdf9f2;
-    width: 50%;
+    width: 73%;
     margin-left: 307px;
     text-align: right;
     
@@ -75,6 +75,7 @@
 
 .pure-u-6-24 {
     width: 25%;
+    margin-left: -17px;
 }
 
 .pure-g [class*=pure-u] {
@@ -189,112 +190,41 @@ style.css:805
     -webkit-align-content: flex-start;
     align-content: flex-start;
 }
-Inherited from body
-style_new.css:1
-.restrict_words, body, h1 {
-    color: #000;
-}
-style.css:12610
-.restrict_words, body, h1 {
-    color: #000;
-}
-style.css:8945
-body {
-    color: #b1b1b1;
-    font-family: Arial, Verdana, Tahoma;
-}
-style.css:8932
-body, h6 {
-    font-size: 12px;
-}
-style.css:6232
-body, html {
-    -webkit-text-size-adjust: 100%;
-    min-height: 100%;
-    height: 100%;
-    width: 100%;
-    font-family: Lato, serif, arial, calibri, helvetica;
-    font-size: 14px;
-}
-Inherited from html.no-js.gr__vegfru_com
-inner-page.css:1
-html {
-    line-height: 1.2;
-}
-style.css:15266
-html {
-    line-height: 1.2;
-}
-style.css:6232
-body, html {
-    -webkit-text-size-adjust: 100%;
-    min-height: 100%;
-    height: 100%;
-    width: 100%;
-    font-family: Lato, serif, arial, calibri, helvetica;
-    font-size: 14px;
-}
-style.css:6098
-html {
-    -ms-text-size-adjust: 100%;
-    line-height: 1.4;
-}
-style.css:6094
-button, html, input, select, textarea {
-    color: #222;
-}
-Pseudo ::selection element
-style.css:6108
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-margin‒
-‒border‒
-‒padding‒
-15520.125 × 249‒
-‒‒
-‒‒
-‒
 
-Filter
 
-Show all
-box-sizing:
-border-box
-;
-color:
-rgb(0, 0, 0)
-;
-display:
-inline-block
-;
-font-family:
-sans-serif
-;
-font-size:
-12px
-;
-height:
-249px
-;
-letter-spacing:
-normal
-;
-line-height:
-14.4px
-;
-margin-bottom:
-0px
-;
-margin-left:
-0px
-;
-margin-right:
-0px
-;
-margin-top:
-0px
+.leftTabelDate{
+	text-align: left;
+	border-right: 1px solid black;
+}
 
+.rightTabelDate{
+	text-align: right;
+	margin-top: -3px;
+
+}
+
+@media ( min-width: 768px ) {
+    .grid-divider {
+        position: relative;
+        padding: 0;
+    }
+    .grid-divider>[class*='col-'] {
+        position: static;
+    }
+    .grid-divider>[class*='col-']:nth-child(n+2):before {
+        content: "";
+        border-left: 1px solid #DDD;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    .col-padding {
+        padding: 0 15px;
+    }
+}
+
+.col-sm-4 {
+    width: 46.333333%;
+}
 
 

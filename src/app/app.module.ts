@@ -21,8 +21,8 @@ import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertComponent } from './alert/alert.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { PagerService } from './product/PagerService';
 import { RegisterComponent } from './register/register.component';
-
 
 
 @NgModule({
@@ -50,7 +50,8 @@ import { RegisterComponent } from './register/register.component';
     HttpModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, initialNavigation: 'enabled' }),
   ],
-  providers: [FormControlDirective, FormGroupDirective],
-  bootstrap: [AppComponent]
+  providers: [FormControlDirective, FormGroupDirective, PagerService],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

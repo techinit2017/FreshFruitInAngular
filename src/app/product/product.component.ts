@@ -1,8 +1,14 @@
+import { PagerService } from './PagerService';
 import {IProduct} from './product';
 import {ProductService} from './product.service';
 import {Component, OnInit} from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
 
-@Component({
+import * as _ from 'underscore';
+
+ @Component ({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
@@ -14,82 +20,53 @@ export class ProductComponent implements OnInit {
   iProduct: IProduct[];
   errorMsg:  string;
   postData: string;
-  filteredItems: IProduct[];
-  pages = 4;
-  pageSize = 5;
-  pageNumber = 0;
-  currentIndex = 1;
-  items: IProduct[];
-  pagesIndex: Array<number>;
-  pageStart = 1;
-  inputName: '';
-  constructor(private _productService: ProductService) {
-       
-  }
-  
-   ngOnInit() {
-    this._productService.getProducts()
-    .subscribe(iProduct => this.iProduct = iProduct, err => this.errorMsg = <any>err);
-  }
-  
-  /*init() {
-         this.currentIndex = 1;
-         this.pageStart = 1;
-         this.pages = 4;
-
-         this.pageNumber = parseInt('' + (this.filteredItems.length / this.pageSize));
-         if (this.filteredItems.length % this.pageSize != 0) {
-            this.pageNumber ++;
-         }
-    
-         if (this.pageNumber  < this.pages) {
-               this.pages =  this.pageNumber;
-         }
-       
-         this.refreshItems();
-         console.log('this.pageNumber:' + this.pageNumber);
-   }
-  
-
  
-
-
-  fillArray(): any {
-    var obj = new Array();
-    for (var index = this.pageStart; index < this.pageStart + this.pages; index++) {
-      obj.push(index);
-    }
-    return obj;
+  constructor(private http: Http, private _productService: ProductService, private pagerService: PagerService) {
+       
   }
-  refreshItems() {
-    this.items = this.filteredItems.slice((this.currentIndex - 1) * this.pageSize, (this.currentIndex) * this.pageSize);
-    this.pagesIndex = this.fillArray();
-  }
-  prevPage() {
-    if (this.currentIndex > 1) {
-      this.currentIndex--;
-    }
-    if (this.currentIndex < this.pageStart) {
-      this.pageStart = this.currentIndex;
-    }
-    this.refreshItems();
-  }
-  nextPage() {
-    if (this.currentIndex < this.pageNumber) {
-      this.currentIndex++;
-    }
-    if (this.currentIndex >= (this.pageStart + this.pages)) {
-      this.pageStart = this.currentIndex - this.pages + 1;
-    }
-
-    this.refreshItems();
-  }
-  setPage(index: number) {
-    this.currentIndex = index;
-    this.refreshItems();
-  }
-
-  */
   
+    // array of all items to be paged
+    private allItems: any[];
+ 
+    // pager object
+    pager: any = {};
+ 
+    // paged items
+    pagedItems: any[];
+ 
+    ngOnInit() {
+        // get dummy data
+      /*this._productService.getProducts()
+    .subscribe(iProduct => this.iProduct = iProduct, err => this.errorMsg = <any>err);
+       {
+        // set items to json response
+          this.allItems = this.iProduct;
+ 
+                // initialize to page 1
+                this.setPage(1);
+            };*/
+      
+      this.http.get('./assets/product.json')
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+                // set items to json response
+                this.allItems = data;
+ 
+                // initialize to page 1
+                this.setPage(1);
+            });
+    }
+ 
+    setPage(page: number) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+ 
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.allItems.length, page);
+ 
+        // get current page of items
+        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
   
 }
