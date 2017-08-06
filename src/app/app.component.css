@@ -1581,6 +1581,12 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  font-size: 18px; 
 }
 @media (min-width: 768px) {
   .container {
@@ -6797,5 +6803,12 @@ button.close {
 
 
 .sfooterhome {
-  margin-top: 406px;
+  margin-top: 460px;
+}
+
+.appleLogo {
+	width: 48px;
+	height: 40px;
+	margin-top:6px;
+	margin-left:-21px;
 }

@@ -29,11 +29,12 @@
 		</tr>
 	</table>
 </div>
-
+<a class="btn btn-link" (click)="onbackClick()">Back</a>
+<div class = "userborder" align="left">
 <form class="userregistration-form"
 	(ngSubmit)="userForm.valid && onSubmit(user)" name="userForm"
 	*ngIf="isAdd" novalidate>
-	<a class="btn btn-link" (click)="onbackClick()">back</a>
+
 	<div>
 		<div class="selected-value">Registering as:{{user.userType}}</div>
 	</div>
@@ -268,4 +269,5 @@
 
 
 </form>
+</div>
 

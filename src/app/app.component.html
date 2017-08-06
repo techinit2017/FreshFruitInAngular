@@ -11,14 +11,12 @@
 						class="icon-bar"></span>
 				</button>
 
-				<a class="navbar-brand" href="#">Portfolio</a>
+				
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li><a [routerLink]="['/Home']"  routerLinkActive="active">Home</a></li>
+					<li><img src="assets/logo.png" class="appleLogo"  [routerLink]="['/Home']"></li>
 					<li><a [routerLink]="['/Contact']"  routerLinkActive="active">Contact Us</a></li>
-					<li><a href="#">Gallery</a></li>
-					<li><a href="#">Contact</a></li>
 				</ul>
 				<div *ngIf="!currentUser?.userName" >
 					<ul class="nav navbar-nav navbar-right">
@@ -43,21 +41,24 @@
 						<li><a [routerLink]="['/User']" routerLinkActive="active">User</a></li>
 						<li><a [routerLink]="['/Product']" routerLinkActive="active">Product</a></li>
 						<li><a [routerLink]="['/Search']" routerLinkActive="active">Search</a></li>
-						<li><a [routerLink]="['/Test']" routerLinkActive="active">Test</a></li>
-						<li></li>
+						
 					</ul>
 				</div>
 			</div>
 		</div>
 	</nav>
+	
 	<router-outlet> </router-outlet>
-
-<!-- <nav class="navbar navbar-inverse">
+<div class="sfooterhome">
+<nav class="navbar navbar-inverse">
 	<ul class="nav navbar-nav">
 						<li class="active"></li>
 						<li><a [routerLink]="['/User']">Help</a></li>
 						<li><a [routerLink]="['/Product']">Mail Us</a></li>
 						<li><a [routerLink]="['/Product']">About US</a></li>
+						<li><a [routerLink]="['/Contact']">Contact Us</a></li>
 					</ul>
-	</nav> -->
+	</nav>
+	</div>
+
 </div>

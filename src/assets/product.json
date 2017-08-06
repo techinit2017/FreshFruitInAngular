@@ -1,25 +1,149 @@
 [{ 
    "ProductID": 1, 
    "ProductName": "Apple",
-   "url": "assets/resources/apple.png"
+   "url": "assets/resources/apple.png",
+   "price": "10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
 }, { 
    "ProductID": 2, 
    "ProductName": "Banana",
-    "url": "assets/resources/banana.png" 
+    "url": "assets/resources/banana.png" ,
+    "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
 },{ 
    "ProductID": 3, 
    "ProductName": "Grapes",
-    "url": "assets/resources/grapes.png" 
+    "url": "assets/resources/grapes.png",
+    "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1 
 },{ 
    "ProductID": 4, 
    "ProductName": "Apple Green",
-   "url": "assets/resources/green_apple.png" 
+   "url": "assets/resources/green_apple.png",
+   "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India"
+   ,"available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
 },{ 
    "ProductID": 5, 
    "ProductName": "Banana Yellaki",
-    "url": "assets/resources/yellaki_banana.png"  
+    "url": "assets/resources/yellaki_banana.png",
+    "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India" ,
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
 },{ 
    "ProductID": 8, 
    "ProductName": "Grapes Green",
-   "url": "assets/resources/green_grapes.png"   
-}] 
+   "url": "assets/resources/green_grapes.png",
+   "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India" ,
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+}
+,
+{ 
+   "ProductID": 9, 
+   "ProductName": "Apple",
+   "url": "assets/resources/apple.png",
+   "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+}, { 
+   "ProductID": 10, 
+   "ProductName": "Banana",
+    "url": "assets/resources/banana.png" ,
+    "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+},{ 
+   "ProductID": 11, 
+   "ProductName": "Grapes",
+    "url": "assets/resources/grapes.png",
+    "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India" ,
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+},{ 
+   "ProductID": 12, 
+   "ProductName": "Apple Green",
+   "url": "assets/resources/green_apple.png",
+   "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+},{ 
+   "ProductID": 13, 
+   "ProductName": "Banana Yellaki",
+    "url": "assets/resources/yellaki_banana.png",
+    "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India",
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+},{ 
+   "ProductID": 14, 
+   "ProductName": "Grapes Green",
+   "url": "assets/resources/green_grapes.png",
+   "price":"10$",
+   "Quantity":"25KG",
+   "Variety":"Rolay",
+   "Grade":"AB",
+   "Country":"India" ,
+   "available": "2012-01-01",
+    "packaging": null,
+     "isActive": 1
+}
+
+] 

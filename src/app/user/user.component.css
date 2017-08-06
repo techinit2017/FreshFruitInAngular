@@ -67,11 +67,18 @@ h2 {
 	width: 1000px;
 }
 
+
 .userregistration-width {
-	width: 100%;
-	height: 20px;
-	/* width: 100%;
-	height: 20px; */
+  width: 200%;
+  height:54px; 
+}
+.userborder{
+	border-style: groove; 
+	width: 605px;
+}
+.example-full-width {
+	width: 300px;
+	
 }
 
 .form-control-user-registration {

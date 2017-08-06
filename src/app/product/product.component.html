@@ -1,16 +1,37 @@
-<div>
-	<h2>{{prodlist}}</h2>
+<div class="package-gold pure-g search-result-item ">
 	<h2>{{errorMsg}}</h2>
-
-	<table class="table" *ngIf="iProduct?.length > 0">
-		<tr>
-			<th>PRODUCT_ID</th>
-			<th>PRODUCT_NAME</th>
-		</tr>
-		<tr *ngFor="let prod of iProduct">
-			<td>{{prod.ProductID}}</td>
-			<td>{{prod.ProductName}}</td>
-			<td><img alt="{{prod.url}}" src="{{prod.url}}" height="150" width="150"/></td>
-		</tr>
-	</table>
+	<div class="search-result-content pure-u-18-24">
+		<table class="table" *ngIf="iProduct?.length > 0">
+			<tr *ngFor="let prod of iProduct">
+				<td> <img alt="{{prod.url}}" src="{{prod.url}}"
+					class="pure-u-6-24" /></td>
+				<td><div class="tdata1">
+						<div class="theader1">Product id: {{prod.ProductID}}</div>
+						<div class="theader1">Product Name: {{prod.ProductName}}</div>
+						<div class="theader1">Price : {{prod.price}}</div>
+						<div class="theader1">Variety: {{prod.Variety}}</div>
+						<div class="theader1">Grade : {{prod.Grade}}</div>
+						<div class="theader1">Country : {{prod.Country}}</div>
+						<div class="theader1">available : {{prod.available}}</div>
+						<div class="theader1">Status: {{prod.isActive}}</div>
+					</div></td>
+			</tr>
+			
+		</table>
+	</div>
 </div>
+<!-- <div class="btn-toolbar" role="toolbar" style="margin: 0;">
+          <div class="btn-group">
+               <label style="margin-top:10px">Page {{currentIndex}}/{{pageNumber}}</label>
+            </div>
+            <div class="btn-group pull-right">
+               <ul class="pagination" >
+                  <li [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}" ><a  (click)="prevPage()" href="#">Prev</a></li>
+                     <li *ngFor="let page of pagesIndex"  [ngClass]="{'active': (currentIndex == page)}">
+                        <a (click)="setPage(page)" href="#" >{{page}}</a>
+                     </li>
+                  <li [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}" ><a   (click)="nextPage()" href="#">Next</a></li>
+               </ul>
+            </div>
+         </div>
+      -->
