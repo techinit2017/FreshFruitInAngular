@@ -1,3 +1,4 @@
+import {AppSettings} from '../AppSettings';
 import {AlertService} from '../_services/alert.service';
 import {LoginService} from './login.service';
 import {Component, OnInit} from '@angular/core';
@@ -28,25 +29,31 @@ export class LoginComponent implements OnInit {
 
   }
   onLogin() {
-    console.log('USER_NAME[' + this.model.username + ']', 'PASSWORD[' + this.model.password + ']');
+    if (AppSettings.IS_DEV) {
+      console.log('USER_NAME[' + this.model.username + ']', 'PASSWORD[' + this.model.password + ']');
+    }
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
       data => {
-        console.log(this.returnUrl);
+        if (AppSettings.IS_DEV) {
+          console.log(this.returnUrl);
+        }
         this.router.navigate([this.returnUrl]);
       },
       error => {
-        console.log(error);
+        if (AppSettings.IS_DEV) {
+          console.log(error);
+        }
         this.alertService.error('Error: Username or password is incorrect');
         this.loading = false;
       });
   }
-  
+
   logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-    }
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+  }
 
 
 }

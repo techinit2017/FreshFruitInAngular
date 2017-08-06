@@ -21,7 +21,11 @@ export class SearchService {
    */
   getProducts(query: string): Observable<IProduct[]> {
     return this.http.get(AppSettings.GET_PRODUCTS).map((response: Response) => <IProduct[]>response.json())
-      .do(data => console.log(JSON.stringify(data)))
+       .do(data => {
+        if (AppSettings.IS_DEV) {
+          console.log(JSON.stringify(data))
+        }
+      })
       .catch(this.handleError);
   }
   
@@ -30,7 +34,11 @@ export class SearchService {
    */
   doSearch(searchObj: ISearch): Observable<IProduct[]> {
     return this.http.get(AppSettings.SEARCH_PRODUCTS).map((response: Response) => <IProduct[]>response.json())
-      .do(data => console.log(JSON.stringify(data)))
+     .do(data => {
+        if (AppSettings.IS_DEV) {
+          console.log(JSON.stringify(data))
+        }
+      })
       .catch(this.handleError);
   }
   

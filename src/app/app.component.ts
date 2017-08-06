@@ -18,10 +18,6 @@ export class AppComponent {
     private router: Router,
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // console.log('currentuser start - >');
-    console.log(this.currentUser);
-    // console.log('currentuser end - >');
-
   }
 
   redirect = function() {

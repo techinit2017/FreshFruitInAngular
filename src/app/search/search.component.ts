@@ -1,5 +1,7 @@
+import {AppSettings} from '../AppSettings';
+import {MasterdataService} from '../_services/masterdata.service';
 import {IProduct} from '../product/product';
-import {ISearch, Country, PriceDelimiter, Availbility, AppleType} from './search';
+import {ISearch, Country, PriceDelimiter, Availbility, ProductVariety} from './search';
 import {SearchService} from './search.service';
 import {Component, OnInit} from '@angular/core';
 import {
@@ -11,17 +13,20 @@ import {
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers: [SearchService]
+  providers: [SearchService, MasterdataService]
 })
 export class SearchComponent implements OnInit {
   // form UI component controller variable
   loading = false;
 
   // dataVariable
-  country: string[] = Object.keys(Country);
+  country: Country[];
+  variety: ProductVariety[];
+  productlist: string[];
+
   priceDelimiter: string[] = Object.keys(PriceDelimiter);
   avail: string[] = Object.keys(Availbility);
-  variety: string[] = Object.keys(AppleType);
+
   // country: Country.India;
   searchObj: ISearch;
 
@@ -33,18 +38,19 @@ export class SearchComponent implements OnInit {
 
   searchPriceQuery: string;
 
-  constructor(public searchService: SearchService, public router: Router) {
+  constructor(public searchService: SearchService, public router: Router, public masterDataService: MasterdataService) {
     this.query = '';
     this.searchObj = new ISearch();
-    this.country = this.country.slice(this.country.length / 2);
     this.priceDelimiter = this.priceDelimiter.slice(this.priceDelimiter.length / 2);
     this.avail = this.avail.slice(this.avail.length / 2);
-    this.variety = this.variety.slice(this.variety.length / 2);
-    console.log(this.country);
+
   }
 
   ngOnInit(): void {
     this.search();
+    this.getCountries();
+    this.getProductByVariety(null);
+    this.getProducts();
   }
 
   isLoading(): boolean {
@@ -54,7 +60,6 @@ export class SearchComponent implements OnInit {
 
   submit(query: string): void {
     this.loading = this.isLoading();
-    // console.log(query);
     this.router.navigate(['/Search', {query: query}]);
     this.query = query;
     this.result = 'Find [' + this.query;
@@ -73,18 +78,38 @@ export class SearchComponent implements OnInit {
       err => this.errorMsg = <any>err);
   }
 
+  getCountries(): void {
+    this.masterDataService
+      .getCountries()
+      .subscribe(country => this.country = country,
+      err => this.errorMsg = <any>err);
+  }
+
+  getProductByVariety(productName: string): void {
+    if (!productName) {
+      productName = 'APPLE';
+    }
+    this.masterDataService
+      .getProductByVariety(productName)
+      .subscribe(variety => this.variety = variety,
+      err => this.errorMsg = <any>err);
+  }
+
+  getProducts(): void {
+    this.masterDataService
+      .getProductNames()
+      .subscribe(name => this.productlist = name,
+      err => this.errorMsg = <any>err);
+  }
+
   filterSearch(searchObj: ISearch) {
-    console.log(searchObj);
+    if (AppSettings.IS_DEV) { 
+      console.log(searchObj);
+    }
     this.searchService.doSearch(searchObj)
       .subscribe(iProduct => this.iProduct = iProduct,
       err => this.errorMsg = <any>err);
   }
 
-  /*renderResults(res: any): void {
-    this.results = null;
-    if (res && res.tracks && res.tracks.items) {
-      this.results = res.tracks.items;
-    }
-  }*/
 }
 

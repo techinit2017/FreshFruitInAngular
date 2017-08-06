@@ -1,38 +1,6 @@
-<div *ngIf="!isAdd">
-	<a class="btn btn-link" (click)="onAddClick()">AddUser</a>
-	<h2>{{userlist}}</h2>
-	<h2>{{errorMsg}}</h2>
-	<table class="table" *ngIf="!isEmptyObject(errorMsg)">
-		<tr *ngIf="iusers?.length > 0">
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>USER NAME</th>
-			<th>PASSWORD</th>
-			<th>Email</th>
-			<th>PhoneNo.</th>
-			<th>Alternate No.</th>
-			<th>UserType</th>
-			<th>Address</th>
-		</tr>
-		<tr *ngFor="let u of iusers">
-			<td>{{u.id}}</td>
-			<td>{{u.firstName}}</td>
-			<td>{{u.lastName}}</td>
-			<td>{{u.userName}}</td>
-			<td>{{u.password}}</td>
-			<td>{{u.emailId}}</td>
-			<td>{{u.phoneNumber}}</td>
-			<td>{{u.secondaryContact}}</td>
-			<td>{{u.userType}}</td>
-			<td>{{u.address}}</td>
-		</tr>
-	</table>
-</div>
-
 <form class="userregistration-form"
 	(ngSubmit)="userForm.valid && onSubmit(user)" name="userForm"
-	*ngIf="isAdd" novalidate>
+	novalidate>
 	<a class="btn btn-link" (click)="onbackClick()">back</a>
 	<div>
 		<div class="selected-value">Registering as:{{user.userType}}</div>
@@ -244,8 +212,9 @@
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container> <input name="secuAns"
-								[(ngModel)]="user.securityans" mdInput placeholder="Security Ans"
-								required [formControl]="securityAnsControl" /> <md-error
+								[(ngModel)]="user.securityans" mdInput
+								placeholder="Security Ans" required
+								[formControl]="securityAnsControl" /> <md-error
 								*ngIf="securityAnsControl.hasError('required')">
 							Security Ans <strong>required</strong> </md-error> </md-input-container>
 						</div>

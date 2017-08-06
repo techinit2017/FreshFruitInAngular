@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="../../assets/multiselect/multiselect.js"></script>
+<link rel="stylesheet" href="../../assets/multiselect/multiselect.css"
+	type="text/css" />
+</head>
+
+
+
+<form>
+	<select id="example-getting-started" multiple="multiple">
+		<option value="cheese">Cheese</option>
+		<option value="tomatoes">Tomatoes</option>
+		<option value="mozarella">Mozzarella</option>
+		<option value="mushrooms">Mushrooms</option>
+		<option value="pepperoni">Pepperoni</option>
+		<option value="onions">Onions</option>
+	</select>
+
+
+	<!-- Initialize the plugin: -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example-getting-started').multiselect();
+		});
+	</script>
+</form>
+</html>

@@ -12,18 +12,19 @@ export class ISearch {
   country: string;
 }
 
-export enum AppleType {
-  Ambrosia = 1,
-  BraeBurn = 2,
-  CAMEO = 3
+export class ProductVariety {
+  id: number;
+  product: string;
+  variety: string;
 }
 
-export enum Country {
-  Spain,
-  India,
-  UK,
-  US
+export class Country {
+  id: number;
+  country: string;
+  currencyName: string;
+  code: string;
 }
+
 
 export enum PriceDelimiter {
   '>=',

@@ -1,7 +1,10 @@
-import { AppUtility } from '../AppUtility';
+import {AppSettings} from '../AppSettings';
+import {AppUtility} from '../AppUtility';
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormArray, FormBuilder,
-          Validators, ReactiveFormsModule, FormControl  } from '@angular/forms';
+import {
+  FormGroup, FormArray, FormBuilder,
+  Validators, ReactiveFormsModule, FormControl
+} from '@angular/forms';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -19,7 +22,7 @@ export class TestComponent implements OnInit {
     group.streetAddress = new FormControl('', Validators.required);
     group.email = new FormControl('', [
       Validators.required,
-      Validators.pattern(AppUtility.EMAIL_VALIDATOR)
+      Validators.pattern(AppUtility.EMAIL_REGEX)
     ]);
     group.zip = new FormControl('', [Validators.pattern(AppUtility.ZIP_CODE_PATTERN)]);
     group.type = new FormControl('home');
@@ -31,7 +34,9 @@ export class TestComponent implements OnInit {
 
   onSubmit() {
     this.payLoad = JSON.stringify(this.form.value);
-    console.log(this.form.value);
+    if (AppSettings.IS_DEV) {
+      console.log(this.form.value);
+    }
   }
 
 }

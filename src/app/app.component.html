@@ -22,8 +22,8 @@
 				</ul>
 				<div *ngIf="!currentUser?.userName" >
 					<ul class="nav navbar-nav navbar-right">
-						<li><a (click)="redirectNewUser()"><span
-								class="glyphicon glyphicon-log-in"></span> NewUser</a></li>
+						<li><a [routerLink]="['/register']"><span
+								class="glyphicon glyphicon-log-in"></span>Register</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a (click)="redirect()"><span
@@ -52,12 +52,12 @@
 	</nav>
 	<router-outlet> </router-outlet>
 
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
 	<ul class="nav navbar-nav">
 						<li class="active"></li>
 						<li><a [routerLink]="['/User']">Help</a></li>
 						<li><a [routerLink]="['/Product']">Mail Us</a></li>
 						<li><a [routerLink]="['/Product']">About US</a></li>
 					</ul>
-	</nav>
+	</nav> -->
 </div>
