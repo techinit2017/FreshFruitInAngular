@@ -20,7 +20,7 @@
 					<h5>Personal Information</h5>
 					<div class="rTableRow">
 						<div class="rTableCell">
-							<md-input-container> <input
+							<md-input-container style="width: 100%;"> <input
 								name="companyName" [(ngModel)]="user.companyName" mdInput
 								placeholder="Company Name"
 								[formControl]="companyrequiredControl" required> <md-error
@@ -31,7 +31,7 @@
 
 					<div class="rTableRow">
 						<div class="rTableCell">
-							<md-input-container> <input name="firstName"
+							<md-input-container style="width: 100%;"> <input name="firstName"
 								[(ngModel)]="user.firstName" mdInput placeholder="First Name"
 								required [formControl]="firstNamerequiredControl" /> <md-error
 								*ngIf="firstNamerequiredControl.hasError('required')">
@@ -41,16 +41,16 @@
 
 					<div class="rTableRow">
 						<div class="rTableCell">
-							<md-input-container> <input name="lastName"
+							<md-input-container style="width: 100%;"> <input name="lastName"
 								[(ngModel)]="user.lastName" mdInput placeholder="Last Name"
 								required [formControl]="LastNamerequiredControl" /> <md-error
 								*ngIf="LastNamerequiredControl.hasError('required')">
 							Last Name is <strong>required</strong> </md-error> </md-input-container>
 						</div>
 					</div>
-					<div class="rTableRow">
+					<!-- <div class="rTableRow">
 						<div class="rTableCell">
-							<md-input-container> <input mdInput
+							<md-input-container style="width: 100%;"> <input mdInput
 								[mdDatepicker]="picker" placeholder="Birth Date"
 								[(ngModel)]="user.dob" required [formControl]="dobControl">
 							<button mdSuffix [mdDatepickerToggle]="picker"></button>
@@ -59,7 +59,7 @@
 							<md-datepicker #picker startView="year" [startAt]="startDate">
 							</md-datepicker>
 						</div>
-					</div>
+					</div> -->
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-select placeholder="Country"
@@ -69,7 +69,7 @@
 							name.country }}</md-option> </md-select>
 						</div>
 					</div>
-
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -78,7 +78,7 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
-
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -87,7 +87,7 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
-
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -96,7 +96,7 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
-
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -105,7 +105,7 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
-
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -114,7 +114,7 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
-
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -123,13 +123,14 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
-
+					&nbsp;
 				</div>
 			</div>
 
 			<div class="rTableCell">
 				<div class="rTable">
 					<h5>Additional Information</h5>
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell" *ngIf="user.userType!='Buyer'">
 							<md-select placeholder="Primary Activity"
@@ -148,6 +149,7 @@
 							name }}</md-option> </md-select>
 						</div>
 					</div>
+					&nbsp;
 					<div class="rTableRow" *ngIf="user.userType!='Buyer'">
 						<div class="rTableCell">
 							<md-select placeholder="Operational Year"
@@ -158,6 +160,7 @@
 							</md-select>
 						</div>
 					</div>
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-select placeholder="Type of Apple Produced"
@@ -168,6 +171,7 @@
 							}}</md-option> </md-select>
 						</div>
 					</div>
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-input-container class="form-control-user-registration">
@@ -176,6 +180,7 @@
 								[ngModelOptions]="{standalone: true}" /> </md-input-container>
 						</div>
 					</div>
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-select placeholder="Country of production "
@@ -186,6 +191,7 @@
 							name.country }}</md-option> </md-select>
 						</div>
 					</div>
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-select placeholder="Current Selling Markets"
@@ -196,6 +202,7 @@
 							name.country }}</md-option> </md-select>
 						</div>
 					</div>
+					&nbsp;
 					<div class="rTableRow">
 						<div class="rTableCell">
 							<md-select placeholder="Security Question"
@@ -211,7 +218,7 @@
 
 					<div class="rTableRow">
 						<div class="rTableCell">
-							<md-input-container> <input name="secuAns"
+							<md-input-container style="width: 100%;"> <input name="secuAns"
 								[(ngModel)]="user.securityans" mdInput
 								placeholder="Security Ans" required
 								[formControl]="securityAnsControl" /> <md-error
@@ -227,9 +234,10 @@
 
 		</div>
 		<div class="rTableRow">
-			<div class="rTableCell">
-				<button class="btn btn-primary" [disabled]="!userForm.valid">Save</button>
-				<button class="btn btn-primary" type="reset">Reset</button>
+			<div class="rTableCell" align="center">
+				<button class="btn-primary" [disabled]="!userForm.valid">Save</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn-primary" type="reset">Reset</button>
 			</div>
 		</div>
 	</div>
