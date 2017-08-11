@@ -1,0 +1,194 @@
+<form class="userregistration-form"
+	(ngSubmit)="userForm.valid && onSubmit(user)" name="userForm"
+	novalidate>
+
+	<div class="half-form-container">
+		<a class="btn btn-link" (click)="onbackClick()">back</a>
+		<div class="rTable">
+			<div class="request_quotes_title">Add Product Details</div>
+			<div class="rTableRow">
+				<div class="rTableCell">
+					<div class="rTable">
+
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="ProductName" [(ngModel)]="productAdd.productName" mdInput
+									placeholder="Product Name"
+									[formControl]="ProductrequiredControl" required> <md-error
+									*ngIf="ProductrequiredControl.hasError('required')">
+								Product Name is<strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="productType" [(ngModel)]="productAdd.productType" mdInput
+									placeholder="Product Type" required
+									[formControl]="ProductTypequiredControl" /> <md-error
+									*ngIf="ProductTypequiredControl.hasError('required')">
+								Product Type is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="productInfo" [(ngModel)]="productAdd.productInfo" mdInput
+									placeholder="Product Info" required
+									[formControl]="ProductInforequiredControl" /> <md-error
+									*ngIf="ProductInforequiredControl.hasError('required')">
+								Product Info is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="productDesc" [(ngModel)]="productAdd.productDesc" mdInput
+									placeholder="Product Desc" required
+									[formControl]="ProductDescequiredControl" /> <md-error
+									*ngIf="ProductDescequiredControl.hasError('required')">
+								Product Desc is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="grade" [(ngModel)]="productAdd.grade" mdInput
+									placeholder="Grade" required
+									[formControl]="GraderequiredControl" /> <md-error
+									*ngIf="GraderequiredControl.hasError('required')">
+								Grade is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="size" [(ngModel)]="productAdd.size" mdInput
+									placeholder="Size" required [formControl]="SizerequiredControl" />
+								<md-error *ngIf="SizerequiredControl.hasError('required')">
+								Size is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="color" [(ngModel)]="productAdd.color" mdInput
+									placeholder="Color" required
+									[formControl]="colorrequiredControl" /> <md-error
+									*ngIf="colorrequiredControl.hasError('required')">
+								Color is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="minorderqty" [(ngModel)]="productAdd.minOrderQty" mdInput
+									placeholder="Minimum Order Qty" required
+									[formControl]="MimorderqtyrequiredControl" /> <md-error
+									*ngIf="MimorderqtyrequiredControl.hasError('required')">
+								Minimum Order Qty <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="price" [(ngModel)]="productAdd.price" mdInput
+									placeholder="Price" required
+									[formControl]="PricerequiredControl" /> <md-error
+									*ngIf="PricerequiredControl.hasError('required')">
+								Price is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="priceNegotiable" [(ngModel)]="productAdd.priceNegotiable"
+									mdInput placeholder="Price Negotiable" required
+									[formControl]="PriceNegotiablerequiredControl" /> <md-error
+									*ngIf="PriceNegotiablerequiredControl.hasError('required')">
+								Price Negotiable <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="measurement" [(ngModel)]="productAdd.measurement" mdInput
+									placeholder="Measurement" required
+									[formControl]="MeasurementrequiredControl" /> <md-error
+									*ngIf="MeasurementrequiredControl.hasError('required')">
+								Measurement <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="packaging" [(ngModel)]="productAdd.packaging" mdInput
+									placeholder="Packaging" required
+									[formControl]="PackagingrequiredControl" /> <md-error
+									*ngIf="PackagingrequiredControl.hasError('required')">
+								Packaging <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+						<div class="rTableRow">
+							<div class="rTableCell">
+								<md-input-container style="width: 100%;"> <input
+									name="isActive" [(ngModel)]="productAdd.isActive" mdInput
+									placeholder="Active" required
+									[formControl]="ActiverequiredControl" /> <md-error
+									*ngIf="ActiverequiredControl.hasError('required')">
+								Active is <strong>required</strong> </md-error> </md-input-container>
+							</div>
+						</div>
+						&nbsp;
+
+						<!-- <div class="rTableRow">
+						<div class="rTableCell">
+							<md-input-container style="width: 100%;"> <input mdInput
+								[mdDatepicker]="picker" placeholder="Available Date"
+								[(ngModel)]="productAdd.avilable" required [formControl]="dobControl">
+							<button mdSuffix [mdDatepickerToggle]="picker"></button>
+							<md-error *ngIf="dobControl.hasError('required')">
+							Avilable <strong>required</strong> </md-error> </md-input-container>
+							<md-datepicker #picker startView="year" [startAt]="startDate">
+							</md-datepicker>
+						</div>
+					</div> -->
+
+
+						<div>
+							Upload Image <input type="file" accept="image/*"
+								(change)="handleInputChange($event)" />
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+			<div class="rTableRow">
+				<div class="rTableCell" align="center">
+					<button class="btn-primary">Save</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="btn-primary" type="reset">Reset</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</form>
+

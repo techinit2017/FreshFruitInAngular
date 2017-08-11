@@ -23,4 +23,8 @@ npm install ts-md5 --save
   b) install underscore
   
   
+  -->Img Upload code taken url
+  https://embed.plnkr.co/nO1C1lImOw8q7uQkrvRT/
+  
+  
   

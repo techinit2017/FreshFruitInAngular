@@ -36,22 +36,11 @@ export class ProductComponent implements OnInit {
  
     ngOnInit() {
         // get dummy data
-      /*this._productService.getProducts()
-    .subscribe(iProduct => this.iProduct = iProduct, err => this.errorMsg = <any>err);
-       {
-        // set items to json response
-          this.allItems = this.iProduct;
- 
-                // initialize to page 1
-                this.setPage(1);
-            };*/
+        this._productService.getProducts()
+        .subscribe(data => 
+            {
       
-      this.http.get('./assets/product.json')
-            .map((response: Response) => response.json())
-            .subscribe(data => {
-                // set items to json response
-                this.allItems = data;
- 
+          this.allItems = data;
                 // initialize to page 1
                 this.setPage(1);
             });

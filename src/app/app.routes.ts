@@ -1,3 +1,4 @@
+import { AddProductComponent } from './addproduct/addproduct.component';
 import {Routes} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -14,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import {SearchComponent} from './search/search.component';
 import { TestComponent } from './test/test.component';
 import {UserComponent} from './user/user.component';
+
 
 export const AppRoutes: Routes = [
   {
@@ -50,6 +52,10 @@ export const AppRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'addProduct',
+    component: AddProductComponent
   },
   {path: '**', component: ErrorComponent}
 

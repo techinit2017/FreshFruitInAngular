@@ -1,3 +1,6 @@
+import { MasterdataService } from './_services/masterdata.service';
+import { AddProductComponent } from './addproduct/addproduct.component';
+import { AddProductService } from './addproduct/addproduct.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +28,9 @@ import { PagerService } from './product/PagerService';
 import { RegisterComponent } from './register/register.component';
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +45,7 @@ import { RegisterComponent } from './register/register.component';
     AlertComponent,
     ForgetpasswordComponent,
     RegisterComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,7 @@ import { RegisterComponent } from './register/register.component';
     HttpModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, initialNavigation: 'enabled' }),
   ],
-  providers: [FormControlDirective, FormGroupDirective, PagerService],
+  providers: [FormControlDirective, FormGroupDirective, PagerService, MasterdataService],
   bootstrap: [AppComponent],
   
 })
