@@ -1,5 +1,5 @@
 
-import { AppUtility } from '../AppUtility';
+import { AppUtility} from '../AppUtility';
 import { MasterdataService } from '../_services/masterdata.service';
 import { Country, ProductVariety } from '../search/search';
 import { PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion, IUser } from '../user/user';

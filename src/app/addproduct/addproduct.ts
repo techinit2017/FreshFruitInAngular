@@ -1,4 +1,4 @@
-export class IProductAdd {
+export class  IProductAdd {
   id: number;
   // User information
   productName: string;
