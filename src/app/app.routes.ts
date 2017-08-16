@@ -1,4 +1,3 @@
-import {AddProductComponent} from './addproduct/addproduct.component';
 import {Routes} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -7,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {ContactComponent} from './contact/contact.component';
 import {DatatableComponent} from './datatable/datatable.component';
+import { AdddemandComponent } from './demand/adddemand/adddemand.component';
 import {ErrorComponent} from './error/error.component';
 import {ForgetpasswordComponent} from './forgetpassword/forgetpassword.component';
 import {HomeComponent} from './home/home.component';
@@ -17,6 +17,8 @@ import {SearchComponent} from './search/search.component';
 import {TestComponent} from './test/test.component';
 import {UserComponent} from './user/user.component';
 import {DemandComponent} from './demand/demand.component';
+import { AddproductComponent } from './sellerproduct/addproduct/addproduct.component';
+import {SellerproductComponent} from './sellerproduct/sellerproduct.component';
 
 export const AppRoutes: Routes = [
   {
@@ -63,9 +65,18 @@ export const AppRoutes: Routes = [
     component: DemandComponent
   },
   {
-    path: 'addProduct',
-    component: AddProductComponent
+    path: 'demand/adddemand',
+    component: AdddemandComponent
   },
+  {
+    path: 'sellerProduct',
+    component: SellerproductComponent
+  },
+  {
+    path: 'sellerProduct/addProduct',
+    component: AddproductComponent
+  },
+
   {path: '**', component: ErrorComponent}
 
 

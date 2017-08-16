@@ -1,22 +1,17 @@
-import {MasterdataService} from '../_services/masterdata.service';
-import {IProduct} from '../product/product';
-import {ProductVariety, Country} from '../search/search';
-import {IUser} from '../user/user';
-import {IDemand} from './demand';
+import {MasterdataService} from '../../_services/masterdata.service';
+import {Country, ProductVariety} from '../../search/search';
+import {IDemand} from '../demand';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-demand',
-  templateUrl: './demand.component.html',
-  styleUrls: ['./demand.component.css'],
+  selector: 'adddemand',
+  templateUrl: './adddemand.component.html',
+  styleUrls: ['./adddemand.component.css'],
   providers: [MasterdataService]
 })
-export class DemandComponent implements OnInit {
-
-  currentUser: IUser;
+export class AdddemandComponent implements OnInit {
   errorMsg: any;
-
   demand: IDemand;
   demandForm;
   productList: String[];
@@ -28,12 +23,9 @@ export class DemandComponent implements OnInit {
     const group: any = {};
     group.requiredControl = this.requiredControl;
     this.demandForm = new FormGroup(group);
-
-
   }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.onLoad();
   }
 

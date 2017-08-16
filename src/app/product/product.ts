@@ -31,4 +31,7 @@ export interface IProduct {
   available: Date;
   packaging: string;
   isActive: number;
+  // New Fields
+  country: string;
+  city: string;
 }

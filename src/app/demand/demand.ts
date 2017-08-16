@@ -1,25 +1,21 @@
 /**
  * Search Component Object
  */
+import { IUser } from '../user/user';
 export class IDemand {
-  productName: string;
-  variety: string[];
-  quantity: number;
-  desiredPrice: number;
-  country: string;
-}
-
-export class ProductVariety {
   id: number;
+  userProfile: IUser;
   product: string;
   variety: string;
-}
-
-export class Country {
-  id: number;
+  grade: string;
+  size: string;
+  color: string;
+  quantity: string;
+  price: string;
+  measurement: string;
+  availableDate: Date;
   country: string;
-  currencyName: string;
-  code: string;
+  city: string;
 }
 
 

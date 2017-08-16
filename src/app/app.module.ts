@@ -1,6 +1,4 @@
 import { MasterdataService } from './_services/masterdata.service';
-import { AddProductComponent } from './addproduct/addproduct.component';
-import { AddProductService } from './addproduct/addproduct.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +26,9 @@ import { PagerService } from './product/PagerService';
 import { RegisterComponent } from './register/register.component';
 import { DatatableComponent } from './datatable/datatable.component';
 import { DemandComponent } from './demand/demand.component';
+import { SellerproductComponent } from './sellerproduct/sellerproduct.component';
+import { AddproductComponent } from './sellerproduct/addproduct/addproduct.component';
+import { AdddemandComponent } from './demand/adddemand/adddemand.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,10 @@ import { DemandComponent } from './demand/demand.component';
     ForgetpasswordComponent,
     RegisterComponent,
     DemandComponent,
-    AddProductComponent,
-    DatatableComponent
+    DatatableComponent,
+    SellerproductComponent,
+    AddproductComponent,
+    AdddemandComponent
   ],
   imports: [
     BrowserModule,

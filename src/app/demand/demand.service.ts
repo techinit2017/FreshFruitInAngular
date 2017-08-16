@@ -1,9 +1,10 @@
-import { AppSettings } from '../AppSettings';
-import { IProduct } from '../product/product';
-import { IDemand } from './demand';
+import {AppSettings} from '../AppSettings';
+import {IProduct} from '../product/product';
+import { IUser } from '../user/user';
+import {IDemand} from './demand';
 import {Injectable} from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -21,29 +22,29 @@ export class DemandService {
    */
   getProducts(query: string): Observable<IProduct[]> {
     return this.http.get(AppSettings.GET_PRODUCTS).map((response: Response) => <IProduct[]>response.json())
-       .do(data => {
+      .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))
         }
       })
       .catch(this.handleError);
   }
-  
-   /**
-   * Get list of Products
-   */
-  doSearch(searchObj: IDemand): Observable<IProduct[]> {
+
+  /**
+  * Get list of Products
+  */
+  getUserDemand(user: IUser): Observable<IProduct[]> {
     return this.http.get(AppSettings.SEARCH_PRODUCTS).map((response: Response) => <IProduct[]>response.json())
-     .do(data => {
+      .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))
         }
       })
       .catch(this.handleError);
   }
-  
-  
-  
+
+
+
   private handleError(error: Response) {
     console.error(error.status);
     // if (error.status === 404) {

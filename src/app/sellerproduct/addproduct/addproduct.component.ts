@@ -1,31 +1,21 @@
-
-import { AppUtility} from '../AppUtility';
-import { MasterdataService } from '../_services/masterdata.service';
-import { Country, ProductVariety } from '../search/search';
-import { PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion, IUser } from '../user/user';
-import { UserService } from '../user/user.service';
-import { IProductAdd } from './addproduct';
-
-import {AddProductService} from './addproduct.service';
+import {AppUtility} from '../../AppUtility';
+import { AlertService } from '../../_services/alert.service';
+import {MasterdataService} from '../../_services/masterdata.service';
+import {IProduct} from '../../product/product';
+import {ProductService} from '../../product/product.service';
+import {Country, ProductVariety} from '../../search/search';
+import { PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion } from '../../user/user';
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {RequestOptions} from '@angular/http';
 
-import * as _ from 'underscore';
-
- @Component ({
-  selector: 'add-product',
+@Component({
+  selector: 'addproduct',
   templateUrl: './addproduct.component.html',
   styleUrls: ['./addproduct.component.css'],
-  providers: [AddProductService, MasterdataService],
+  providers: [ProductService, MasterdataService, AlertService],
 })
- export class AddProductComponent implements OnInit {
-   _http: any;
-   headers: Headers;
-   apiBaseUrl: string;
-
+export class AddproductComponent implements OnInit {
   primaryActivitySeller: string[] = Object.keys(PrimaryActivitySeller);
   primaryActivityBuyer: string[] = Object.keys(PrimaryActivityBuyer);
   securityQuestions: string[] = Object.keys(SecurityQuestion);
@@ -36,8 +26,8 @@ import * as _ from 'underscore';
   years: string[] = [];
   startDate = new Date(1990, 0, 1);
 
-  productAdd: IProductAdd;
-  createuser: IProductAdd;
+  productAdd: IProduct;
+  createuser: IProduct;
   createuserOutput: string;
   errorMsg: string;
 
@@ -60,22 +50,22 @@ import * as _ from 'underscore';
     Validators.required]);
   SizerequiredControl = new FormControl('', [
     Validators.required]);
-   colorrequiredControl = new FormControl('', [
+  colorrequiredControl = new FormControl('', [
     Validators.required]);
-   MimorderqtyrequiredControl = new FormControl('', [
+  MimorderqtyrequiredControl = new FormControl('', [
     Validators.required]);
-   PricerequiredControl = new FormControl('', [
+  PricerequiredControl = new FormControl('', [
     Validators.required]);
-   PriceNegotiablerequiredControl = new FormControl('', [
+  PriceNegotiablerequiredControl = new FormControl('', [
     Validators.required]);
-   MeasurementrequiredControl = new FormControl('', [
+  MeasurementrequiredControl = new FormControl('', [
     Validators.required]);
-   PackagingrequiredControl = new FormControl('', [
+  PackagingrequiredControl = new FormControl('', [
     Validators.required]);
-   ActiverequiredControl = new FormControl('', [
+  ActiverequiredControl = new FormControl('', [
     Validators.required]);
 
-  constructor(private addProductService: AddProductService, private masterDataService: MasterdataService) {
+  constructor(private productService: ProductService, private masterDataService: MasterdataService, private alertService: AlertService) {
     this.userTypes = [
       'Seller',
       'Buyer',
@@ -97,7 +87,7 @@ import * as _ from 'underscore';
     group.MimorderqtyrequiredControl = this.MimorderqtyrequiredControl;
     group.PricerequiredControl = this.PricerequiredControl;
     group.PriceNegotiablerequiredControl = this.PriceNegotiablerequiredControl;
-    
+
     group.MeasurementrequiredControl = this.MeasurementrequiredControl;
     group.PackagingrequiredControl = this.PackagingrequiredControl;
     group.ActiverequiredControl = this.ActiverequiredControl;
@@ -113,7 +103,6 @@ import * as _ from 'underscore';
   }
 
   onLoad() {
-    this.productAdd = new IProductAdd();
     this.getCountries();
     this.getProductByVariety(null);
     this.primaryActivitySeller = this.primaryActivitySeller.slice(this.primaryActivitySeller.length / 2);
@@ -124,10 +113,10 @@ import * as _ from 'underscore';
   onbackClick() {
   }
 
-  onSubmit(productAdd: IProductAdd) {
+  onSubmit(productAdd: IProduct) {
     // = new IUser();
     // this.createuser = user;
-    this.addProductService.saveUser(productAdd).
+    this.productService.saveUser(productAdd).
       subscribe(data => this.createuserOutput = JSON.stringify(productAdd),
       err => this.errorMsg = <any>err,
       () => this.onRequestComplete());
@@ -154,81 +143,79 @@ import * as _ from 'underscore';
       .subscribe(variety => this.variety = variety,
       err => this.errorMsg = <any>err);
   }
- 
-   
-   /**
-   * Handles the change event of the input tag,
-   * Extracts the image file uploaded and 
-   * makes an Http request with the image file.
-   */ 
-  handleInputChange (event) {
-    
+
+
+  /**
+  * Handles the change event of the input tag,
+  * Extracts the image file uploaded and 
+  * makes an Http request with the image file.
+  */
+  hndleInputChange(event) {
+
     var image = event.target.files[0];
 
     var pattern = /image-*/;
     var reader = new FileReader();
 
     if (!image.type.match(pattern)) {
-        console.error('File is not an image');
-       
-        return;
+      console.error('File is not an image');
+
+      return;
     }
-    
+
     let endPoint = '/upload/profileImage'; // use your own API endpoint
-    let headers = new Headers();
-    headers.set('Content-Type', 'application/octet-stream');
-    headers.set('Upload-Content-Type', image.type)
-
-    this.makeRequest(endPoint, 'POST', image, headers).subscribe(
-          response  => {this.handleSuccess(response); },
-          error =>  {this.handleError(error); }
-        );
+    this.productService.makeRequest(endPoint, 'POST', image).subscribe(
+      data => {
+      }, error => {
+        this.alertService.error('Error: Image Upload');
+        }, () => this.onRequestComplete()
+      );
 
   }
-   
-   /**
-   * Makes the HTTP request and returns an Observable
-   */
-  private makeRequest (endPoint: string,
-                        method: string, body = null,
-                        headers: Headers = new Headers()): Observable<any>
- {
-      let url = this.apiBaseUrl + endPoint;
-      this.headers = headers;
-      if (method == 'GET') {
-          let options = new RequestOptions({ headers: this.headers });
-          return this._http.get(url, options)
-                          .map(this.extractData)
-                          .catch(this.extractError);
-      } else if (method == 'POST') {
-          let options = new RequestOptions({ headers: this.headers });
-          return this._http.post(url, body, options)
-                          .map(this.extractData)
-                          .catch(this.extractError);
-      }
-  }
-  
+
   /**
-   * Extracts the response from the API response.
-   */ 
-  private extractData (res: Response) {
-        let body = res.json();
-        return body.response || { };
-    }
-    
-  private extractError (res: Response) {
-        let errMsg = 'Error received from the API';
-        return errMsg;
-    }
-  
+  * Makes the HTTP request and returns an Observable
+  */
+  //  private makeRequest (endPoint: string,
+  //                        method: string, body = null,
+  //                        headers: Headers = new Headers()): Observable<any>
+  // {
+  //      let url = this.apiBaseUrl + endPoint;
+  //      this.headers = headers;
+  //      if (method == 'GET') {
+  //          let options = new RequestOptions({ headers: this.headers });
+  //          return this._http.get(url, options)
+  //                          .map(this.extractData)
+  //                          .catch(this.extractError);
+  //      } else if (method == 'POST') {
+  //          let options = new RequestOptions({ headers: this.headers });
+  //          return this._http.post(url, body, options)
+  //                          .map(this.extractData)
+  //                          .catch(this.exactError);
+  //      }
+  //  }
+
+  /**
+   * Extracts the respnse from the API response.
+   */
+  //  private extractData (res: Response) {
+  //        let body = res.json();
+  //      turn body.response || { };
+  //    }
+
+  private extractError(res: Response) {
+    let errMsg = 'Error received from the API';
+    return errMsg;
+  }
+
   private handleSuccess(response) {
     console.log('Successfully uploaded image');
     // provide your own implementation of handling the response from API
   }
-  
+
   private handleError(errror) {
     console.error('Error uploading image')
     // provide your own implementation of displaying the error message
   }
-    
+
 }
