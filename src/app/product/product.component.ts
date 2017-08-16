@@ -1,7 +1,7 @@
 import { PagerService } from './PagerService';
 import {IProduct} from './product';
 import {ProductService} from './product.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map'
 import * as _ from 'underscore';
 
  @Component ({
-  selector: 'app-product',
+  selector: 'product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
   providers: [ProductService],
@@ -17,10 +17,10 @@ import * as _ from 'underscore';
 export class ProductComponent implements OnInit {
 
   prodlist = 'Product';
-  iProduct: IProduct[];
   errorMsg:  string;
   postData: string;
- 
+  @Input() product: IProduct;
+   
   constructor(private http: Http, private _productService: ProductService, private pagerService: PagerService) {
        
   }

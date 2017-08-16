@@ -1,4 +1,5 @@
 import {AppSettings} from '../AppSettings';
+import { AlertService } from '../_services/alert.service';
 import {MasterdataService} from '../_services/masterdata.service';
 import {IProduct} from '../product/product';
 import {ISearch, Country, PriceDelimiter, Availbility, ProductVariety} from './search';
@@ -13,22 +14,23 @@ import {
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers: [SearchService, MasterdataService]
+  providers: [SearchService, MasterdataService, AlertService],
 })
 export class SearchComponent implements OnInit {
   // form UI component controller variable
   loading = false;
-
+  count;
   // dataVariable
   country: Country[];
   variety: ProductVariety[];
   productlist: string[];
-
+  
   priceDelimiter: string[] = Object.keys(PriceDelimiter);
   avail: string[] = Object.keys(Availbility);
 
   // country: Country.India;
   searchObj: ISearch;
+  
 
   result: string;
   query: string;
@@ -38,7 +40,8 @@ export class SearchComponent implements OnInit {
 
   searchPriceQuery: string;
 
-  constructor(public searchService: SearchService, public router: Router, public masterDataService: MasterdataService) {
+  constructor(private searchService: SearchService, private router: Router, private masterDataService: MasterdataService
+    , private alertService: AlertService) {
     this.query = '';
     this.searchObj = new ISearch();
     this.priceDelimiter = this.priceDelimiter.slice(this.priceDelimiter.length / 2);
@@ -74,7 +77,7 @@ export class SearchComponent implements OnInit {
 
     this.searchService
       .getProducts(this.query)
-      .subscribe(iProduct => this.iProduct = iProduct.filter(x => this.query.toUpperCase().startsWith(x.ProductName.toUpperCase())),
+      .subscribe(iProduct => this.iProduct = iProduct.filter(x => this.query.toUpperCase().startsWith(x.name.toUpperCase())),
       err => this.errorMsg = <any>err);
   }
 
@@ -103,12 +106,30 @@ export class SearchComponent implements OnInit {
   }
 
   filterSearch(searchObj: ISearch) {
+     console.log(searchObj);
     if (AppSettings.IS_DEV) { 
       console.log(searchObj);
     }
-    this.searchService.doSearch(searchObj)
-      .subscribe(iProduct => this.iProduct = iProduct,
-      err => this.errorMsg = <any>err);
+    this.searchService.getSearchProduct(searchObj).then(result => {
+      console.log(result);
+      this.iProduct = result.products;
+      this.count = result.count;
+      console.log(this.iProduct);
+      if (this.count == 0){
+        this.alertService.success('No search result found.. Please try with different filter');
+      }
+      this.loading = false;
+    }, error => {
+      if (AppSettings.IS_DEV) {
+        console.log(error);
+      }
+      this.alertService.error('Error: Service unavailable');
+      this.loading = false;
+    });
+    
+//    this.searchService.getSearchProduct(searchObj)
+//      .subscribe(iProduct => this.iProduct = iProduct,
+//      err => this.errorMsg = <any>err);
   }
 
 }

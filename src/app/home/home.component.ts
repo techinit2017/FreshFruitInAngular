@@ -5,7 +5,7 @@ import { MdMenuTrigger } from '@angular/material';
 import {SearchComponent} from '../search/search.component';
 
 
-@Component({
+ @ Component({
   selector: 'grid-list-dynamic-example',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css']

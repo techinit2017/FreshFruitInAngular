@@ -35,16 +35,16 @@ export class UserService {
     // return Observable.throw(new Error('Oops!! Some Problem bad luck !!'));
   }
   saveUser(user: IUser) {
-    if (user.productionCountryArray) {
-      user.productionCountry = user.productionCountryArray.toString();
+    if (user.countryOfOperationArray) {
+      user.countryOfOperation = user.countryOfOperationArray.toString();
       // user.productionCountryArray = null;
     }
-    if (user.sellingMarketsArray) {
-      user.sellingMarkets = user.sellingMarketsArray.toString();
+    if (user.currentOpCountryArray) {
+      user.currentOpCountry = user.currentOpCountryArray.toString();
       // user.sellingMarketsArray = null;
     }
-    if (user.productProducedArray) {
-      user.productProduced = user.productProducedArray.toString();
+    if (user.typeFruitVarietyArray) {
+      user.typeFruitVariety = user.typeFruitVarietyArray.toString();
       // user.productProducedArray = null;
     }
 
@@ -56,6 +56,7 @@ export class UserService {
     // AppUtility.removeEmptyorNullKeys(user)
     const json = JSON.stringify(user);
     const param = json;
+    console.log(json);
     const headers = new Headers({'Content-Type': 'application/json'});
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const options = new RequestOptions({headers: headers});

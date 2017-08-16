@@ -26,6 +26,7 @@ export class UserComponent implements OnInit {
   variety: ProductVariety[];
   userTypes: string[];
   years: string[] = [];
+  productlist: string[];
   startDate = new Date(1990, 0, 1);
 
   user: IUser;
@@ -50,7 +51,7 @@ export class UserComponent implements OnInit {
     Validators.required]);
   dobControl = new FormControl('', [
     Validators.required]);
-  
+
   securityQuesControl = new FormControl('', [
     Validators.required]);
   securityAnsControl = new FormControl('', [
@@ -71,7 +72,7 @@ export class UserComponent implements OnInit {
     group.companyrequiredControl = this.companyrequiredControl;
     group.firstNamerequiredControl = this.firstNamerequiredControl;
     group.LastNamerequiredControl = this.LastNamerequiredControl;
-    group.dobControl = this.dobControl;
+   // group.dobControl = this.dobControl;
     group.securityQuesControl = this.securityQuesControl;
     group.securityAnsControl = this.securityAnsControl;
     this.userForm = new FormGroup(group);
@@ -91,6 +92,7 @@ export class UserComponent implements OnInit {
     this.isAdd = true;
     this.user = new IUser();
     this.getCountries();
+    this.getProducts();
     this.getProductByVariety(null);
     this.primaryActivitySeller = this.primaryActivitySeller.slice(this.primaryActivitySeller.length / 2);
     this.primaryActivityBuyer = this.primaryActivityBuyer.slice(this.primaryActivityBuyer.length / 2);
@@ -121,7 +123,12 @@ export class UserComponent implements OnInit {
       .subscribe(country => this.country = country,
       err => this.errorMsg = <any>err);
   }
-
+  getProducts(): void {
+    this.masterDataService
+      .getProductNames()
+      .subscribe(name => this.productlist = name,
+      err => this.errorMsg = <any>err);
+  }
   getProductByVariety(productName: string): void {
     if (!productName) {
       productName = 'APPLE';

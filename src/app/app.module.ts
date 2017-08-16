@@ -26,10 +26,8 @@ import { AlertComponent } from './alert/alert.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { PagerService } from './product/PagerService';
 import { RegisterComponent } from './register/register.component';
-
-
-
-
+import { DatatableComponent } from './datatable/datatable.component';
+import { DemandComponent } from './demand/demand.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +43,9 @@ import { RegisterComponent } from './register/register.component';
     AlertComponent,
     ForgetpasswordComponent,
     RegisterComponent,
-    AddProductComponent
+    DemandComponent,
+    AddProductComponent,
+    DatatableComponent
   ],
   imports: [
     BrowserModule,

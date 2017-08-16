@@ -6,6 +6,7 @@ export class IUser {
   lastName: string;
   userName: string;
   password: string;
+  confirmPassword: string;
   userType: string;
 
   // contact information
@@ -18,19 +19,24 @@ export class IUser {
 
   // additional information
   primaryActivity: string;
-  productionCountryArray: string[];
-  operationalYear: string;
-  productProducedArray: string[];
-  sellingMarketsArray: string[];
-  annualTotalProduction: number;
+  countryOfOperationArray: string[];
+  operationSince: string;
+  typeFruit: string;
+  typeFruitVarietyArray: string[];
+  currentOpCountryArray: string[];
+  annualOpQuantity: number;
   // attributes representing array Object = > Comma Seperated String
-   productionCountry: string;
-   sellingMarkets: string;
-   productProduced: string;
-  
-  securityQuestion: string;
-  securityans: string;
+  typeFruitVariety: string;
+  countryOfOperation: string;
+  currentOpCountry: string;
+  secretQuestion: string;
+  secretAnswer: string;
   dob: Date;
+  approved: string;
+  weightIn: string;
+
+
+
 }
 
 export enum PrimaryActivitySeller {

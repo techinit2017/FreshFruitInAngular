@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map'
 import * as _ from 'underscore';
 
  @Component ({
-  selector: 'app-product',
+  selector: 'add-product',
   templateUrl: './addproduct.component.html',
   styleUrls: ['./addproduct.component.css'],
   providers: [AddProductService, MasterdataService],

@@ -1,5 +1,5 @@
-
 <h2>Search</h2>
+<alert></alert>
 <div class="rTable">
 	<div class="rTableRow">
 		<div class="rTableCell rTableCell_1stCol">
@@ -15,11 +15,11 @@
 	</div>
 
 	<div class="rTableRow">
-		 
+
 		<div class="rTableCell rTableCell_1stCol">Product</div>
 		<div class="rTableCell rTableCell_2stCol">
 			<select name="price" class="form-control rTableCell_2stCol"
-				[(ngModel)]="searchObj.product">
+				[(ngModel)]="searchObj.type">
 				<option *ngFor="let name of productlist" [value]="name">{{name}}</option>
 			</select>
 		</div>
@@ -27,7 +27,7 @@
 	<div class="rTableRow">
 		<div class="rTableCell rTableCell_1stCol">Variety</div>
 		<div class="rTableCell">
-			<select class="form-control" [(ngModel)]="searchObj.variety">
+			<select class="form-control" [(ngModel)]="searchObj.name">
 				<option *ngFor="let name of variety" [value]="name.variety">{{name.variety}}</option>
 			</select>
 		</div>
@@ -37,7 +37,7 @@
 		<div class="rTableCell">
 			<input type="text" placeholder="Quantity"
 				class="form-control rTableCell_2stCol"
-				[(ngModel)]="searchObj.quantity" />
+				[(ngModel)]="searchObj.quantityAvailable" />
 		</div>
 	</div>
 
@@ -45,7 +45,7 @@
 		<div class="rTableCell rTableCell_1stCol">Availability</div>
 		<div class="rTableCell">
 			<select name="Availability" class="form-control rTableCell_2stCol"
-				[(ngModel)]="searchObj.avail">
+				[(ngModel)]="searchObj.available">
 				<option *ngFor="let value of avail" [value]="value">{{value}}</option>
 			</select>
 		</div>
@@ -60,14 +60,6 @@
 			</select>
 		</div>
 	</div>
-	<div class="rTableRow">
-		<div class="rTableCell rTableCell_1stCol">Seller</div>
-		<div class="rTableCell">
-			<input type="text" placeholder="Brand"
-				class="form-control  rTableCell_2stCol"
-				[(ngModel)]="searchObj.seller" />
-		</div>
-	</div>
 </div>
 <div class="form-group">
 	<button [disabled]="loading" class="btn btn-primary"
@@ -78,72 +70,8 @@
 </div>
 
 
+<product *ngFor="let product of iProduct" [product]="product">
 
-<!-- <div class="form-group">
-	<button [disabled]="loading" class="btn btn-primary"
-		(click)="submit(newquery.value)">Search</button>
-	<img *ngIf="loading"
-		src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-	
-
-</div> -->
+</product>
 
 
-
-<div>
-	<!-- <input type="text" placeholder="Search" #newquery [value]="query"
-		(keydown.enter)="submit(newquery.value)" required [ngModel]="" /> -->
-	<h2>{{result}}</h2>
-	<h2>{{errorMsg}}</h2>
-
-	<table class="table" *ngIf="iProduct?.length > 0">
-		<tr>
-			<th>PRODUCT_ID</th>
-			<th>PRODUCT_NAME</th>
-		</tr>
-		<tr *ngFor="let prod of iProduct">
-			<td>{{prod.ProductID}}</td>
-			<td>{{prod.ProductName}}</td>
-			<td><img alt="{{prod.url}}" src="{{prod.url}}" height="150"
-				width="150" /></td>
-		</tr>
-	</table>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<h2>Product search field</h2>
-			<div id="custom-search-input">
-				<div class="input-group col-md-12">
-					<input type="text" class="form-control input-lg"
-						placeholder="Product Serch..." #newquery [value]="query"
-						(keydown.enter)="submit(newquery.value)" required [ngModel]="" />
-					<span class="input-group-btn">
-						<button class="btn btn-info btn-lg" type="button"
-							(click)="submit(newquery.value)">
-							<i class="glyphicon glyphicon-search"></i>
-						</button>
-					</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div>
-	<h2>{{result}}</h2>
-	<h2>{{errorMsg}}</h2>
-
-	<table class="table" *ngIf="iProduct?.length > 0">
-		<tr>
-			<th>PRODUCT_ID</th>
-			<th>PRODUCT_NAME</th>
-		</tr>
-		<tr *ngFor="let prod of iProduct">
-			<td>{{prod.ProductID}}</td>
-			<td>{{prod.ProductName}}</td>
-			<td><img alt="{{prod.url}}" src="{{prod.url}}" height="150"
-				width="150" /></td>
-		</tr>
-	</table>
-</div>

@@ -1,4 +1,6 @@
 import {AppUtility} from '../AppUtility';
+import { Navigation } from '../Navigation';
+import {AlertService} from '../_services/alert.service';
 import {MasterdataService} from '../_services/masterdata.service';
 import {Country, ProductVariety} from '../search/search';
 import {IUser, PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion} from '../user/user';
@@ -12,7 +14,7 @@ import {MdDatepickerModule} from '@angular/material';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [UserService, MasterdataService],
+  providers: [UserService, MasterdataService, AlertService],
 })
 export class RegisterComponent implements OnInit {
 
@@ -24,6 +26,7 @@ export class RegisterComponent implements OnInit {
   variety: ProductVariety[];
   userTypes: string[];
   years: string[] = [];
+  productlist: string[];
   startDate = new Date(1990, 0, 1);
 
   user: IUser;
@@ -51,7 +54,8 @@ export class RegisterComponent implements OnInit {
   securityAnsControl = new FormControl('', [
     Validators.required]);
 
-  constructor(private userService: UserService, private masterDataService: MasterdataService) {
+  constructor(private userService: UserService, private masterDataService: MasterdataService,
+    private router: Router, private alertService: AlertService) {
     this.userTypes = [
       'Seller',
       'Buyer',
@@ -66,7 +70,7 @@ export class RegisterComponent implements OnInit {
     group.companyrequiredControl = this.companyrequiredControl;
     group.firstNamerequiredControl = this.firstNamerequiredControl;
     group.LastNamerequiredControl = this.LastNamerequiredControl;
-    group.dobControl = this.dobControl;
+    // group.dobControl = this.dobControl;
     group.securityQuesControl = this.securityQuesControl;
     group.securityAnsControl = this.securityAnsControl;
     this.userForm = new FormGroup(group);
@@ -83,6 +87,7 @@ export class RegisterComponent implements OnInit {
   onLoad() {
     this.user = new IUser();
     this.getCountries();
+    this.getProducts();
     this.getProductByVariety(null);
     this.primaryActivitySeller = this.primaryActivitySeller.slice(this.primaryActivitySeller.length / 2);
     this.primaryActivityBuyer = this.primaryActivityBuyer.slice(this.primaryActivityBuyer.length / 2);
@@ -95,10 +100,21 @@ export class RegisterComponent implements OnInit {
   onSubmit(user: IUser) {
     // = new IUser();
     // this.createuser = user;
+    //    this.userService.saveUser(user).
+    //      subscribe(data => this.createuserOutput = JSON.stringify(user),
+    //      err => this.errorMsg = <any>err,
+    //      () => this.onRequemp());
+
+
+    // = new IUser();
+    // this.createuser = user;
     this.userService.saveUser(user).
-      subscribe(data => this.createuserOutput = JSON.stringify(user),
-      err => this.errorMsg = <any>err,
-      () => this.onRequestComplete());
+      subscribe(data => {
+          this.createuserOutput = JSON.stringify(user);
+          this.router.navigate([Navigation.LOGIN]);
+      }, error => {
+        this.alertService.error('Error: Username or Email already exist');
+      }, () => this.onRequestComplete());
   }
 
   onRequestComplete() {
@@ -110,6 +126,12 @@ export class RegisterComponent implements OnInit {
     this.masterDataService
       .getCountries()
       .subscribe(country => this.country = country,
+      err => this.errorMsg = <any>err);
+  }
+  getProducts(): void {
+    this.masterDataService
+      .getProductNames()
+      .subscribe(name => this.productlist = name,
       err => this.errorMsg = <any>err);
   }
 

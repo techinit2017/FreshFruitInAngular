@@ -2,14 +2,32 @@
  * Search Component Object
  */
 export class ISearch {
-  seller: string;
+  // Type of Product
+  type: string;
+  // Variety of Product
+   name: string;
+  priceBelow: string;
+  priceAbove: string;
+  // country
+  country: string;
+  // page number
+  pageNumber: number;
+  // page size
+  pageSize: number;
+  // available after 
+  availableAfter: Date;
+  // available before
+  availableBefore: Date;
+  // measurement
+  measurement: string;
+  // quantity available
+  quantityAvailable: string;  
+  // Available (Yes/No)
+  available: string;
+  
+  // transient object
   price: number;
   pricedlimit: string;
-  variety: string[];
-  product: string;
-  quantity: number;
-  avail: string;
-  country: string;
 }
 
 export class ProductVariety {

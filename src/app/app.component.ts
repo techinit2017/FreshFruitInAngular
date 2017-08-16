@@ -34,7 +34,7 @@ export class AppComponent {
     localStorage.removeItem('currentUser');
     if (!localStorage.getItem('currentUser')) {
       console.log('logout successfully done!!');
-       this.currentUser = null;
+      this.currentUser = null;
     }
   }
 }

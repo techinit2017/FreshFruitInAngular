@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     // reset login status
     this.loginService.logout();
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Search';
+    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Search';
 
   }
   onLogin() {
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         if (AppSettings.IS_DEV) {
           console.log(this.returnUrl);
         }
-        this.router.navigate([this.returnUrl]);
+        this.router.navigate(['/']);
       },
       error => {
         if (AppSettings.IS_DEV) {
@@ -48,11 +48,6 @@ export class LoginComponent implements OnInit {
         this.alertService.error('Error: Username or password is incorrect');
         this.loading = false;
       });
-  }
-
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
   }
 
 

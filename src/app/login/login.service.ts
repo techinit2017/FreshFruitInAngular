@@ -42,7 +42,7 @@ export class LoginService {
 
 
   validateRecoveryIdentify(username: string): Observable<IUser> {
-   return this.http.get(AppSettings.USER_GET_BY_USER_NAME + username).map((response: Response) => <IUser>response.json())
+   return this.http.get(AppSettings.GET_USER_BY_IDENTITY + username).map((response: Response) => <IUser>response.json())
       .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))

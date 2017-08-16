@@ -26,5 +26,8 @@ npm install ts-md5 --save
   -->Img Upload code taken url
   https://embed.plnkr.co/nO1C1lImOw8q7uQkrvRT/
   
+  -- AMEXIO Framework
+  npm install amexio-ng-extensions --save
+  
   
   

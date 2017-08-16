@@ -1,58 +1,138 @@
-<div class="package-gold pure-g search-result-item ">
-	<h2>{{errorMsg}}</h2>
-	<div class="search-result-content pure-u-18-24">
-		<table class="table" *ngIf="pagedItems?.length > 0">
-			<tr *ngFor="let prod of pagedItems">
-				<td><img alt="{{prod.url}}" src="{{prod.url}}"
-					class="pure-u-6-24" /></td>
+<div class="panel panel-primary">
+	<div class="panel-body">
+		<div class="table">
+			<div class="row">
+				<div class="col-xs-12 col-md-3">
+					<a href="#" class="thumbnail"> <img src="{{product.imagePath}}"
+						alt="{{product.type}}">
+					</a>
+				</div>
+				<div class="col-md-9">
+					<div class="row">
 
-				<td><div class="tdata1">
-						<div class="row grid-divider">
-							<div class="col-sm-4">
-								
-									<div class="leftTabelDate">
-										<div class="theader1">Product id: {{prod.ProductID}}</div>
-										<div class="theader1">Product Name: {{prod.ProductName}}</div>
-										<div class="theader1">Price : {{prod.price}}</div>
-										<div class="theader1">Variety: {{prod.Variety}}</div>
-									</div>
-								</div>
-						
-                          <div class="col-sm-4">
-                   
-							<div class="rightTabelDate">
-								<div class="theader1">Grade : {{prod.Grade}}</div>
-								<div class="theader1">Country : {{prod.Country}}</div>
-								<div class="theader1">Available : {{prod.available}}</div>
-								<div class="theader1">Status: {{prod.isActive}}</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Id</span> {{product.id}}
 							</div>
-						
 						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Type</span> {{product.type}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Variety</span> {{product.name}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Price</span> {{product.price}}
+							</div>
 						</div>
 					</div>
-					</td>
-			</tr>
-		</table>
+
+					<div class="row">
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">SellerId</span>
+								{{product.userProfile.id}}
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="input-group">
+								<span class="input-group-addon">Seller Name</span>
+								{{product.userProfile.companyName}}
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon">Product Desc</span>
+								{{product.productDesc}}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Grade</span> {{product.grade}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Size</span> {{product.size}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Color</span> {{product.color}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">MOQ</span>
+								{{product.minOrderQty}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Packaging</span>
+								{{product.packaging}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Is-Active</span>
+								{{product.isActive}}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Price</span> {{product.price}}
+							</div>
+
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Negotiable</span>
+								{{product.priceNegotiable}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">M-Unit</span>
+								{{product.measurement}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Available From</span> {{product.available}}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+
+		</div>
+
+	</div>
 </div>
-		<!-- pager -->
-            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-                <li [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a (click)="setPage(1)">First</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-                </li>
-                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                    <a (click)="setPage(page)">{{page}}</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.totalPages)">Last</a>
-                </li>
-            </ul>
-
-
-
+<!-- pager -->
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+		(click)="setPage(1)">First</a></li>
+	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+		(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+	<li *ngFor="let page of pager.pages"
+		[ngClass]="{active:pager.currentPage === page}"><a
+		(click)="setPage(page)">{{page}}</a></li>
+	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+		<a (click)="setPage(pager.currentPage + 1)">Next</a>
+	</li>
+	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+		<a (click)="setPage(pager.totalPages)">Last</a>
+	</li>
+</ul>
