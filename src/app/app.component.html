@@ -35,6 +35,8 @@
 							[routerLink]="['/Login']">Login</a></li>
 						<li class="profile-li"><a class="profile-links"
 							[routerLink]="['/register']">Register</a></li>
+							<li class="profile-li" *ngIf="currentUser?.userName"><a
+								class="profile-links" (click)="doLogout()">My Profile</a></li>
 						<li class="profile-li" *ngIf="currentUser?.userName"><a
 							class="profile-links" (click)="doLogout()">Logout</a></li>
 					</ul></li>

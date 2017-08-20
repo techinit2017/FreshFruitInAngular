@@ -1,5 +1,5 @@
 import {AppSettings} from '../AppSettings';
-import { Sort } from '../_model/model';
+import { Sort, PageParam } from '../_model/model';
 
 import {IUser} from '../user/user';
 import {Injectable} from '@angular/core';
@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 function paramsToQueryString(params: any) {
-  let sort = new Sort();
+  let pageParam = new PageParam(0,10);
   /**
    * {
   "direction": "DESC",
@@ -24,28 +24,28 @@ function paramsToQueryString(params: any) {
    * 
    * 
    */
-  if (params.limit != null) {
-    sort.pageSize = params.limit;
+  if (params.pageNumber != null) {
+    pageParam.pageNumber = params.pageNumber;
     // result.push(['pageSize', params.limit]);
   }
   if (params.offset != null && params.limit != null) {
-    sort.pageNumber = (params.offset / params.limit);
+    //sort.pageNumber = (params.offset / params.limit);
     //  result.push(['pageNumber', params.offset])  
-    sort.property.push('firstName');
-    sort.direction = 'ASC';
+    //sort.property.push('firstName');
+    //sort.direction = 'ASC';
   }
 
   if (params.sortBy != null) {
-    sort.property.push(params.sortBy);
+    //sort.property.push(params.sortBy);
     //  result.push(['property', params.sortBy]);
   }
   if (params.sortAsc != null) {
-    sort.direction = params.sortAsc ? 'ASC' : 'DESC';
+   // sort.direction = params.sortAsc ? 'ASC' : 'DESC';
     // result.push(['direction', params.sortAsc ? 'ASC' : 'DESC']);
   }
 
   // return result.map(param => param.join('=')).join('&');
-  return sort;
+  // return sort;
 }
 
 @Injectable()

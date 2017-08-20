@@ -2,12 +2,16 @@ import {AppUtility} from '../../AppUtility';
 import { AlertService } from '../../_services/alert.service';
 import {MasterdataService} from '../../_services/masterdata.service';
 import {IProduct} from '../../product/product';
+
 import {ProductService} from '../../product/product.service';
 import {Country, ProductVariety} from '../../search/search';
-import { PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion } from '../../user/user';
+import { PrimaryActivitySeller, PrimaryActivityBuyer, IUser } from '../../user/user';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {RequestOptions} from '@angular/http';
+import { Routes, ActivatedRoute, Router } from '@angular/router';
+import { Observable } from "rxjs/Observable";
+import { AppSettings } from "app/AppSettings";
 
 @Component({
   selector: 'addproduct',
@@ -18,20 +22,17 @@ import {RequestOptions} from '@angular/http';
 export class AddproductComponent implements OnInit {
   primaryActivitySeller: string[] = Object.keys(PrimaryActivitySeller);
   primaryActivityBuyer: string[] = Object.keys(PrimaryActivityBuyer);
-  securityQuestions: string[] = Object.keys(SecurityQuestion);
+ 
 
   country: Country[];
   variety: ProductVariety[];
   userTypes: string[];
   years: string[] = [];
+  productlist: string[];
   startDate = new Date(1990, 0, 1);
 
   productAdd: IProduct;
-  createuser: IProduct;
-  createuserOutput: string;
-  errorMsg: string;
-
-  // Validators
+// Validators
   userForm;
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -65,7 +66,7 @@ export class AddproductComponent implements OnInit {
   ActiverequiredControl = new FormControl('', [
     Validators.required]);
 
-  constructor(private productService: ProductService, private masterDataService: MasterdataService, private alertService: AlertService) {
+  constructor(private productService: ProductService, private masterDataService: MasterdataService, private alertService: AlertService,private route: ActivatedRoute, private router: Router ) {
     this.userTypes = [
       'Seller',
       'Buyer',
@@ -95,6 +96,14 @@ export class AddproductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const id: Observable<any> = this.route.params.map(p => p.id);
+    this.productAdd = new IProduct();
+    id.subscribe(arg =>{
+      if(arg){
+        this.productAdd.userProfile.id = arg;
+      }
+    }); 
+   
     this.onLoad();
   }
 
@@ -105,9 +114,10 @@ export class AddproductComponent implements OnInit {
   onLoad() {
     this.getCountries();
     this.getProductByVariety(null);
+    this.getProducts(AppSettings.CONST_FRUIT);
     this.primaryActivitySeller = this.primaryActivitySeller.slice(this.primaryActivitySeller.length / 2);
     this.primaryActivityBuyer = this.primaryActivityBuyer.slice(this.primaryActivityBuyer.length / 2);
-    this.securityQuestions = this.securityQuestions.slice(this.securityQuestions.length / 2);
+  
   }
 
   onbackClick() {
@@ -116,22 +126,32 @@ export class AddproductComponent implements OnInit {
   onSubmit(productAdd: IProduct) {
     // = new IUser();
     // this.createuser = user;
-    this.productService.saveUser(productAdd).
-      subscribe(data => this.createuserOutput = JSON.stringify(productAdd),
-      err => this.errorMsg = <any>err,
+    if(productAdd.userProfile.id){
+    
+    this.productService.save(productAdd).
+      subscribe(data => {
+
+      },
+      err =>{
+        this.alertService.error('Error: Product Creation');
+      },
       () => this.onRequestComplete());
+    }
   }
 
   onRequestComplete() {
-    this.ngOnInit();
+    //this.ngOnInit();
     console.log('Finished');
+    this.router.navigate(['/sellerProduct']);
   }
 
   getCountries(): void {
     this.masterDataService
       .getCountries()
       .subscribe(country => this.country = country,
-      err => this.errorMsg = <any>err);
+        err =>{
+          this.alertService.error('Error: Service Unavailable');
+        });
   }
 
   getProductByVariety(productName: string): void {
@@ -141,7 +161,17 @@ export class AddproductComponent implements OnInit {
     this.masterDataService
       .getProductByVariety(productName)
       .subscribe(variety => this.variety = variety,
-      err => this.errorMsg = <any>err);
+        err =>{
+          this.alertService.error('Error: Service Unavailable');
+        });
+  }
+  getProducts(productType: string): void {
+    this.masterDataService
+      .getProductNames(productType)
+      .subscribe(name => this.productlist = name,
+        err =>{
+          this.alertService.error('Error: Service Unavailable');
+        });
   }
 
 
@@ -218,4 +248,6 @@ export class AddproductComponent implements OnInit {
     // provide your own implementation of displaying the error message
   }
 
+
+  
 }

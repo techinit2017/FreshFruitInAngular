@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Approval } from "app/_model/approval";
 
 
 @Injectable()
@@ -27,7 +28,7 @@ export class UserService {
       .catch(this.handleError);
   }
   private handleError(error: Response) {
-    console.error(error.status);
+    console.error(error);
     // if (error.status === 404) {
     return Observable.throw(new Error(`Server error: ${error.statusText} (${error.status})`));
     // }
@@ -60,6 +61,31 @@ export class UserService {
     const headers = new Headers({'Content-Type': 'application/json'});
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const options = new RequestOptions({headers: headers});
-    return this.http.post(AppSettings.POST_USER_SAVE, param, options).map(res => res.json()).catch(this.handleError);
+    console.log(user.id);
+    if(!user.id || user.id ==0){
+      console.log("in post method");
+      return this.http.post(AppSettings.POST_USER_SAVE, param, options).map(res => res.json()).catch(this.handleError);
+    }else{
+      console.log("in put method");
+      return this.http.put(AppSettings.PUT_USER_SAVE, param, options).map(res => res.json()).catch(this.handleError);
+    }
+  }
+  /**
+   * Approve User Service
+   * @param user 
+   */
+  approveUser(approval: Approval) {
+    
+  
+
+    const json = JSON.stringify(approval);
+    const param = json;
+    console.log(json);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    
+    const options = new RequestOptions({headers: headers});
+    
+    return this.http.post(AppSettings.POST_USER_APPROVAL, param, options).map(res => res.json()).catch(this.handleError);
+    
   }
 }

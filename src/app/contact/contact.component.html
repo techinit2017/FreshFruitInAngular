@@ -1,22 +1,44 @@
-<div>
-	<h2 align="center" style="font-style: normal;">Contact Us</h2>
-</div>
+<br>
+<br>
+<br>
 
-<div id="rightcontent" style="width: 50%; float: right;">
-	<h1>ENQUIRY</h1>&nbsp;
-	<table>
-		<tr>
-			<td> <input mdInput placeholder="Your Name" size="30%" style="border-color: #003300 border: 1; outline: 1px solid green;" required><br></td>
-		</tr>&nbsp;&nbsp;&nbsp;&nbsp;
-		<tr>
-			<td><input mdInput placeholder="Email" size="30%" style="border-color: #003300 border: 1; outline: 1px solid green;" required><br></td>
-		</tr>&nbsp;&nbsp;&nbsp;&nbsp;
-		<tr>
-			<td> <textarea  mdInput placeholder="Please enter your queries here." rows="6" cols="32" style="outline: 1px solid green;"></textarea> </td>
-		</tr>
-		&nbsp;&nbsp;
-		<tr align="center" style="border: black;">
-		  <md-button-toggle>Submit</md-button-toggle>
-		</tr>
-	</table>
-</div>
+<form class="contact-form"
+ name="contactForm" novalidate>
+		<div class="panel panel-default panelwidth">
+ 			 <div class="panel-heading">
+    			<h3 class="panel-title">Contact Us</h3>
+  			</div>
+			<div class="panel-body">
+				<div class="rTable">
+					<div class="row">
+						<div class="col-md-10">
+				        	<input type="text" class="form-control" placeholder="Your Name*"
+						       aria-label="yourname" aria-describedby="basic-addon2">
+				       </div>
+					</div>
+					<br>
+					<div class="row">
+					   <div class="col-md-10">
+				        	<input type="text" class="form-control" placeholder="Email*"
+						       aria-label="email" aria-describedby="basic-addon2">
+				       </div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-lg-10">
+					       <textarea class="form-control" rows="5" placeholder="Please enter your queries here."
+						    aria-label="enterqueries"></textarea>
+						</div>
+					</div>
+					<br>
+					<div class="row" align="right">
+				       <div class="col-lg-6">
+					     <div class="input-group">
+							<button type="button" class="btn btn-default navbar-btn savebtn">Save</button>
+						 </div>
+				      </div>
+			      </div>
+				</div>
+			</div>
+		</div>
+</form>

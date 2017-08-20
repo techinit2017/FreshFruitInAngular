@@ -34,6 +34,7 @@ export class ProductVariety {
   id: number;
   product: string;
   variety: string;
+  type: string;
 }
 
 export class Country {

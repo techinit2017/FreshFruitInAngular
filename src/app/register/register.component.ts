@@ -3,12 +3,13 @@ import { Navigation } from '../Navigation';
 import {AlertService} from '../_services/alert.service';
 import {MasterdataService} from '../_services/masterdata.service';
 import {Country, ProductVariety} from '../search/search';
-import {IUser, PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion} from '../user/user';
+import {IUser, PrimaryActivitySeller, PrimaryActivityBuyer} from '../user/user';
 import {UserService} from '../user/user.service';
 import {Component, OnInit, Injectable} from '@angular/core';
 import {NgForm, FormControl, Validators, Form, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MdDatepickerModule} from '@angular/material';
+import { AppSettings } from "app/AppSettings";
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   primaryActivitySeller: string[] = Object.keys(PrimaryActivitySeller);
   primaryActivityBuyer: string[] = Object.keys(PrimaryActivityBuyer);
-  securityQuestions: string[] = Object.keys(SecurityQuestion);
+  securityQuestions: ProductVariety[];
 
   country: Country[];
   variety: ProductVariety[];
@@ -87,11 +88,11 @@ export class RegisterComponent implements OnInit {
   onLoad() {
     this.user = new IUser();
     this.getCountries();
-    this.getProducts();
+    this.getProducts(AppSettings.CONST_FRUIT);
     this.getProductByVariety(null);
     this.primaryActivitySeller = this.primaryActivitySeller.slice(this.primaryActivitySeller.length / 2);
     this.primaryActivityBuyer = this.primaryActivityBuyer.slice(this.primaryActivityBuyer.length / 2);
-    this.securityQuestions = this.securityQuestions.slice(this.securityQuestions.length / 2);
+    this.getSecurityQuestion(AppSettings.CONST_SECRET);
   }
 
   onbackClick() {
@@ -118,7 +119,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRequestComplete() {
-    this.ngOnInit();
+   
     console.log('Finished');
   }
 
@@ -128,21 +129,34 @@ export class RegisterComponent implements OnInit {
       .subscribe(country => this.country = country,
       err => this.errorMsg = <any>err);
   }
-  getProducts(): void {
+  getProducts(productType: string): void {
     this.masterDataService
-      .getProductNames()
+      .getProductNames(productType)
       .subscribe(name => this.productlist = name,
       err => this.errorMsg = <any>err);
   }
 
-  getProductByVariety(productName: string): void {
-    if (!productName) {
-      productName = 'APPLE';
+  getProductByVariety(type: string): void {
+    if (!type) {
+      type = 'APPLE';
     }
     this.masterDataService
-      .getProductByVariety(productName)
+      .getProductByVariety(type)
       .subscribe(variety => this.variety = variety,
       err => this.errorMsg = <any>err);
+  }
+
+  getSecurityQuestion(type: string): void {
+    if (!type) {
+      type = AppSettings.CONST_SECRET;
+    }
+    this.masterDataService
+      .getProductByVariety(type)
+      .subscribe(variety => { this.securityQuestions = variety;
+      console.log(this.securityQuestions)}, error =>{
+        console.log('Error: Service not available');
+      } );
+      
   }
 
 }

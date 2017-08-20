@@ -12,6 +12,9 @@ import {SearchComponent} from '../search/search.component';
 })
 export class HomeComponent {
  
+  submit(value: string){
+    console.log(value);
+  }
 }
  export class MyComponent {
   @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;

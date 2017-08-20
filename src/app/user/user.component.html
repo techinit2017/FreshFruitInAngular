@@ -1,286 +1,299 @@
-<div *ngIf="!isAdd">
-	<a class="btn btn-link" (click)="onAddClick()">AddUser</a>
-	<h2>{{userlist}}</h2>
-	<h2>{{errorMsg}}</h2>
-	<table class="table" *ngIf="!isEmptyObject(errorMsg)">
+<div class="panel panel-default" *ngIf="!isAdd">
+	<!-- Default panel contents -->
+	<div class="panel-heading">User Information</div>
+	
+	<div class="panel-body">
+	  <p><a class="btn btn-primary" role="button" (click)="onAddClick()">AddUser</a></p>
+	</div>
+	<alert> </alert>
+	<div class="table-responsive">    
+	<table class="table table-hover table-striped table-bordered" *ngIf="!isEmptyObject(errorMsg)">
 		<tr *ngIf="iusers?.length > 0">
+			<th>Status</th>	
 			<th>ID</th>
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>USER NAME</th>
-			<th>PASSWORD</th>
 			<th>Email</th>
 			<th>PhoneNo.</th>
 			<th>Alternate No.</th>
 			<th>UserType</th>
-			<th>Address</th>
+			
 		</tr>
 		<tr *ngFor="let u of iusers">
+			<td *ngIf="u.aprroved ==0"><a class="btn btn-info" role="button" (click)="onApprove(u)">Approve</a></td>
+			<td *ngIf="u.aprroved ==1"></td>
 			<td>{{u.id}}</td>
 			<td>{{u.firstName}}</td>
 			<td>{{u.lastName}}</td>
 			<td>{{u.userName}}</td>
-			<td>{{u.password}}</td>
 			<td>{{u.emailId}}</td>
 			<td>{{u.phoneNumber}}</td>
 			<td>{{u.secondaryContact}}</td>
 			<td>{{u.userType}}</td>
-			<td>{{u.address}}</td>
+			
 		</tr>
+	
 	</table>
+	</div>
 </div>
-<a class="btn btn-link" (click)="onbackClick()">Back</a>
-<div class="userborder">
-	<form class="userregistration-form"
-		(ngSubmit)="userForm.valid && onSubmit(user)" name="userForm"
-		*ngIf="isAdd" novalidate>
 
-		<div>
-			<div class="selected-value">Registering as:{{user.userType}}</div>
+
+
+<div class="panel panel-default" *ngIf="isAdd">
+		<div class="panel-heading">
+			<h3 class="panel-title">Add User</h3>
 		</div>
-		<div class="rTable">
-			<div class="rTableRow">
-				<div class="rTableCell">
-					<md-radio-group class="radio-group" [(ngModel)]="user.userType"
-						[ngModelOptions]="{standalone: true}"> <md-radio-button
-						class="radio-button" *ngFor="let userType of userTypes"
-						[value]="userType">{{userType}}</md-radio-button> </md-radio-group>
+		<div class="panel-body table">
+			<form (ngSubmit)="userForm.valid && onSubmit(user)" name="userForm"
+				novalidate>
+				<div class="row">
+					<div class="col-md-1">
+						<a class="btn btn-primary" (click)="onbackClick()">Back</a>
+					</div>
+					<div class="col-md-4">
+						<md-radio-group [(ngModel)]="user.userType"
+							[ngModelOptions]="{standalone: true}"> <md-radio-button
+							class="radio-button" *ngFor="let userType of userTypes"
+							[value]="userType">{{userType}}</md-radio-button> </md-radio-group>
+					</div>
 				</div>
-			</div>
-			<div class="rTableRow">
-				<div class="rTableCell">
-					<div class="rTable">
-						<h5>Personal Information</h5>
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container  style="width: 100%;"> <input
-									name="companyName" [(ngModel)]="user.companyName" mdInput
-									placeholder="Company Name"
-									[formControl]="companyrequiredControl" required> <md-error
-									*ngIf="companyrequiredControl.hasError('required')">
-								Company Name is <strong>required</strong> </md-error> </md-input-container>
-							</div>
-						</div>
-
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container  style="width: 100%;"> <input
-									name="firstName" [(ngModel)]="user.firstName" mdInput
-									placeholder="First Name" required
-									[formControl]="firstNamerequiredControl" /> <md-error
-									*ngIf="firstNamerequiredControl.hasError('required')">
-								First Name is <strong>required</strong> </md-error> </md-input-container>
-							</div>
-						</div>
-
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container  style="width: 100%;"> <input name="lastName"
-									[(ngModel)]="user.lastName" mdInput placeholder="Last Name"
-									required [formControl]="LastNamerequiredControl" /> <md-error
-									*ngIf="LastNamerequiredControl.hasError('required')">
-								Last Name is <strong>required</strong> </md-error> </md-input-container>
-							</div>
-						</div>
-						<div class="rTableRow">
-							<div class="rTableCell">
+	
+				<div class="row ffp-mt-10">
+					<div class="col-md-6">
+						<input class="form-control" name="companyName*"
+							[(ngModel)]="user.companyName" placeholder="Company Name"
+							[formControl]="companyrequiredControl" />
+					</div>
+	
+					<div class="col-md-3">
+	
+						<input name="firstName" class="form-control"
+							[(ngModel)]="user.firstName" placeholder="First Name" required
+							[formControl]="firstNamerequiredControl" />
+	
+					</div>
+	
+					<div class="col-md-3">
+	
+	
+						<input name="lastName" class="form-control"
+							[(ngModel)]="user.lastName" placeholder="Last Name" required
+							[formControl]="LastNamerequiredControl" />
+	
+	
+					</div>
+	
+	
+				</div>
+	
+				<br>
+				<div class="row">
+					<div class="col-md-2">
+	
+	
+						<input type="date" class="form-control" name="input"
+							[(ngModel)]="user.dob" placeholder="(Birth Date) dd-MM-yyyy"
+							min="1950-01-01" required />
+	
+	
+	
+					</div>
+	
+					<div class="col-md-3">
+	
+						<md-select placeholder="Country" class="form-control"
+							[(ngModel)]="user.country" [ngModelOptions]="{standalone: true}">
+						<md-option *ngFor="let name of country" [value]="name.country">{{
+						name.country }}</md-option> </md-select>
+	
+					</div>
+					<div class="col-md-3">
+	
+						<input name="city" [(ngModel)]="user.city" class="form-control"
+							placeholder="City" required [ngModelOptions]="{standalone: true}" />
+	
+	
+					</div>
+				</div>
+				<br>
+				<div class="row">
+	
+					<div class="col-md-2">
+							<input name="userName" [(ngModel)]="user.userName"
+							class="form-control" placeholder="User Name" required
+							[ngModelOptions]="{standalone: true}" />
+						
+	
+					</div>
+					<div class="col-md-2">
 							
-							</div>
+											<input type="password" [(ngModel)]="user.password"
+													class="form-control" placeholder="Password" required
+													[ngModelOptions]="{standalone: true}" />
+											</div>
+	
+					<div class="col-md-3">
+	
+						<input name="emailId" [(ngModel)]="user.emailId"
+							class="form-control" placeholder="Email Id:" required
+							[ngModelOptions]="{standalone: true}" />
+	
+					</div>
+					<div class="col-md-3">
+	
+						<input name="phoneNumber" [(ngModel)]="user.phoneNumber" type="tel"
+							class="form-control" placeholder="Contact Number"
+							[ngModelOptions]="{standalone: true}" />
+	
+					</div>
+	
+				</div>
+				<br>
+	
+				<div class="row">
+					<div class="col-lg-6">
+					
+								<input name="address" [(ngModel)]="user.address"
+								class="form-control" placeholder="Address" required
+								[ngModelOptions]="{standalone: true}" />
+							
+						
+	
+	
+					</div>
+					<div class="col-md-3">
+							<md-select placeholder="Security Question" class="form-control"
+								[(ngModel)]="user.secretQuestion" required
+								[formControl]="securityQuesControl"> <md-option
+								*ngFor="let name of securityQuestions" [value]="name.variety">{{
+							name.variety }}</md-option> <md-error
+								*ngIf="securityQuesControl.hasError('required')">
+							Security Question <strong>required</strong> </md-error> </md-select>
+		
 						</div>
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-select placeholder="Country"
-									class="form-control-user-registration"
-									[(ngModel)]="user.country"
-									[ngModelOptions]="{standalone: true}"> <md-option
-									*ngFor="let name of country" [value]="name.country">{{
-								name.country }}</md-option> </md-select>
-							</div>
+		
+						<div class="col-md-3">
+							<input name="secuAns" [(ngModel)]="user.secretAnswer"
+								class="form-control" placeholder="Security Answer" required
+								[formControl]="securityAnsControl" />
+		
 						</div>
-					&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input name="city" [(ngModel)]="user.city" mdInput
-									placeholder="City" required
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-					&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input name="address" [(ngModel)]="user.address" mdInput
-									placeholder="Address" required
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-					&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input name="emailId" [(ngModel)]="user.emailId" mdInput
-									placeholder="Email Id:" required
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-					&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input name="phoneNumber" [(ngModel)]="user.phoneNumber"
-									type="tel" mdInput placeholder="Contact Number"
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-					&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input name="userName" [(ngModel)]="user.userName" mdInput
-									placeholder="User Name" required
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-					&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input type="password" [(ngModel)]="user.password" mdInput
-									placeholder="Password" required
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-
+					
+	
+	
+				</div>
+	
+				<br>
+	
+				<div class="row">
+					<div class="col-md-2" *ngIf="user.userType!='Buyer'">
+	
+						<md-select placeholder="Primary Activity" class="form-control"
+							[(ngModel)]="user.primaryActivity"
+							[ngModelOptions]="{standalone: true}"> <md-option
+							*ngFor="let name of primaryActivitySeller" [value]="name">{{
+						name }}</md-option> </md-select>
+	
+					</div>
+					<div class="col-md-2" *ngIf="user.userType=='Buyer'">
+	
+						<md-select placeholder="Primary Activity" class="form-control"
+							[(ngModel)]="user.primaryActivity"
+							[ngModelOptions]="{standalone: true}"> <md-option
+							*ngFor="let name of primaryActivityBuyer" [value]="name">{{
+						name }}</md-option> </md-select>
+	
+	
+					</div>
+					<div class="col-md-2" *ngIf="user.userType!='Buyer'">
+						<md-select placeholder="Operational Year" class="form-control"
+							[(ngModel)]="user.operationSince"
+							[ngModelOptions]="{standalone: true}"> <md-option
+							*ngFor="let year of years" [value]="year">{{year }}</md-option> </md-select>
+					</div>
+					<div class="col-md-2">
+	
+	
+						<input type="text" [(ngModel)]="user.weightIn" class="form-control"
+							placeholder="Weight In" [ngModelOptions]="{standalone: true}" />
+	
+	
+					</div>
+	
+					<div class="col-md-2">
+						<md-select placeholder="Fruit Type" class="form-control"
+							[(ngModel)]="user.typeFruit" [ngModelOptions]="{standalone: true}">
+						<md-option *ngFor="let name of productlist" [value]="name">{{name}}</md-option>
+						</md-select>
+	
+	
+	
+					</div>
+	
+					<div class="col-md-2">
+	
+						<md-select placeholder="Variety" class="form-control"
+							[(ngModel)]="user.typeFruitVarietyArray"
+							[ngModelOptions]="{standalone: true}" multiple> <md-option
+							*ngFor="let name of variety" [value]="name.variety">{{name.variety
+						}}</md-option> </md-select>
+	
 					</div>
 				</div>
-
-				<div class="rTableCell">
-					<div class="rTable">
-						<h5>Additional Information</h5>
-						&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell" *ngIf="user.userType!='Buyer'">
-								<md-select placeholder="Primary Activity"
-									class="form-control-user-registration"
-									[(ngModel)]="user.primaryActivity"
-									[ngModelOptions]="{standalone: true}"> <md-option
-									*ngFor="let name of primaryActivitySeller" [value]="name">{{
-								name }}</md-option> </md-select>
-							</div>
-							<div class="rTableCell" *ngIf="user.userType=='Buyer'">
-								<md-select placeholder="Primary Activity"
-									class="form-control-user-registration"
-									[(ngModel)]="user.primaryActivity"
-									[ngModelOptions]="{standalone: true}"> <md-option
-									*ngFor="let name of primaryActivityBuyer" [value]="name">{{
-								name }}</md-option> </md-select>
-							</div>
-						</div>
-						&nbsp;
-						<div class="rTableRow" *ngIf="user.userType!='Buyer'">
-							<div class="rTableCell">
-								<md-select placeholder="Operational Year"
-									class="form-control-user-registration"
-									[(ngModel)]="user.operationSince"
-									[ngModelOptions]="{standalone: true}"> <md-option
-									*ngFor="let year of years" [value]="year">{{year }}</md-option>
-								</md-select>
-							</div>
-						</div>
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-select placeholder="Fruit Type"
-									class="form-control-user-registration"
-									[(ngModel)]="user.typeFruit"
-									[ngModelOptions]="{standalone: true}"> <md-option
-									*ngFor="let name of productlist" [value]="name">{{name}}</md-option> </md-select>
-							</div>
-						</div>
-
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-select placeholder="Variety"
-									class="form-control-user-registration"
-									[(ngModel)]="user.typeFruitVarietyArray"
-									[ngModelOptions]="{standalone: true}" multiple> <md-option
-									*ngFor="let name of variety" [value]="name.variety">{{name.variety
-								}}</md-option> </md-select>
-							</div>
-						</div>
-							&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container class="form-control-user-registration">
-								<input type="text" [(ngModel)]="user.annualOpQuantity" mdInput
-									placeholder="Annual Production/Availability (Kg)"
-									[ngModelOptions]="{standalone: true}" /> </md-input-container>
-							</div>
-						</div>
-						&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-select placeholder="Country of production "
-									class="form-control-user-registration"
-									[(ngModel)]="user.countryOfOperationArray"
-									[ngModelOptions]="{standalone: true}" multiple> <md-option
-									*ngFor="let name of country" [value]="name.country">{{
-								name.country }}</md-option> </md-select>
-							</div>
-						</div>
-						&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
+	
+	
+				<br>
+				<div class="row">
+	
+					<div class="col-lg-6">
+	
+						<input type="text" [(ngModel)]="user.annualOpQuantity"
+							class="form-control"
+							placeholder="Annual Production/Availability (Kg)"
+							[ngModelOptions]="{standalone: true}" />
+	
+					</div>
+	
+					<div class="col-lg-6">
+						<md-select placeholder="Country of production "
+							class="form-control" [(ngModel)]="user.countryOfOperationArray"
+							[ngModelOptions]="{standalone: true}" multiple> <md-option
+							*ngFor="let name of country" [value]="name.country">{{
+						name.country }}</md-option> </md-select>
+	
+					</div>
+					
+	
+	
+				</div>
+	
+	
+	
+	
+	
+				<br>
+				<div class="row">
+						<div class="col-lg-6">
 								<md-select placeholder="Current Selling Markets"
-									class="form-control-user-registration"
-									[(ngModel)]="user.currentOpCountryArray"
+									class="form-control" [(ngModel)]="user.currentOpCountryArray"
 									[ngModelOptions]="{standalone: true}" multiple> <md-option
 									*ngFor="let name of country" [value]="name.country">{{
 								name.country }}</md-option> </md-select>
+			
 							</div>
-						</div>
-							&nbsp;
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-select placeholder="Security Question"
-									class="form-control-user-registration"
-									[(ngModel)]="user.secretQuestion" required
-									[formControl]="securityQuesControl"> <md-option
-									*ngFor="let name of securityQuestions" [value]="name">{{
-								name }}</md-option> <md-error
-									*ngIf="securityQuesControl.hasError('required')">
-								Security Question <strong>required</strong> </md-error> </md-select>
+						<div class="col-lg-6">
+								<div class="input-group">
+			
+									<button class="btn btn-primary"
+										[disabled]="!userForm.valid">Save</button>
+									<button class="btn btn-primary navbar-btn ffp-ml-10" type="reset">Reset</button>
+			
+								</div>
 							</div>
-						</div>
-
-						<div class="rTableRow">
-							<div class="rTableCell">
-								<md-input-container  style="width: 100%;"> <input name="secuAns"
-									[(ngModel)]="user.secretAnswer" mdInput
-									placeholder="Security Answer" required
-									[formControl]="securityAnsControl" /> <md-error
-									*ngIf="securityAnsControl.hasError('required')">
-								Security Ans <strong>required</strong> </md-error> </md-input-container>
-							</div>
-						</div>
-
-
-
-					</div>
 				</div>
-
-			</div>
-			<div class="rTableRow">
-				<div class="rTableCell"  align="center">
-					<button class="btn btn-primary" [disabled]="!userForm.valid">Save</button>
-						&nbsp;&nbsp;&nbsp;&nbsp;
-					<button class="btn btn-primary" type="reset">Reset</button>
-				</div>
-			</div>
+			</form>
+	
 		</div>
-
-
-
-	</form>
-</div>
+	</div>
 

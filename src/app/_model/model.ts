@@ -1,9 +1,16 @@
+
+export class PageParam{   
+    sort: Sort[];
+    constructor(public pageNumber: number, public pageSize: number){
+    }
+}
 export class Sort {
   direction: string;
   property: string[] = [];
-  pageNumber: number;
-  pageSize: number;
 }
+
+
+
 /*
 
 {

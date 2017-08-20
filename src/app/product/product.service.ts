@@ -35,12 +35,19 @@ export class ProductService {
     // }
     // return Observable.throw(error.json().error());
   }
+  /**
+   * Method to Save or Update product
+   * @param product IProduct 
+   */
+  save(product: IProduct) {
+       if (product.countryArray) {
+        product.country = product.countryArray.toString();
+         // user.productionCountryArray = null;
+       }
 
-  saveUser(user: IProduct) {
-    //    if (user.productionCountryArray) {
-    //      user.productionCountry = user.productionCountryArray.toString();
-    //      // user.productionCountryArray = null;
-    //    }
+       if(!product.imagePath){
+         product.imagePath = 'assets/resources/apple.png';
+       }
     //    if (user.sellingMarketsArray) {
     //      user.sellingMarkets = user.sellingMarketsArray.toString();
     //      // user.sellingMarketsArray = null;
@@ -50,18 +57,18 @@ export class ProductService {
     //      // user.productProducedArray = null;
     //    }
 
-    console.log(user);
-    // Object.keys(user).forEach((key) => (user[key] == null) && delete user[key]);
-    // AppUtility.removeEmptyorNullKeys(user);
-
-    // console.log(user);
-    // AppUtility.removeEmptyorNullKeys(user)
-    const json = JSON.stringify(user);
+    console.log(product);
+    
+    const json = JSON.stringify(product);
     const param = json;
     const headers = new Headers({'Content-Type': 'application/json'});
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const options = new RequestOptions({headers: headers});
-    return this.http.post(AppSettings.POST_USER_SAVE, param, options).map(res => res.json()).catch(this.handleError);
+    if(!product.id || product.id ==0){
+    return this.http.post(AppSettings.POST_PRODUCT, param, options).map(res => res.json()).catch(this.handleError);
+    }else{
+      return this.http.put(AppSettings.PUT_PRODUCT, param, options).map(res => res.json()).catch(this.handleError);
+    }
   }
 
   /**

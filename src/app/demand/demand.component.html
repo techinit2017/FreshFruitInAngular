@@ -1,4 +1,49 @@
-<p>
-	<a class="glyphicon glyphicon-plus-sign"
-		[routerLink]="['/demand/adddemand']"></a>
-</p>
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">Your Demands</div>
+	
+	<div class="panel-body">
+	  <p><a class="btn btn-primary" role="button" [routerLink]="['/demand/adddemand']">AddDemand</a></p>
+	</div>
+	<alert> </alert>
+	<div class="table-responsive">    
+	<table class="table table-hover table-striped table-bordered">
+		<tr *ngIf="demands?.length > 0">
+			<th>ID</th>
+			<th>Buyer Name</th>
+			<th>Product Name</th>
+			<th>Variety</th>
+			<th>Grade</th>
+			<th>Size</th>
+			<th>Color</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Measurement</th>
+			<th>Available Date</th>
+			<th>Country</th>
+			<th>City</th>
+			
+		</tr>
+		<tr *ngFor="let demand of demands">
+			<td>{{demand.id}}</td>
+			<td>{{demand.userProfile?.userName}} </td>
+			<td>{{demand.product}}</td>
+			<td>{{demand.variety}}</td>
+			<td>{{demand.grade}}</td>
+			<td>{{demand.size}}</td>
+			<td>{{demand.color}}</td>
+			<td>{{demand.quantity}}</td>
+			<td>{{demand.price}}</td>
+			<td>{{demand.measurement}}</td>
+			<td>{{demand.availableDate}}</td>
+			<td>{{demand.country}}</td>
+			<td>{{demand.city}}</td>
+			
+		</tr>
+	
+	</table>
+	</div>
+</div>
+
+
+

@@ -32,7 +32,7 @@ export class IUser {
   secretQuestion: string;
   secretAnswer: string;
   dob: Date;
-  approved: string;
+  aprroved: number;
   weightIn: string;
 
 
@@ -51,9 +51,4 @@ export enum PrimaryActivityBuyer {
 }
 
 
-export enum SecurityQuestion {
-  QUESTION_1,
-  QUESTION_2,
-  QUESTION_3,
-  QUESTION_4
-}
+

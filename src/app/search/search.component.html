@@ -1,73 +1,81 @@
-<h2>Search</h2>
-<alert></alert>
-<div class="rTable">
-	<div class="rTableRow">
-		<div class="rTableCell rTableCell_1stCol">
-			Price <select name="price" class="rTableCell_select"
-				[(ngModel)]="searchObj.pricedlimit">
-				<option *ngFor="let value of priceDelimiter" [value]="value">{{value}}</option>
-			</select>
-		</div>
-		<div class="rTableCell">
-			<input type="text" placeholder="Price"
-				class="form-control rTableCell_2stCol" [(ngModel)]="searchObj.price" />
-		</div>
+<br>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Search</h3>
 	</div>
+	<div class="panel-body">
+		<div class="rTable">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">Product</span> <select
+							name="price" class="form-control" [(ngModel)]="searchObj.type">
+							<option *ngFor="let name of productlist" [value]="name">{{name}}</option>
+						</select>
 
-	<div class="rTableRow">
 
-		<div class="rTableCell rTableCell_1stCol">Product</div>
-		<div class="rTableCell rTableCell_2stCol">
-			<select name="price" class="form-control rTableCell_2stCol"
-				[(ngModel)]="searchObj.type">
-				<option *ngFor="let name of productlist" [value]="name">{{name}}</option>
-			</select>
-		</div>
-	</div>
-	<div class="rTableRow">
-		<div class="rTableCell rTableCell_1stCol">Variety</div>
-		<div class="rTableCell">
-			<select class="form-control" [(ngModel)]="searchObj.name">
-				<option *ngFor="let name of variety" [value]="name.variety">{{name.variety}}</option>
-			</select>
-		</div>
-	</div>
-	<div class="rTableRow">
-		<div class="rTableCell rTableCell_1stCol">Quantity</div>
-		<div class="rTableCell">
-			<input type="text" placeholder="Quantity"
-				class="form-control rTableCell_2stCol"
-				[(ngModel)]="searchObj.quantityAvailable" />
-		</div>
-	</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">Variety</span> <select
+							class="form-control" [(ngModel)]="searchObj.name">
+							<option *ngFor="let name of variety" [value]="name.variety">{{name.variety}}</option>
+						</select>
 
-	<div class="rTableRow">
-		<div class="rTableCell rTableCell_1stCol">Availability</div>
-		<div class="rTableCell">
-			<select name="Availability" class="form-control rTableCell_2stCol"
-				[(ngModel)]="searchObj.available">
-				<option *ngFor="let value of avail" [value]="value">{{value}}</option>
-			</select>
-		</div>
-	</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">Country</span> <select
+							name="price" class="form-control" [(ngModel)]="searchObj.country">
+							<option *ngFor="let name of country" [value]="name.country">{{name.country}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
 
-	<div class="rTableRow">
-		<div class="rTableCell rTableCell_1stCol">Country</div>
-		<div class="rTableCell">
-			<select name="price" class="form-control"
-				[(ngModel)]="searchObj.country">
-				<option *ngFor="let name of country" [value]="name.country">{{name.country}}</option>
-			</select>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="input-group">
+						<span class="input-group-addon">Price</span> <select name="price"
+							[(ngModel)]="searchObj.pricedlimit" class="form-control">
+							<option *ngFor="let value of priceDelimiter" [value]="value">{{value}}</option>
+						</select> <input type="text" placeholder="Price" class="form-control"
+							[(ngModel)]="searchObj.price" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="input-group">
+						<span class="input-group-addon">Quantity</span> <input type="text"
+							placeholder="Quantity" class="form-control"
+							[(ngModel)]="searchObj.quantityAvailable" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="input-group">
+						<span class="input-group-addon">Availability</span> <select
+							name="Availability" class="form-control"
+							[(ngModel)]="searchObj.available">
+							<option *ngFor="let value of avail" [value]="value">{{value}}</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="input-group">
+						<button [disabled]="loading" class="btn btn-primary"
+							(click)="filterSearch(searchObj)">Search</button>
+						<img *ngIf="loading"
+							src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+						<button class="btn btn-primary" type="reset">Reset</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="form-group">
-	<button [disabled]="loading" class="btn btn-primary"
-		(click)="filterSearch(searchObj)">Search</button>
-	<img *ngIf="loading"
-		src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-	<button class="btn btn-primary" type="reset">Reset</button>
-</div>
+
 
 
 <product *ngFor="let product of iProduct" [product]="product">

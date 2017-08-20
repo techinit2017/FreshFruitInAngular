@@ -1,86 +1,97 @@
 <form class="demand-form"
-	(ngSubmit)="demandForm.valid && onSubmit(demand)" name="demandForm"
+(ngSubmit)="onSubmit(demand)" name="demandForm"
 	novalidate>
-	<div>
-		<a class="btn btn-link" (click)="onbackClick()">back</a>
-		<div class="rTableRow">
-			<div class="rTableCell">
-				<div class="rTable">
-					<h5>Demand Details</h5>
-					&nbsp;
-
-					<div class="rTableRow">
-						<div class="rTableCell">
-							<md-select placeholder="product"
-								class="form-control-demand-registration"
-								[(ngModel)]="demand.product" [formControl]="requiredControl"
-								required> <md-error
-								*ngIf="requiredControl.hasError('required')"> Product
-							Name is <strong>required</strong> </md-error> <md-option
-								*ngFor="let productName of productList" [value]="productName">{{
-							productName }}</md-option> </md-select>
-						</div>
-					</div>
-					&nbsp;
-
-
-					<div class="rTableRow">
-						<div class="rTableCell">
-							<md-select placeholder="Variety"
-								class="form-control-demand-registration"
-								[(ngModel)]="demand.variety" [formControl]="requiredControl"
-								required> <md-error
-								*ngIf="requiredControl.hasError('required')"> Variety
-							Name is <strong>required</strong> </md-error> <md-option
-								*ngFor="let vars of variety" [value]="vars.variety">{{
-							vars.variety }}</md-option> </md-select>
-						</div>
-					</div>
-					&nbsp;
-
-
-					<div class="rTableRow">
-						<div class="rTableCell">
-							<md-select placeholder="Country"
-								class="form-control-demand-registration"
-								[(ngModel)]="demand.country" [formControl]="requiredControl"
-								required> <md-error
-								*ngIf="requiredControl.hasError('required')"> Country
-							Name is <strong>required</strong> </md-error> <md-option
-								*ngFor="let name of country" [value]="name.country">{{
-							name.country }}</md-option> </md-select>
-						</div>
-					</div>
-					&nbsp;
-
-					<div class="rTableRow">
-						<div class="rTableCell">
-							<md-input-container class="form-control-demand-registration">
-							<input name="quantity" [(ngModel)]="demand.quantity"
-								type="number" mdInput placeholder="Quantity"
-								[ngModelOptions]="{standalone: true}" /> </md-input-container>
-						</div>
-					</div>
-					&nbsp;
-					<div class="rTableRow">
-						<div class="rTableCell">
-							<md-input-container class="form-control-demand-registration">
-							<input name="desiredPrice" [(ngModel)]="demand.price"
-								type="number" mdInput placeholder="Disred Price"
-								[ngModelOptions]="{standalone: true}" /> </md-input-container>
-						</div>
-					</div>
-					&nbsp;
+	<div class="panel panel-default">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Add Demand</h3>
+		  </div>
+		  <div class="panel-body table">
+			  <div class="input-group">
+				<a class="btn btn-primary" (click)="onbackClick()">Back</a>  
+				<alert></alert>
+			  </div>
+		
+				<div class="row ffp-mt-10">
+					<div class="col-md-3">
+							<md-select placeholder="Product*" class="form-control" [(ngModel)]="demand.product" 
+							[ngModelOptions]="{standalone: true}"> 
+							<md-option *ngFor="let productName of productList" [value]="productName">{{productName }}</md-option> </md-select>
+				   </div>
+				   <div class="col-md-5">
+						<md-select placeholder="Variety*" class="form-control" [(ngModel)]="demand.varietyArray" 
+						[ngModelOptions]="{standalone: true}" multiple> 
+						<md-option *ngFor="let vars of variety" [value]="vars.variety">{{vars.variety }}</md-option> </md-select>
+				   </div>
+				   
+					
 				</div>
+				<br>
+				<div class="row">
+						<div class="col-md-2">
+								<input type="text" class="form-control" placeholder="Grade*" [(ngModel)]="demand.grade" [ngModelOptions]="{standalone: true}"
+								  aria-label="grade" >
+							</div>
+						<div class="col-md-2">
+								<input type="text" class="form-control" placeholder="Color*" [(ngModel)]="demand.color" [ngModelOptions]="{standalone: true}"
+								 aria-label="color" >
+							</div>
+				   
+				   <div class="col-md-2">
+					 <input type="text" class="form-control" placeholder="Quantity*" [(ngModel)]="demand.quantity" [ngModelOptions]="{standalone: true}"
+					   aria-label="quantity" >
+				   </div>
+				   <div class="col-md-2">
+						<input type="text" class="form-control" placeholder="Measurement*" [(ngModel)]="demand.measurement" [ngModelOptions]="{standalone: true}"
+						   aria-label="measurement" >
+				   </div>
+			 </div>
+			<br>
+				<div class="row">
+					
+					<div class="col-md-2">
+						<div class="input-group">
+							<span class="input-group-addon">$</span> <input type="text"
+							class="form-control price" placeholder="Price*" [(ngModel)]="demand.price" [ngModelOptions]="{standalone: true}" aria-label="Price">
+							<span class="input-group-addon">.00</span>
+						</div>
+					</div>
+					<div class="col-md-2">
+							<input type="date" class="form-control"
+							name="input" [(ngModel)]="demand.availableDate" pattern="dd-MM-yyyy" 
+							placeholder="(Available Date) dd-MM-yyyy" min="2017-01-01" [ngModelOptions]="{standalone: true}"/>
+				    	</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-4">
+					   <md-select placeholder="Country*" class="form-control" [(ngModel)]="demand.countryArray"
+						[ngModelOptions]="{standalone: true}" multiple> 
+						<md-option *ngFor="let name of country" [value]="name.country">{{name.country }}</md-option> </md-select>
+
+				   </div>
+				  <div class="col-md-4">
+					 <input type="text" class="form-control" placeholder="City"
+					  [(ngModel)]="demand.city" [ngModelOptions]="{standalone: true}">
+
+				 </div>
+				
 			</div>
-		</div>
-		<div class="rTableRow">
-			<div class="rTableCell" align="left">
-				<button class="btn-primary" [disabled]="!demandForm.valid">Save</button>
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<button class="btn-primary" type="reset">Reset</button>
-			</div>
-		</div>
-	</div>
+				<br>
+			
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="input-group">
+							<button type="button" class="btn btn-primary" type="submit">Save</button>
+							<button type="button" class="btn btn-primary ffp-ml-10" type="reset">Reset</button>
+			
+							</div>
+						</div>
+					</div>
+
+
+			   </div>
+		  </div>  			
+
+	
 
 </form>

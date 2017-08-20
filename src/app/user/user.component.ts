@@ -1,26 +1,29 @@
 import {AppUtility} from '../AppUtility';
 import {MasterdataService} from '../_services/masterdata.service';
 import {Country, ProductVariety} from '../search/search';
-import {IUser, PrimaryActivitySeller, PrimaryActivityBuyer, SecurityQuestion} from './user';
+import {IUser, PrimaryActivitySeller, PrimaryActivityBuyer} from './user';
 import {UserService} from './user.service';
 import {Component, OnInit, Injectable} from '@angular/core';
 import {NgForm, FormControl, Validators, Form, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MdDatepickerModule} from '@angular/material';
+import { AlertService } from "app/_services/alert.service";
+import { Approval } from "app/_model/approval";
+import { AppSettings } from "app/AppSettings";
 
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  providers: [UserService, MasterdataService],
+  providers: [UserService, MasterdataService,AlertService],
 })
 export class UserComponent implements OnInit {
   // data Objects
   iusers: IUser[];
   primaryActivitySeller: string[] = Object.keys(PrimaryActivitySeller);
   primaryActivityBuyer: string[] = Object.keys(PrimaryActivityBuyer);
-  securityQuestions: string[] = Object.keys(SecurityQuestion);
+  securityQuestions: ProductVariety[];
 
   country: Country[];
   variety: ProductVariety[];
@@ -31,8 +34,9 @@ export class UserComponent implements OnInit {
 
   user: IUser;
   createuser: IUser;
+  currentUser: IUser;
   isAdd: boolean;
-  userlist = 'Users list';
+  
 
   createuserOutput: string;
   errorMsg: string;
@@ -57,7 +61,8 @@ export class UserComponent implements OnInit {
   securityAnsControl = new FormControl('', [
     Validators.required]);
 
-  constructor(private userService: UserService, private masterDataService: MasterdataService) {
+  constructor(private userService: UserService, private masterDataService: MasterdataService, private alertservice: AlertService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.userTypes = [
       'Seller',
       'Buyer',
@@ -82,6 +87,7 @@ export class UserComponent implements OnInit {
     this.isAdd = false;
     this.userService.getEntries()
       .subscribe(iusers => this.iusers = iusers, err => this.errorMsg = <any>err, () => console.log('finished'));
+
   }
 
   isEmptyObject(obj) {
@@ -92,8 +98,9 @@ export class UserComponent implements OnInit {
     this.isAdd = true;
     this.user = new IUser();
     this.getCountries();
-    this.getProducts();
+    this.getProducts(AppSettings.CONST_FRUIT);
     this.getProductByVariety(null);
+    this.getSecurityQuestion(AppSettings.CONST_SECRET)
     this.primaryActivitySeller = this.primaryActivitySeller.slice(this.primaryActivitySeller.length / 2);
     this.primaryActivityBuyer = this.primaryActivityBuyer.slice(this.primaryActivityBuyer.length / 2);
     this.securityQuestions = this.securityQuestions.slice(this.securityQuestions.length / 2);
@@ -107,8 +114,12 @@ export class UserComponent implements OnInit {
     // = new IUser();
     // this.createuser = user;
     this.userService.saveUser(user).
-      subscribe(data => this.createuserOutput = JSON.stringify(user),
-      err => this.errorMsg = <any>err,
+      subscribe(data =>{
+        this.alertservice.success("User Created or Updated");
+      }, 
+      err => {
+        this.alertservice.error("Error: Service Error");
+      },
       () => this.onRequestComplete());
   }
 
@@ -117,15 +128,38 @@ export class UserComponent implements OnInit {
     console.log('Finished');
   }
 
+  onApprove(user: IUser){
+    if(user && this.currentUser){
+    let approval = new Approval();
+    user.aprroved=1;
+     
+    approval.userProfile =user;
+    approval.approvedBy = this.currentUser.id;
+    approval.approvedDate = new Date();
+
+    this.userService.approveUser(approval).
+    subscribe(data =>{
+      this.alertservice.success("User Id = ["+user.id+"] approved");
+    }, 
+    err => {
+      this.alertservice.error("Error: Approval Service Error");
+    },
+    () => this.onRequestComplete());
+
+      
+      
+    }
+  }
+
   getCountries(): void {
     this.masterDataService
       .getCountries()
       .subscribe(country => this.country = country,
       err => this.errorMsg = <any>err);
   }
-  getProducts(): void {
+  getProducts(productType: string): void {
     this.masterDataService
-      .getProductNames()
+      .getProductNames(productType)
       .subscribe(name => this.productlist = name,
       err => this.errorMsg = <any>err);
   }
@@ -137,5 +171,18 @@ export class UserComponent implements OnInit {
       .getProductByVariety(productName)
       .subscribe(variety => this.variety = variety,
       err => this.errorMsg = <any>err);
+  }
+
+  getSecurityQuestion(type: string): void {
+    if (!type) {
+      type = AppSettings.CONST_SECRET;
+    }
+    this.masterDataService
+      .getProductByVariety(type)
+      .subscribe(variety => { this.securityQuestions = variety;
+      console.log(this.securityQuestions)}, error =>{
+        console.log('Error: Service not available');
+      } );
+      
   }
 }

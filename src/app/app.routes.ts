@@ -73,7 +73,7 @@ export const AppRoutes: Routes = [
     component: SellerproductComponent
   },
   {
-    path: 'sellerProduct/addProduct',
+    path: 'sellerProduct/addProduct/:id',
     component: AddproductComponent
   },
 

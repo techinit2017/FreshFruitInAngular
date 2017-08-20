@@ -1,28 +1,30 @@
 import {AppSettings} from '../AppSettings';
 import {AlertService} from '../_services/alert.service';
 import {LoginService} from '../login/login.service';
-import {SecurityQuestion, IUser} from '../user/user';
+import {IUser} from '../user/user';
 import {Component, OnInit} from '@angular/core';
+import { MasterdataService } from "app/_services/masterdata.service";
+import { ProductVariety } from "app/search/search";
 
 @Component({
   selector: 'app-forgetpassword',
   templateUrl: './forgetpassword.component.html',
   styleUrls: ['./forgetpassword.component.css'],
-  providers: [LoginService, AlertService],
+  providers: [LoginService, AlertService, MasterdataService],
 })
 export class ForgetpasswordComponent implements OnInit {
   // data Objects
   identity: string;
   user: IUser;
-  securityQuestions: string[] = Object.keys(SecurityQuestion);
+  securityQuestions: ProductVariety[];
   // validation Component
   isValidUser: boolean;
 
   loading = false;
 
 
-  constructor(private loginService: LoginService, private alertService: AlertService) {
-    this.securityQuestions = this.securityQuestions.slice(this.securityQuestions.length / 2);
+  constructor(private loginService: LoginService, private alertService: AlertService, private masterDataService: MasterdataService) {
+    
   }
 
   ngOnInit() {
@@ -57,4 +59,15 @@ export class ForgetpasswordComponent implements OnInit {
     console.log('Finished');
   }
 
+  getSecurityQuestion(type: string): void {
+    if (!type) {
+      type = AppSettings.CONST_SECRET;
+    }
+    this.masterDataService
+      .getProductByVariety(type)
+      .subscribe(variety => { this.securityQuestions = variety}, error =>{
+        this.alertService.error('Error: Service not available');
+      } );
+      
+  }
 }

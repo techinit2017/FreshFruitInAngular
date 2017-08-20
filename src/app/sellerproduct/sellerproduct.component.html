@@ -1,3 +1,171 @@
-<p>
-  sellerproduct works!
-</p>
+
+
+<div class="panel panel-primary" >
+  <div class="panel-heading">
+		<h3 class="panel-title">Products</h3>
+	</div>
+	<!--<ul class="nav nav-pills nav-stacked">
+		<li role="presentation" class="active"><a href="#">Home</a></li>
+		<li role="presentation"><a href="#">Profile</a></li>
+		<li role="presentation"><a href="#">Messages</a></li>
+	  </ul>-->
+	<alert></alert>
+	<button type="button" class="btn btn-primary ffp-ml-10" [routerLink]="['/sellerProduct/addProduct',currentUser.id]">
+		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Product
+
+	</button>
+ 	<div class="panel-body" *ngFor="let product of products">
+		<div class="panel panel-primary">
+				<div class="btn-group pull-right">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+						  <li><a href="#">Edit</a></li>
+						  <li role="separator" class="divider"></li>
+						  <li><a href="#">In-Active</a></li>
+						 
+						</ul>
+					  </div>
+			<div class="row">
+				<div class="col-xs-12 col-md-3">
+					<a href="#" class="thumbnail"> <img src="{{product.imagePath}}"
+						alt="{{product.type}}">
+					</a>
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Id</span> {{product.id}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Type</span> {{product.type}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Variety</span> {{product.name}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Price</span> {{product.price}}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">SellerId</span>
+								{{product.userProfile.id}}
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="input-group">
+								<span class="input-group-addon">Seller Name</span>
+								{{product.userProfile.companyName}}
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon">Product Desc</span>
+								{{product.productDesc}}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Grade</span> {{product.grade}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Size</span> {{product.size}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Color</span> {{product.color}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">MOQ</span>
+								{{product.minOrderQty}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Packaging</span>
+								{{product.packaging}}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Is-Active</span>
+								
+								
+								<div *ngIf="product.isActive==1">
+										Yes
+								</div>
+									<div *ngIf="product.isActive==0">
+										No
+									</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Price</span> {{product.price}}
+							</div>
+
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Negotiable</span>
+								{{product.priceNegotiable}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">M-Unit</span>
+								{{product.measurement}}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<span class="input-group-addon">Available From</span> {{product.available}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- pager -->
+<!--<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+		(click)="setPage(1)">First</a></li>
+	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+		(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+	<li *ngFor="let page of pager.pages"
+		[ngClass]="{active:pager.currentPage === page}"><a
+		(click)="setPage(page)">{{page}}</a></li>
+	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+		<a (click)="setPage(pager.currentPage + 1)">Next</a>
+	</li>
+	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+		<a (click)="setPage(pager.totalPages)">Last</a>
+	</li>
+</ul>-->

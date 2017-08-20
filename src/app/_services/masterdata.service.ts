@@ -35,8 +35,8 @@ export class MasterdataService {
       })
       .catch(this.handleError);
   }
-  getProductNames(): Observable<string[]> {
-    return this.http.get(AppSettings.GET_PRODUCT_NAMES).map((response: Response) => <string[]>response.json())
+  getProductNames(type: string): Observable<string[]> {
+    return this.http.get(AppSettings.GET_LOV_BY_TYPE + '/' + type).map((response: Response) => <string[]>response.json())
       .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))

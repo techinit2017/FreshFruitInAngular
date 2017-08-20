@@ -1,6 +1,6 @@
 import {ISearch} from '../search/search';
 import {IUser} from '../user/user';
-export interface IProduct {
+export class IProduct {
 //  ProductID: number;
 //  ProductName: string;
 //  url: string;
@@ -14,7 +14,7 @@ export interface IProduct {
 
 
   id: number;
-  userProfile: IUser;
+  userProfile =  new IUser();
   name: string;
   type: string;
   imagePath: string;
@@ -30,8 +30,9 @@ export interface IProduct {
   measurement: string;
   available: Date;
   packaging: string;
-  isActive: number;
+  isActive: number = 1;
   // New Fields
+  countryArray: string[];
   country: string;
   city: string;
 }

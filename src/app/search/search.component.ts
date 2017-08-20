@@ -53,7 +53,7 @@ export class SearchComponent implements OnInit {
     this.search();
     this.getCountries();
     this.getProductByVariety(null);
-    this.getProducts();
+    this.getProducts(AppSettings.CONST_FRUIT);
   }
 
   isLoading(): boolean {
@@ -98,9 +98,9 @@ export class SearchComponent implements OnInit {
       err => this.errorMsg = <any>err);
   }
 
-  getProducts(): void {
+  getProducts(productType: string): void {
     this.masterDataService
-      .getProductNames()
+      .getProductNames(productType)
       .subscribe(name => this.productlist = name,
       err => this.errorMsg = <any>err);
   }

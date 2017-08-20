@@ -84,7 +84,13 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">Is-Active</span>
-								{{product.isActive}}
+								
+								<div *ngIf="product.isActive==1">
+										Yes
+								</div>
+									<div *ngIf="product.isActive==0">
+										No
+									</div>
 							</div>
 						</div>
 					</div>

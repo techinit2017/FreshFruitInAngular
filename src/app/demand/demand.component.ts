@@ -1,77 +1,46 @@
-import {MasterdataService} from '../_services/masterdata.service';
 import {IProduct} from '../product/product';
 import {ProductVariety, Country} from '../search/search';
 import {IUser} from '../user/user';
 import {IDemand} from './demand';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
+import { DemandService } from "app/demand/demand.service";
+import { AppSettings } from "app/AppSettings";
+import { AlertService } from "app/_services/alert.service";
 
 @Component({
   selector: 'app-demand',
   templateUrl: './demand.component.html',
   styleUrls: ['./demand.component.css'],
-  providers: [MasterdataService]
+  providers: [ DemandService, AlertService]
 })
 export class DemandComponent implements OnInit {
 
   currentUser: IUser;
-  errorMsg: any;
+ 
+  demands: IDemand[];
+  
 
-  demand: IDemand;
-  demandForm;
-  productList: String[];
-  country: Country[];
-  variety: ProductVariety[];
-  requiredControl = new FormControl('', [
-    Validators.required]);
-  constructor(public masterDataService: MasterdataService) {
-    const group: any = {};
-    group.requiredControl = this.requiredControl;
-    this.demandForm = new FormGroup(group);
-
-
+  constructor(private demandService: DemandService, private alertservice : AlertService) {
+    
   }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.onLoad();
-  }
-
-  onbackClick() {
-  }
-  onLoad() {
-    this.demand = new IDemand();
-    this.getCountries();
-    this.getProductByVariety(null);
-    this.getProducts();
-  }
-  getCountries(): void {
-    this.masterDataService
-      .getCountries()
-      .subscribe(country => this.country = country,
-      err => this.errorMsg = <any>err);
-  }
-
-  getProductByVariety(productName: string): void {
-    if (!productName) {
-      productName = 'APPLE';
+    if(this.currentUser){
+      this.demandService.getDemandList(this.currentUser)
+      .subscribe(demands => this.demands = demands, err => {this.alertservice.error("Error: Service Error");}, () => console.log('finished'));
     }
-    this.masterDataService
-      .getProductByVariety(productName)
-      .subscribe(variety => this.variety = variety,
-      err => this.errorMsg = <any>err);
   }
 
-  getProducts(): void {
-    this.masterDataService
-      .getProductNames()
-      .subscribe(name => this.productList = name,
-      err => this.errorMsg = <any>err);
-  }
-
+  
+  
   onRequestComplete() {
-    this.ngOnInit();
     console.log('Finished');
+  }
+
+  isEmptyObject(obj) {
+    return (obj && (Object.keys(obj).length === 0));
   }
 
 }

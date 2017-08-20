@@ -1,57 +1,13 @@
-.userregistration-width {
-  width: 300%;
-  padding: 0px;
+.ffp-ml-10 {
+    margin-left:10px;
+   
 }
-.panel-title{
-	text-align: center;
+
+.ffp-mr-10 {
+    margin-right: 1% !important;
+   
 }
-.mnmOrder{
-	width: 100%;
-	
-}
-.product{
-	width: 100%;
-}
-.price{
-	width: 100%;
-}
-.productInfo{
-	width: 100%;
-}
-.productdesc{
-	width: 550%;
-	height: 100px;
-}
-.negt{
-	height: 50px;
-	width: 200px;
-}
-.measure{
-	width: 300%;
-  	padding: 0px;
-}
-.grade{
-	width: 50%;
-}
-.pack{
-	width: 50%;
-}
-.savebtn{
-	width: 70px;
-	margin-right: 50px;
-	padding-right: 10px;
-	background-color: #337ab7;
-	border-color: #2e6da4;
-	color: white;
-	
-}
-.resetbtn{
-	float: right;
-	width: 70px;
-	background-color: #337ab7;
-	border-color: #2e6da4;
-	color: white;
-}
-.priceneg{
-	margin-left: 80px;
+.ffp-mt-10 {
+    margin-top: 1% !important;
+   
 }

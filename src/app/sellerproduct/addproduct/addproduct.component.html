@@ -1,149 +1,193 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Add/Edit Product</h3>
-  </div>
-  <div class="panel-body">
-   <div class="rTable">
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group"> 
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Product Name*" aria-label="Product Name"
-					aria-describedby="basic-addon1">
-			</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Add/Edit Product</h3>
 		</div>
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Minimum Order Quantity*"
-					aria-label="Minimum Order Quantity" aria-describedby="basic-addon2">
-			</div>
-		</div>
-	</div>
-	<br>
+		<div class="panel-body">
+				<form class="addSupplierProduct-form"
+				(ngSubmit)="onSubmit(productAdd)" 
+				novalidate>
+			<div class="row">
+				<div class="col-md-3">
+					<md-select placeholder="Type" class="form-control"
+					[(ngModel)]="productAdd.type" [ngModelOptions]="{standalone: true}">
+				<md-option *ngFor="let name of productlist" [value]="name">{{name
+				}}</md-option> </md-select>
+				</div>
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Product Type*" aria-label="Product Type"
-					aria-describedby="basic-addon1">
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon">$</span> <input type="text"
-					class="form-control price" placeholder="Price*" aria-label="Price">
-				<span class="input-group-addon">.00</span>
-			</div>
-		</div>
-	</div>
-	<br>
+				<div class="col-md-3">
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group"> 
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Product Info*" aria-label="Product Info"
-					aria-describedby="basic-addon1">
-			</div>
-		</div>
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-body">Price Negotiable    
-						<input type="radio" class="priceneg"> Yes
-  						<input type="radio" class="priceneg"> No
-  						</div>
+				<md-select placeholder="Variety" class="form-control"
+					[(ngModel)]="productAdd.name" [ngModelOptions]="{standalone: true}">
+				<md-option *ngFor="let name of variety" [value]="name.variety">{{name.variety
+				}}</md-option> </md-select>
+	
+				</div>
+	
+				<div class="col-md-2">
+	
+	
+					<input type="text" class="form-control"
+						placeholder="Minimum Order Quantity*"
+						aria-label="Minimum Order Quantity" aria-describedby="basic-addon2"
+						[(ngModel)]="productAdd.minOrderQty" [ngModelOptions]="{standalone: true}">
+	
+	
+				</div>
+				<div class="col-md-2">
+	
+	
+					<input type="text" class="form-control"
+						placeholder="Quantity Available"
+						[(ngModel)]="productAdd.quantityAvailable" [ngModelOptions]="{standalone: true}">
+	
+	
+				</div>
+	
+				<div class="col-md-2">
+	
+					<div class="input-group">
+						<span class="input-group-addon">$</span> <input type="text"
+							class="form-control " placeholder="Price*" aria-label="Price"
+							[(ngModel)]="productAdd.price" [ngModelOptions]="{standalone: true}"> <span
+							class="input-group-addon">.00</span>
 					</div>
-					
+	
+				</div>
+	
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-4">
+					<input type="text" class="form-control" placeholder="Product Info*"
+						aria-label="Product Info" aria-describedby="basic-addon1"
+						[(ngModel)]="productAdd.productInfo" [ngModelOptions]="{standalone: true}">
+	
+				</div>
+				<div class="col-md-2">
+					<md-select placeholder="Price Negotiable?" class="form-control"
+						[(ngModel)]="productAdd.priceNegotiable"
+						[ngModelOptions]="{standalone: true}" > <md-option
+						[value]="1">Yes</md-option> <md-option [value]="0">No</md-option> </md-select>
+	
+				</div>
+	
+				<div class="col-md-3">
+					<md-select placeholder="Country" class="form-control"
+						[(ngModel)]="productAdd.countryArray"
+						[ngModelOptions]="{standalone: true}" multiple> <md-option
+						*ngFor="let name of country" [value]="name.country">{{
+					name.country }}</md-option> </md-select>
+	
+				</div>
+				<div class="col-md-3">
+					<input type="text" class="form-control" placeholder="City"
+						[(ngModel)]="productAdd.city" [ngModelOptions]="{standalone: true}">
+	
+				</div>
+	
+			</div>
+			<br>
+	
+			<div class="row">
+				<div class="col-lg-6">
+					<textarea class="form-control" rows="5" placeholder="Product Desc*"
+						aria-label="Product Desc" [(ngModel)]="productAdd.productDesc" [ngModelOptions]="{standalone: true}"></textarea>
+	
+	
+				</div>
+				<div class="col-md-2">
+						<input type="date" class="form-control"
+						name="input" [(ngModel)]="productAdd.available" pattern="dd-MM-yyyy" 
+					    placeholder="(Available Date) dd-MM-yyyy" min="2017-01-01" [ngModelOptions]="{standalone: true}"/>
+										
+						
+									</div>
+			</div>
+			<br>
+	
+			<div class="row">
+				<div class="col-md-2">
+	
+					<input type="text" class="form-control" placeholder="Measurement*"
+						aria-label="Measurement" aria-describedby="basic-addon1"
+						[(ngModel)]="productAdd.measurement" [ngModelOptions]="{standalone: true}">
+	
+				</div>
+				<div class="col-md-2">
+	
+					<input type="text" class="form-control" placeholder="Grade*"
+						aria-label="Grade" aria-describedby="basic-addon2"
+						[(ngModel)]="productAdd.grade" [ngModelOptions]="{standalone: true}">
+	
+	
+				</div>
+				<div class="col-md-2">
+					<input type="text" class="form-control" placeholder="Packaging*"
+						aria-label="Packaging" aria-describedby="basic-addon2"
+						[(ngModel)]="productAdd.packaging" [ngModelOptions]="{standalone: true}">
+				</div>
+				<div class="col-md-2">
+	
+					<input type="text" class="form-control" placeholder="Size*"
+						aria-label="size" aria-describedby="basic-addon1"
+						[(ngModel)]="productAdd.size" [ngModelOptions]="{standalone: true}"> 
+	
+				</div>
+	
+				<div class="col-md-2">
+				    <md-select placeholder="Active*" class="form-control"
+						[(ngModel)]="productAdd.isActive" [ngModelOptions]="{standalone: true}">
+					<md-option [value]="1">Yes</md-option>
+					<md-option [value]="0">No</md-option>
+				 </md-select>
+				
+	
+				</div>
+	
+				<div class="col-md-2">
+	
+					<input type="text" class="form-control" placeholder="Color*"
+						aria-label="color" aria-describedby="basic-addon1"
+						[(ngModel)]="productAdd.color" [ngModelOptions]="{standalone: true}">
+	
 				</div>
 			</div>
-	<br>
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control productdesc"
-					placeholder="Product Desc*" aria-label="Product Desc"
-					aria-describedby="basic-addon1">
-			</div>
-		</div>
-	</div>
-	<br>
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group"> 
-				<input type="text" class="form-control measure"
-					placeholder="Measurement*" aria-label="Measurement"
-					aria-describedby="basic-addon1">
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control grade"
-					placeholder="Grade*"
-					aria-label="Grade" aria-describedby="basic-addon2">
-				
-				<input type="text" class="form-control pack"
-					placeholder="Packaging*"
-					aria-label="Packaging" aria-describedby="basic-addon2">
-			</div>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Size*" aria-label="size"
-					aria-describedby="basic-addon1">
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Active*"
-					aria-label="Active" aria-describedby="basic-addon2">
-			</div>
-		</div>
-	</div>
-	<br>
+			<br>
+			<div class="row">
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control userregistration-width"
-					placeholder="Color*" aria-label="color"
-					aria-describedby="basic-addon1">
-			</div>
-		</div>
-			<div class="col-lg-6">
-				<div>
-					Upload Image <input type="file" accept="image/*"
-						(change)="handleInputChange($event)" />
+				<div class="col-lg-6">
+	
+					<div style="position: relative;">
+						<a class='btn btn-primary' href='javascript:;'> Choose File...
+							<input type="file"
+							style='position: absolute; z-index: 2; top: 0; left: 0; filter: alpha(opacity = 0); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; opacity: 0; background-color: transparent; color: transparent;'
+							name="file_source" size="40"
+							onchange='$("#upload-file-info").html($(this).val());' [(ngModel)]="productAdd.imagePath">
+						</a> &nbsp; <span class='label label-info' id="upload-file-info"></span>
+					</div>
+	
+	
+	
+	
 				</div>
 
+				<div class="col-lg-6">
+						<div class="input-group">
+		
+							<button type="button" class="btn btn-primary" type="submit">Save</button>
+							<button type="button" class="btn btn-primary ffp-ml-10" type="reset">Reset</button>
+		
+						</div>
+					</div>
 			</div>
-		</div>
-
-	</div>
-	<br>
-	<div class="row" align="right">
-		<div class="col-lg-6">
-			<div class="input-group">
-				
-					<button type="button" class="btn btn-default navbar-btn savebtn">Save</button>
-					<button type="button" class="btn btn-default navbar-btn resetbtn">Reset</button>
-				
-			</div>
-		</div>
-	</div>
 	
 	
-  </div>
-</div>
-
-
-
-
+			<br>
+			<div class="row">
+				
+			</div>
+				</form>
+	
+		</div>
