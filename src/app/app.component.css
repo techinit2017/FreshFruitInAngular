@@ -217,3 +217,27 @@
 	color: black;
 	font-size: 15px;
 }
+
+.my-navbar
+{
+    margin-top: 20px;
+}
+.my-navbar .navbar-default
+{
+    background: none;
+    border:none;
+}
+
+.my-navbar .navbar-nav .active a,.my-navbar .navbar-nav .active a:hover
+{
+background:orangered;
+ color:#fff;
+}
+.my-navbar .navbar-nav li a:hover
+{
+    background:orangered;
+}
+@media(max-width:1200px)
+{
+    .my-navbar .pull-right {float:none !important}
+}

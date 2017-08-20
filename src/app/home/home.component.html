@@ -1,11 +1,10 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
-			<h2>Product search field</h2>
+		<div class="col-md-6 ffp-mt-10">
 			<div id="custom-search-input">
 				<div class="input-group col-md-12">
 					<input type="text" class="form-control input-lg"
-						placeholder="Product Serch..." #newquery 
+						placeholder="Product Search..." #newquery 
 						(keydown.enter)="submit(newquery.value)" required [ngModel]="" />
 					<span class="input-group-btn">
 						<button class="btn btn-info btn-lg" type="button"
@@ -25,7 +24,7 @@
 <div class="container">
     <div class="row">
 		<div class="col-md-12">
-                <div id="Carousel" class="carousel slide">
+                <div id="Carousel">
                  
                 <ol class="carousel-indicators">
                     <li data-target="#Carousel" data-slide-to="0" class="active"></li>
@@ -38,10 +37,10 @@
                     
                 <div class="item active">
                 	<div class="row">
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="assets/resources/apple.png" alt="Image" style="max-width:100%;height: 233px">Apple</a></div>
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="assets/resources/Grapes.jpg" alt="Image" style="max-width:67%;height: 233px">Grapes</a></div>
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="assets/resources/banana.png" alt="Image" style="max-width:100%;height:236px">Banana</a></div>
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="assets/resources/pomegranate.jpg" alt="Image" style="max-width:92%;">Pomegranate</a></div>
+                	  <div class="col-md-3"><a><img src="assets/resources/apple.png" alt="Image" style="max-width:100%;height: 233px" (click)="submit('Apple')"></a></div>
+                	  <div class="col-md-3"><a><img src="assets/resources/Grapes.jpg" alt="Image" style="max-width:67%;height: 233px"></a></div>
+                	  <div class="col-md-3"><a><img src="assets/resources/banana.png" alt="Image" style="max-width:100%;height:236px"></a></div>
+                	  <div class="col-md-3"><a><img src="assets/resources/pomegranate.jpg" alt="Image" style="max-width:92%;"></a></div>
                 	</div><!--.row-->
                 </div><!--.item-->
                  
@@ -64,8 +63,8 @@
                 </div><!--.item-->
                  
                 </div><!--.carousel-inner-->
-                  <a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
-                  <a data-slide="next" href="#Carousel" class="right carousel-control"><</a>
+                  <!--<a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+                  <a data-slide="next" href="#Carousel" class="right carousel-control"><</a>-->
                 </div><!--.Carousel-->
                  
 		</div>

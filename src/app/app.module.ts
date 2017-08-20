@@ -29,6 +29,8 @@ import { DemandComponent } from './demand/demand.component';
 import { SellerproductComponent } from './sellerproduct/sellerproduct.component';
 import { AddproductComponent } from './sellerproduct/addproduct/addproduct.component';
 import { AdddemandComponent } from './demand/adddemand/adddemand.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+// import { APP_BASE_HREF, Location } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { AdddemandComponent } from './demand/adddemand/adddemand.component';
     DatatableComponent,
     SellerproductComponent,
     AddproductComponent,
-    AdddemandComponent
+    AdddemandComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,7 @@ import { AdddemandComponent } from './demand/adddemand/adddemand.component';
     HttpModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, initialNavigation: 'enabled' }),
   ],
-  providers: [FormControlDirective, FormGroupDirective, PagerService, MasterdataService],
+  providers: [FormControlDirective, FormGroupDirective, PagerService, MasterdataService,],
   bootstrap: [AppComponent],
   
 })

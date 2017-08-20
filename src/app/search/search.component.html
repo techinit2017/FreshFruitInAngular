@@ -6,61 +6,72 @@
 	<div class="panel-body">
 		<div class="rTable">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<div class="input-group">
-						<span class="input-group-addon">Product</span> <select
+						<span class="input-group-addon">Type</span> 
+						<select placehol
 							name="price" class="form-control" [(ngModel)]="searchObj.type">
+							<option></option>
 							<option *ngFor="let name of productlist" [value]="name">{{name}}</option>
 						</select>
-
-
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<div class="input-group">
 						<span class="input-group-addon">Variety</span> <select
 							class="form-control" [(ngModel)]="searchObj.name">
+							<option></option>
 							<option *ngFor="let name of variety" [value]="name.variety">{{name.variety}}</option>
 						</select>
 
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<div class="input-group">
 						<span class="input-group-addon">Country</span> <select
 							name="price" class="form-control" [(ngModel)]="searchObj.country">
+							<option></option>
 							<option *ngFor="let name of country" [value]="name.country">{{name.country}}</option>
 						</select>
 					</div>
 				</div>
+				<div class="col-md-2">
+						
+							 <input type="text"
+								placeholder="Quantity" class="form-control"
+								[(ngModel)]="searchObj.quantityAvailable" />
+						
+					</div>
+					<div class="col-md-2">
+							<div class="input-group">
+								<span class="input-group-addon">Availability</span> <select
+									name="Availability" class="form-control"
+									[(ngModel)]="searchObj.available">
+									<option></option>
+									<option *ngFor="let value of avail" [value]="value">{{value}}</option>
+								</select>
+							</div>
+						</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md-3">
+			<div class="row ffp-mt-10">
+				<div class="col-md-2">
 					<div class="input-group">
-						<span class="input-group-addon">Price</span> <select name="price"
+						<span class="input-group-addon">>=/<=</span> <select name="price"
 							[(ngModel)]="searchObj.pricedlimit" class="form-control">
+							<option></option>
 							<option *ngFor="let value of priceDelimiter" [value]="value">{{value}}</option>
-						</select> <input type="text" placeholder="Price" class="form-control"
-							[(ngModel)]="searchObj.price" class="form-control" />
+						</select> 
 					</div>
+						
+					
 				</div>
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Quantity</span> <input type="text"
-							placeholder="Quantity" class="form-control"
-							[(ngModel)]="searchObj.quantityAvailable" />
-					</div>
+				<div class="col-md-2">
+						<input type="text" placeholder="Price" class="form-control"
+						[(ngModel)]="searchObj.price" class="form-control" />
 				</div>
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Availability</span> <select
-							name="Availability" class="form-control"
-							[(ngModel)]="searchObj.available">
-							<option *ngFor="let value of avail" [value]="value">{{value}}</option>
-						</select>
-					</div>
-				</div>
+				
+				
 				
 				<div class="col-md-3">
 					<div class="input-group">
@@ -68,7 +79,7 @@
 							(click)="filterSearch(searchObj)">Search</button>
 						<img *ngIf="loading"
 							src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-						<button class="btn btn-primary" type="reset">Reset</button>
+						<button class="btn btn-primary ffp-ml-10 " type="reset">Reset</button>
 					</div>
 				</div>
 			</div>
@@ -76,10 +87,16 @@
 	</div>
 </div>
 
+<alert  *ngIf="iProduct?.length<=0"></alert>
+<div class="panel panel-default" *ngIf="iProduct?.length>0">
+		<div class="panel-heading">
+			<h3 class="panel-title">Total Search Results = {{count}} found</h3>
+		</div>
+		<div class="ffp-mt-10 ffp-ml-10"> 
+		
+		<product *ngFor="let product of iProduct" [product]="product">
 
-
-<product *ngFor="let product of iProduct" [product]="product">
-
-</product>
+		</product>
+</div></div>
 
 

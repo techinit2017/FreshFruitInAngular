@@ -1,0 +1,18 @@
+[
+    {
+        "menuNames": ["Home", "User", "Product", "Demand", "Search", "About_Us", "Constact Us"],
+        "rolesRequired": "Admin"
+    },
+    {
+        "menuNames": ["Home", "Demand", "Search", "About Us", "Constact Us"],
+        "rolesRequired": "Buyer"
+    },
+    {
+        "menuNames": ["Home", "Product", "Demand", "Search", "About Us", "Constact Us"],
+        "rolesRequired": "Seller"
+    },
+    {
+        "menuNames": ["Home", "Search", "About Us", "Constact Us"],
+        "rolesRequired": "Guest"
+    }
+ ]

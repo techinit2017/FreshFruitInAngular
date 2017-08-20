@@ -19,6 +19,7 @@ import {UserComponent} from './user/user.component';
 import {DemandComponent} from './demand/demand.component';
 import { AddproductComponent } from './sellerproduct/addproduct/addproduct.component';
 import {SellerproductComponent} from './sellerproduct/sellerproduct.component';
+import { AboutusComponent } from "app/aboutus/aboutus.component";
 
 export const AppRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ export const AppRoutes: Routes = [
   {
     path: 'Home',
     component: HomeComponent
+  },
+  {
+    path: 'Search/:name',
+    component: SearchComponent
   },
   {
     path: 'Search',
@@ -75,6 +80,10 @@ export const AppRoutes: Routes = [
   {
     path: 'sellerProduct/addProduct/:id',
     component: AddproductComponent
+  },
+  {
+    path: 'aboutus',
+    component: AboutusComponent
   },
 
   {path: '**', component: ErrorComponent}

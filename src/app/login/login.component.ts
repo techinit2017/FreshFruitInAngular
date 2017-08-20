@@ -16,12 +16,14 @@ export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
+  isLoginSuccess = false;
   constructor(private route: ActivatedRoute,
     private router: Router, private loginService: LoginService, private alertService: AlertService) {
 
   }
 
   ngOnInit() {
+    this.isLoginSuccess =false;
     // reset login status
     this.loginService.logout();
     // get return url from route parameters or default to '/'
@@ -45,7 +47,8 @@ export class LoginComponent implements OnInit {
         if (AppSettings.IS_DEV) {
           console.log(this.returnUrl);
         }
-        this.router.navigate(['/']);
+        //this.router.navigate(['/']);
+        this.isLoginSuccess =true;
       }
       },
       error => {

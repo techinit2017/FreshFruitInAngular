@@ -10,6 +10,11 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
 function getSearchJsonObject(searchObj: ISearch) {
+   Object.keys(searchObj).forEach((key) => {
+     if(!searchObj[key]){
+      delete searchObj[key];
+     }
+   });
   let searchJsonObject = new ISearch();
   searchJsonObject = searchObj;
   if (searchObj.pageNumber == null) {
@@ -17,8 +22,19 @@ function getSearchJsonObject(searchObj: ISearch) {
   }
 
   if (searchObj.pageSize == null) {
-    searchJsonObject.pageSize = 10;
+    searchJsonObject.pageSize = 100;
   }
+
+  if(searchObj.pricedlimit && searchObj.pricedlimit=='>=' && searchObj.price){
+    searchJsonObject.priceAbove = searchObj.price.toString();
+  }
+
+  if(searchObj.pricedlimit && searchObj.pricedlimit=='<=' && searchObj.price){
+    searchJsonObject.priceBelow = searchObj.price.toString();
+  }
+ 
+
+
 
   return searchJsonObject;
 

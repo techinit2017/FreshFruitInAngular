@@ -34,7 +34,7 @@ export class IUser {
   dob: Date;
   aprroved: number;
   weightIn: string;
-
+  
 
 
 }

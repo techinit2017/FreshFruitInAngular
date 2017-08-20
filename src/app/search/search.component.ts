@@ -8,7 +8,9 @@ import {Component, OnInit} from '@angular/core';
 import {
   Router,
   RouterLink,
+  ActivatedRoute,
 } from '@angular/router';
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-search',
@@ -41,7 +43,7 @@ export class SearchComponent implements OnInit {
   searchPriceQuery: string;
 
   constructor(private searchService: SearchService, private router: Router, private masterDataService: MasterdataService
-    , private alertService: AlertService) {
+    , private alertService: AlertService,private route: ActivatedRoute) {
     this.query = '';
     this.searchObj = new ISearch();
     this.priceDelimiter = this.priceDelimiter.slice(this.priceDelimiter.length / 2);
@@ -50,6 +52,15 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const name: Observable<string> = this.route.params.map(p => p.name);
+    console.log(name);
+    if(name){
+      let searchObj = new ISearch();
+       name.subscribe(e => searchObj.type = e);
+
+       this.filterSearch(searchObj);
+    }
+
     this.search();
     this.getCountries();
     this.getProductByVariety(null);
@@ -106,16 +117,19 @@ export class SearchComponent implements OnInit {
   }
 
   filterSearch(searchObj: ISearch) {
-     console.log(searchObj);
+
+    this.iProduct = null;
+     // console.log(searchObj);
     if (AppSettings.IS_DEV) { 
       console.log(searchObj);
     }
     this.searchService.getSearchProduct(searchObj).then(result => {
-      console.log(result);
+     //  console.log(result);
       this.iProduct = result.products;
       this.count = result.count;
-      console.log(this.iProduct);
+     //  console.log(this.iProduct);
       if (this.count == 0){
+        console.log('No search result found.. Please try with different filter');
         this.alertService.success('No search result found.. Please try with different filter');
       }
       this.loading = false;

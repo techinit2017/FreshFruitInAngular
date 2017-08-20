@@ -1,144 +1,135 @@
-<div class="panel panel-primary">
-	<div class="panel-body">
-		<div class="table">
-			<div class="row">
-				<div class="col-xs-12 col-md-3">
-					<a href="#" class="thumbnail"> <img src="{{product.imagePath}}"
-						alt="{{product.type}}">
-					</a>
+<div class="panel-body">
+			 <nav class="navbar navbar-default" >
+				<div class="panel panel-primary">
+
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-primary"
+							style="background-color: #EB2026; font-style: bold; border: 1px solid; margin-right: 30px">Contact
+							Supplier</button>
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#">Edit</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">In-Active</a></li>
+
+						</ul>
+					</div>
 				</div>
-				<div class="col-md-9">
-					<div class="row">
-
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Id</span> {{product.id}}
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Type</span> {{product.type}}
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Variety</span> {{product.name}}
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Price</span> {{product.price}}
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">SellerId</span>
-								{{product.userProfile.id}}
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="input-group">
-								<span class="input-group-addon">Seller Name</span>
-								{{product.userProfile.companyName}}
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="input-group">
-								<span class="input-group-addon">Product Desc</span>
-								{{product.productDesc}}
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">Grade</span> {{product.grade}}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">Size</span> {{product.size}}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">Color</span> {{product.color}}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">MOQ</span>
-								{{product.minOrderQty}}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">Packaging</span>
-								{{product.packaging}}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<span class="input-group-addon">Is-Active</span>
-								
-								<div *ngIf="product.isActive==1">
-										Yes
+				
+				</nav>
+					<div class="container-fluid">
+							<div class="row">
+								<div class=" col-md-2">
+									 <img
+										src="assets/resources/apple.png" alt="Apple"
+										class="img-responsive">
+									
 								</div>
-									<div *ngIf="product.isActive==0">
-										No
+								<div class="col-md-10">
+									<div class="table-responsive">
+										<table class="table table-sm my_table"
+											style="background-color: #F9FFFE;">
+											<thead>
+												<tr>
+													<th><h4>ID</h4></th>
+													<th><h5>
+															{{product.id}}
+													</h5></th>
+													<th><h4>Type</h4></th>
+													<th><h5>
+															{{product.type}}
+													</h5></th>
+													<th><h4>Variety</h4></th>
+													<th><h5>
+															{{product.name}}
+													</h5></th>
+													<th><h4>Price</h4></th>
+													<th><h5>
+															{{product.price}}
+													</h5></th>
+				
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th><h4>Seller ID</h4></th>
+													<th><h5>
+															{{product.userProfile.id}}
+													</h5></th>
+													<th><h4>Seller Name</h4></th>
+													<th><h5>
+															{{product.userProfile.companyName}}
+													</h5></th>
+													<th><h4>Available From</h4></th>
+													<th><h5>
+															{{product.available}}
+													</h5></th>
+													<th><h4>Grade</h4></th>
+													<th><h5>
+															{{product.grade}}
+													</h5></th>
+												</tr>
+												<tr>
+													<th><h4>Size</h4></th>
+													<th><h5>
+															{{product.size}}
+													</h5></th>
+													<th><h4>Color</h4></th>
+													<th><h5>
+															{{product.color}}
+													</h5></th>
+													<th><h4>MOQ</h4></th>
+													<th><h5>
+															{{product.minOrderQty}}
+													</h5></th>
+													<th><h4>Packaging</h4></th>
+													<th><h5>
+															{{product.packaging}}
+													</h5></th>
+												</tr>
+												<tr>
+													<th><h4>Negotiable</h4></th>
+													<th><h5>
+															{{product.priceNegotiable}}
+													</h5></th>
+													<th><h4>M-unit</h4></th>
+													<th><h5>
+															{{product.measurement}}
+													</h5></th>
+													<th><h4>Description</h4></th>
+													<th><h5>
+															{{product.productDesc}}
+													</h5></th>
+				
+												</tr>
+											</tbody>
+										</table>
+				
 									</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Price</span> {{product.price}}
-							</div>
-
-						</div>
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Negotiable</span>
-								{{product.priceNegotiable}}
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">M-Unit</span>
-								{{product.measurement}}
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="input-group">
-								<span class="input-group-addon">Available From</span> {{product.available}}
-							</div>
-						</div>
-					</div>
-				</div>
+								</div>
+								
 			</div>
-
 		</div>
 
-	</div>
-</div>
-<!-- pager -->
-<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
-		(click)="setPage(1)">First</a></li>
-	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
-		(click)="setPage(pager.currentPage - 1)">Previous</a></li>
-	<li *ngFor="let page of pager.pages"
-		[ngClass]="{active:pager.currentPage === page}"><a
-		(click)="setPage(page)">{{page}}</a></li>
-	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-		<a (click)="setPage(pager.currentPage + 1)">Next</a>
-	</li>
-	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-		<a (click)="setPage(pager.totalPages)">Last</a>
-	</li>
-</ul>
+		<!-- pager -->
+								<!--<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+						<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+							(click)="setPage(1)">First</a></li>
+						<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+							(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+						<li *ngFor="let page of pager.pages"
+							[ngClass]="{active:pager.currentPage === page}"><a
+							(click)="setPage(page)">{{page}}</a></li>
+						<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+							<a (click)="setPage(pager.currentPage + 1)">Next</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+							<a (click)="setPage(pager.totalPages)">Last</a>
+						</li>
+					</ul>-->
+			
+
+		

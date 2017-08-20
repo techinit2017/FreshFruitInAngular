@@ -9,7 +9,10 @@ export class Sort {
   property: string[] = [];
 }
 
-
+export class Role{
+    menuNames: string[];
+    rolesRequired:string;
+}
 
 /*
 
