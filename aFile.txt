@@ -1,0 +1,292 @@
+Your global Angular CLI version (1.2.0) is greater than your local
+version (1.1.2). The local Angular CLI version is used.
+
+To disable this warning use "ng set --global warnings.versionMismatch=false".
+Hash: [1mdabb975e679e6c74673c[39m[22m
+Version: webpack [1m2.4.1[39m[22m
+Time: [1m36280[39m[22mms
+                                   [1mAsset[39m[22m       [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+[1m[32mpolyfills.66fc356c3cd773dba692.bundle.js[39m[22m    65.3 kB       [1m0[39m[22m  [1m[32m[39m[22mpolyfills
+     [1m[32mmain.4b517615d1a717939599.bundle.js[39m[22m  488 bytes       [1m1[39m[22m  [1m[32m[39m[22mmain
+   [1m[32mvendor.a72dff139c22beb22ecf.bundle.js[39m[22m     222 kB       [1m3[39m[22m  [1m[32m[39m[22mvendor
+   [1m[32minline.e610831cd2de235d1581.bundle.js[39m[22m    1.46 kB       [1m4[39m[22m  [1m[32m[39m[22minline
+  [1m[32mstyles.157c958a79b83839c160.bundle.css[39m[22m    42.7 kB       [1m2[39m[22m  [1m[32m[39m[22mstyles
+chunk    {[1m[33m0[39m[22m} [1m[32mpolyfills.66fc356c3cd773dba692.bundle.js[39m[22m (polyfills) 178 kB {[1m[33m4[39m[22m}[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m1[39m[22m} [1m[32mmain.4b517615d1a717939599.bundle.js[39m[22m (main) 732 bytes {[1m[33m3[39m[22m}[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m2[39m[22m} [1m[32mstyles.157c958a79b83839c160.bundle.css[39m[22m (styles) 69 bytes {[1m[33m4[39m[22m}[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m3[39m[22m} [1m[32mvendor.a72dff139c22beb22ecf.bundle.js[39m[22m (vendor) 850 kB[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m4[39m[22m} [1m[32minline.e610831cd2de235d1581.bundle.js[39m[22m (inline) 0 bytes[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+
+[1m[33mWARNING in polyfills.66fc356c3cd773dba692.bundle.js from UglifyJs
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_0_core_js_es6_reflect___default [polyfills.66fc356c3cd773dba692.bundle.js:1022,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_1_core_js_es7_reflect___default [polyfills.66fc356c3cd773dba692.bundle.js:1024,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_2_zone_js_dist_zone___default [polyfills.66fc356c3cd773dba692.bundle.js:1026,25]
+Condition always true [polyfills.66fc356c3cd773dba692.bundle.js:1827,2]
+Side effects in initialization of unused variable msie [polyfills.66fc356c3cd773dba692.bundle.js:3087,12]
+Side effects in initialization of unused variable targetZone [polyfills.66fc356c3cd773dba692.bundle.js:3366,20]
+Dropping unused variable typeOfDelegate [polyfills.66fc356c3cd773dba692.bundle.js:3521,24]
+Side effects in initialization of unused variable showError [polyfills.66fc356c3cd773dba692.bundle.js:2420,16]
+Condition left of || always false [polyfills.66fc356c3cd773dba692.bundle.js:2688,38]
+Condition left of || always false [polyfills.66fc356c3cd773dba692.bundle.js:2691,38]
+Non-strict equality against boolean: == false [polyfills.66fc356c3cd773dba692.bundle.js:4453,29]
+Side effects in initialization of unused variable Zone$1 [polyfills.66fc356c3cd773dba692.bundle.js:1839,4][39m[22m
+
+[1m[33mWARNING in main.4b517615d1a717939599.bundle.js from UglifyJs
+Dropping unreachable code [main.4b517615d1a717939599.bundle.js:24,0]
+Dropping unreachable code [main.4b517615d1a717939599.bundle.js:27,0]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_0__angular_core__ [main.4b517615d1a717939599.bundle.js:16,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_1__environments_environment__ [main.4b517615d1a717939599.bundle.js:17,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ [main.4b517615d1a717939599.bundle.js:18,25][39m[22m
+
+[1m[33mWARNING in vendor.a72dff139c22beb22ecf.bundle.js from UglifyJs
+Dropping unreachable code [vendor.a72dff139c22beb22ecf.bundle.js:9356,4]
+Declarations in unreachable code! [vendor.a72dff139c22beb22ecf.bundle.js:9356,4]
+Dropping unreachable code [vendor.a72dff139c22beb22ecf.bundle.js:13612,12]
+Declarations in unreachable code! [vendor.a72dff139c22beb22ecf.bundle.js:13612,12]
+Dropping unused function isDefaultChangeDetectionStrategy [vendor.a72dff139c22beb22ecf.bundle.js:813,9]
+Dropping unused function destroyPlatform [vendor.a72dff139c22beb22ecf.bundle.js:4503,9]
+Dropping unused function registerModuleFactory [vendor.a72dff139c22beb22ecf.bundle.js:5602,9]
+Dropping unused function getModuleFactory [vendor.a72dff139c22beb22ecf.bundle.js:5620,9]
+Dropping unused function asNativeElements [vendor.a72dff139c22beb22ecf.bundle.js:6622,9]
+Dropping unused function unwrapValue [vendor.a72dff139c22beb22ecf.bundle.js:8685,9]
+Dropping unused function createRendererType2 [vendor.a72dff139c22beb22ecf.bundle.js:8703,9]
+Dropping unused function interpolate [vendor.a72dff139c22beb22ecf.bundle.js:9133,9]
+Dropping unused function inlineInterpolate [vendor.a72dff139c22beb22ecf.bundle.js:9163,9]
+Dropping unused function anchorDef [vendor.a72dff139c22beb22ecf.bundle.js:9222,9]
+Dropping unused function elementDef [vendor.a72dff139c22beb22ecf.bundle.js:9272,9]
+Dropping unused function moduleProvideDef [vendor.a72dff139c22beb22ecf.bundle.js:9614,9]
+Dropping unused function moduleDef [vendor.a72dff139c22beb22ecf.bundle.js:9626,9]
+Dropping unused function createComponentFactory [vendor.a72dff139c22beb22ecf.bundle.js:9990,9]
+Dropping unused function getComponentViewDefinitionFactory [vendor.a72dff139c22beb22ecf.bundle.js:9997,9]
+Dropping unused function nodeValue [vendor.a72dff139c22beb22ecf.bundle.js:10523,9]
+Dropping unused function directiveDef [vendor.a72dff139c22beb22ecf.bundle.js:10842,9]
+Dropping unused function pipeDef [vendor.a72dff139c22beb22ecf.bundle.js:10871,9]
+Dropping unused function providerDef [vendor.a72dff139c22beb22ecf.bundle.js:10883,9]
+Dropping unused function queryDef [vendor.a72dff139c22beb22ecf.bundle.js:11420,9]
+Dropping unused function ngContentDef [vendor.a72dff139c22beb22ecf.bundle.js:11626,9]
+Dropping unused function purePipeDef [vendor.a72dff139c22beb22ecf.bundle.js:11679,9]
+Dropping unused function pureArrayDef [vendor.a72dff139c22beb22ecf.bundle.js:11687,9]
+Dropping unused function pureObjectDef [vendor.a72dff139c22beb22ecf.bundle.js:11694,9]
+Dropping unused function textDef [vendor.a72dff139c22beb22ecf.bundle.js:11937,9]
+Dropping unused function viewDef [vendor.a72dff139c22beb22ecf.bundle.js:12107,9]
+Dropping unused function overrideProvider [vendor.a72dff139c22beb22ecf.bundle.js:13993,9]
+Dropping unused function clearProviderOverrides [vendor.a72dff139c22beb22ecf.bundle.js:14000,9]
+Dropping unused function createNgModuleFactory [vendor.a72dff139c22beb22ecf.bundle.js:14010,9]
+Dropping unused function trigger$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14918,9]
+Dropping unused function animate$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14927,9]
+Dropping unused function group$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14935,9]
+Dropping unused function sequence$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14943,9]
+Dropping unused function style$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14951,9]
+Dropping unused function state$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14960,9]
+Dropping unused function keyframes$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14968,9]
+Dropping unused function transition$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14977,9]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default [vendor.a72dff139c22beb22ecf.bundle.js:9,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_merge___default [vendor.a72dff139c22beb22ecf.bundle.js:11,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_share___default [vendor.a72dff139c22beb22ecf.bundle.js:13,25]
+Side effects in initialization of unused variable __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default [vendor.a72dff139c22beb22ecf.bundle.js:15,25]
+Side effects in initialization of unused variable ANALYZE_FOR_ENTRY_COMPONENTS [vendor.a72dff139c22beb22ecf.bundle.js:732,4]
+Side effects in initialization of unused variable ContentChildren [vendor.a72dff139c22beb22ecf.bundle.js:760,4]
+Side effects in initialization of unused variable ContentChild [vendor.a72dff139c22beb22ecf.bundle.js:770,4]
+Side effects in initialization of unused variable ViewChildren [vendor.a72dff139c22beb22ecf.bundle.js:780,4]
+Side effects in initialization of unused variable ViewChild [vendor.a72dff139c22beb22ecf.bundle.js:790,4]
+Side effects in initialization of unused variable Component [vendor.a72dff139c22beb22ecf.bundle.js:840,4]
+Side effects in initialization of unused variable Output [vendor.a72dff139c22beb22ecf.bundle.js:864,4]
+Side effects in initialization of unused variable HostBinding [vendor.a72dff139c22beb22ecf.bundle.js:871,4]
+Side effects in initialization of unused variable HostListener [vendor.a72dff139c22beb22ecf.bundle.js:878,4]
+Dropping unused variable CUSTOM_ELEMENTS_SCHEMA [vendor.a72dff139c22beb22ecf.bundle.js:894,4]
+Dropping unused variable NO_ERRORS_SCHEMA [vendor.a72dff139c22beb22ecf.bundle.js:902,4]
+Side effects in initialization of unused variable ViewMetadata [vendor.a72dff139c22beb22ecf.bundle.js:944,4]
+Dropping unused variable ERROR_COMPONENT_TYPE [vendor.a72dff139c22beb22ecf.bundle.js:1190,4]
+Side effects in initialization of unused variable PACKAGE_ROOT_URL [vendor.a72dff139c22beb22ecf.bundle.js:3117,4]
+Side effects in initialization of unused variable ModuleWithComponentFactories [vendor.a72dff139c22beb22ecf.bundle.js:3165,4]
+Side effects in initialization of unused variable COMPILER_OPTIONS [vendor.a72dff139c22beb22ecf.bundle.js:3264,4]
+Side effects in initialization of unused variable CodegenComponentFactoryResolver [vendor.a72dff139c22beb22ecf.bundle.js:3450,4]
+Dropping unused variable wtfStartTimeRange [vendor.a72dff139c22beb22ecf.bundle.js:3749,4]
+Dropping unused variable wtfEndTimeRange [vendor.a72dff139c22beb22ecf.bundle.js:3756,4]
+Side effects in initialization of unused variable RenderComponentType [vendor.a72dff139c22beb22ecf.bundle.js:5119,4]
+Side effects in initialization of unused variable RenderDebugInfo [vendor.a72dff139c22beb22ecf.bundle.js:5142,4]
+Side effects in initialization of unused variable Renderer2Interceptor [vendor.a72dff139c22beb22ecf.bundle.js:5333,4]
+Side effects in initialization of unused variable RootRenderer [vendor.a72dff139c22beb22ecf.bundle.js:5350,4]
+Side effects in initialization of unused variable NgModuleFactoryLoader [vendor.a72dff139c22beb22ecf.bundle.js:5583,4]
+Side effects in initialization of unused variable moduleFactories [vendor.a72dff139c22beb22ecf.bundle.js:5594,4]
+Side effects in initialization of unused variable EmbeddedViewRef [vendor.a72dff139c22beb22ecf.bundle.js:6374,4]
+Side effects in initialization of unused variable ValueUnwrapper [vendor.a72dff139c22beb22ecf.bundle.js:6751,4]
+Side effects in initialization of unused variable TRANSLATIONS [vendor.a72dff139c22beb22ecf.bundle.js:8330,4]
+Side effects in initialization of unused variable TRANSLATIONS_FORMAT [vendor.a72dff139c22beb22ecf.bundle.js:8334,4]
+Side effects in initialization of unused variable DebugContext [vendor.a72dff139c22beb22ecf.bundle.js:8503,4]
+Dropping unused variable EMPTY_ARRAY [vendor.a72dff139c22beb22ecf.bundle.js:9204,4]
+Dropping unused variable EMPTY_MAP [vendor.a72dff139c22beb22ecf.bundle.js:9205,4]
+Side effects in initialization of unused variable ComponentFactory_ [vendor.a72dff139c22beb22ecf.bundle.js:10000,4]
+Side effects in initialization of unused variable NgModuleFactory_ [vendor.a72dff139c22beb22ecf.bundle.js:14013,4]
+Dropping unused variable AUTO_STYLE$$1 [vendor.a72dff139c22beb22ecf.bundle.js:14911,4]
+Dropping unused function __rest [vendor.a72dff139c22beb22ecf.bundle.js:15114,9]
+Dropping unused function __decorate [vendor.a72dff139c22beb22ecf.bundle.js:15124,9]
+Dropping unused function __param [vendor.a72dff139c22beb22ecf.bundle.js:15131,9]
+Dropping unused function __metadata [vendor.a72dff139c22beb22ecf.bundle.js:15135,9]
+Dropping unused function __awaiter [vendor.a72dff139c22beb22ecf.bundle.js:15139,9]
+Dropping unused function __generator [vendor.a72dff139c22beb22ecf.bundle.js:15148,9]
+Dropping unused function __exportStar [vendor.a72dff139c22beb22ecf.bundle.js:15176,9]
+Dropping unused function __spread [vendor.a72dff139c22beb22ecf.bundle.js:15208,9]
+Dropping unused function __asyncGenerator [vendor.a72dff139c22beb22ecf.bundle.js:15218,9]
+Dropping unused function __asyncDelegator [vendor.a72dff139c22beb22ecf.bundle.js:15230,9]
+Dropping unused function __asyncValues [vendor.a72dff139c22beb22ecf.bundle.js:15236,9]
+Side effects in initialization of unused variable __assign [vendor.a72dff139c22beb22ecf.bundle.js:15106,4]
+Dropping unused function enableDebugTools [vendor.a72dff139c22beb22ecf.bundle.js:20758,9]
+Dropping unused function disableDebugTools [vendor.a72dff139c22beb22ecf.bundle.js:20768,9]
+Side effects in initialization of unused variable AngularProfiler [vendor.a72dff139c22beb22ecf.bundle.js:20680,4]
+Side effects in initialization of unused variable By [vendor.a72dff139c22beb22ecf.bundle.js:20783,4]
+Side effects in initialization of unused variable VERSION [vendor.a72dff139c22beb22ecf.bundle.js:20847,4]
+Dropping unused function isPlatformBrowser [vendor.a72dff139c22beb22ecf.bundle.js:25195,9]
+Dropping unused function isPlatformServer [vendor.a72dff139c22beb22ecf.bundle.js:25204,9]
+Dropping unused function isPlatformWorkerApp [vendor.a72dff139c22beb22ecf.bundle.js:25213,9]
+Dropping unused function isPlatformWorkerUi [vendor.a72dff139c22beb22ecf.bundle.js:25222,9]
+Side effects in initialization of unused variable LOCATION_INITIALIZED [vendor.a72dff139c22beb22ecf.bundle.js:21399,4]
+Dropping unused variable NgFor [vendor.a72dff139c22beb22ecf.bundle.js:23066,4]
+Side effects in initialization of unused variable VERSION [vendor.a72dff139c22beb22ecf.bundle.js:25240,4][39m[22m
+
+[1m[31mERROR in ./src/main.ts
+Module not found: Error: Can't resolve './$$_gendir/app/app.module.ngfactory' in 'D:\tech_init\Visual_Studio_Workspace\FreshFruitInAngular\src'
+ @ ./src/main.ts 4:0-74
+ @ multi ./src/main.ts[39m[22m
+Child [1msrc\app\search\search.component.html[39m[22m:
+                                                                                            [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/search/search.component.html[39m[22m  6.95 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/search/search.component.html[39m[22m 4.3 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\app.component.html[39m[22m:
+                                                                                  [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/app.component.html[39m[22m  5.07 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/app.component.html[39m[22m 2.42 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\product\product.component.html[39m[22m:
+                                                                                              [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/product/product.component.html[39m[22m  8.22 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/product/product.component.html[39m[22m 5.57 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\contact\contact.component.html[39m[22m:
+                                                                                              [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/contact/contact.component.html[39m[22m  4.28 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/contact/contact.component.html[39m[22m 1.64 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\login\login.component.html[39m[22m:
+                                                                                          [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/login/login.component.html[39m[22m  5.04 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/login/login.component.html[39m[22m 2.39 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\home\home.component.html[39m[22m:
+                                                                                        [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/home/home.component.html[39m[22m  7.27 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/home/home.component.html[39m[22m 4.62 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\error\error.component.html[39m[22m:
+                                                                                          [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/error/error.component.html[39m[22m  2.69 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/error/error.component.html[39m[22m 47 bytes[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\user\user.component.html[39m[22m:
+                                                                                        [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/user/user.component.html[39m[22m  13.6 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/user/user.component.html[39m[22m 10.9 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\alert\alert.component.html[39m[22m:
+                                                                                          [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/alert/alert.component.html[39m[22m  2.84 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/alert/alert.component.html[39m[22m 191 bytes[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\test\test.component.html[39m[22m:
+                                                                                        [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/test/test.component.html[39m[22m  5.32 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/test/test.component.html[39m[22m 2.67 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\forgetpassword\forgetpassword.component.html[39m[22m:
+                                                                                                            [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/forgetpassword/forgetpassword.component.html[39m[22m  7.19 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/forgetpassword/forgetpassword.component.html[39m[22m 4.54 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\register\register.component.html[39m[22m:
+                                                                                                [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/register/register.component.html[39m[22m  12.2 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/register/register.component.html[39m[22m 9.56 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\demand\demand.component.html[39m[22m:
+                                                                                            [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/demand.component.html[39m[22m  4.11 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/demand.component.html[39m[22m 1.46 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\datatable\datatable.component.html[39m[22m:
+                                                                                                  [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/datatable/datatable.component.html[39m[22m  4.01 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/datatable/datatable.component.html[39m[22m 1.36 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\sellerproduct\addproduct\addproduct.component.html[39m[22m:
+                                                                                                                  [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/addproduct/addproduct.component.html[39m[22m  10.2 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/addproduct/addproduct.component.html[39m[22m 7.56 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\sellerproduct\sellerproduct.component.html[39m[22m:
+                                                                                                          [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/sellerproduct.component.html[39m[22m  9.49 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/sellerproduct.component.html[39m[22m 6.84 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\demand\adddemand\adddemand.component.html[39m[22m:
+                                                                                                         [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/adddemand/adddemand.component.html[39m[22m  7.07 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/adddemand/adddemand.component.html[39m[22m 4.42 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1mhtml-webpack-plugin for "index.html"[39m[22m:
+         [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mindex.html[39m[22m  3.69 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mindex.html[39m[22m 1.01 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\search\search.component.css[39m[22m:
+                                                                                           [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/search/search.component.css[39m[22m  5.87 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/search/search.component.css[39m[22m 3.17 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\app.component.css[39m[22m:
+                                                                                 [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/app.component.css[39m[22m  7.75 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/app.component.css[39m[22m 5.05 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\contact\contact.component.css[39m[22m:
+                                                                                             [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/contact/contact.component.css[39m[22m  5.41 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/contact/contact.component.css[39m[22m 2.71 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\product\product.component.css[39m[22m:
+                                                                                             [1mAsset[39m[22m   [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/product/product.component.css[39m[22m  11 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/product/product.component.css[39m[22m 8.31 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\login\login.component.css[39m[22m:
+                                                                                         [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/login/login.component.css[39m[22m  5.36 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/login/login.component.css[39m[22m 2.66 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\home\home.component.css[39m[22m:
+                                                                                       [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/home/home.component.css[39m[22m  5.21 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/home/home.component.css[39m[22m 2.51 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\error\error.component.css[39m[22m:
+                                                                                         [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/error/error.component.css[39m[22m  5.22 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/error/error.component.css[39m[22m 2.52 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\user\user.component.css[39m[22m:
+                                                                                       [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/user/user.component.css[39m[22m  5.27 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/user/user.component.css[39m[22m 2.57 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\alert\alert.component.css[39m[22m:
+                                                                                         [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/alert/alert.component.css[39m[22m  5.21 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/alert/alert.component.css[39m[22m 2.51 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\forgetpassword\forgetpassword.component.css[39m[22m:
+                                                                                                           [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/forgetpassword/forgetpassword.component.css[39m[22m  5.64 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/forgetpassword/forgetpassword.component.css[39m[22m 2.94 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\register\register.component.css[39m[22m:
+                                                                                               [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/register/register.component.css[39m[22m  5.27 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/register/register.component.css[39m[22m 2.57 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\test\test.component.css[39m[22m:
+                                                                                       [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/test/test.component.css[39m[22m  5.21 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/test/test.component.css[39m[22m 2.51 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\demand\demand.component.css[39m[22m:
+                                                                                           [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/demand.component.css[39m[22m  5.21 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/demand.component.css[39m[22m 2.51 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\datatable\datatable.component.css[39m[22m:
+                                                                                                 [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/datatable/datatable.component.css[39m[22m  5.21 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/datatable/datatable.component.css[39m[22m 2.51 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\sellerproduct\addproduct\addproduct.component.css[39m[22m:
+                                                                                                                 [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/addproduct/addproduct.component.css[39m[22m  5.31 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/addproduct/addproduct.component.css[39m[22m 2.61 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\sellerproduct\sellerproduct.component.css[39m[22m:
+                                                                                                         [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/sellerproduct.component.css[39m[22m  5.27 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/sellerproduct/sellerproduct.component.css[39m[22m 2.57 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1msrc\app\demand\adddemand\adddemand.component.css[39m[22m:
+                                                                                                        [1mAsset[39m[22m     [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/adddemand/adddemand.component.css[39m[22m  5.27 kB       [1m0[39m[22m  [1m[32m[39m[22m
+    chunk    {[1m[33m0[39m[22m} [1m[32mD:/tech_init/Visual_Studio_Workspace/FreshFruitInAngular/src/app/demand/adddemand/adddemand.component.css[39m[22m 2.57 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m
+Child [1mextract-text-webpack-plugin[39m[22m:
+    chunk    {[1m[33m0[39m[22m} [1m[32mextract-text-webpack-plugin-output-filename[39m[22m 45.5 kB[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m

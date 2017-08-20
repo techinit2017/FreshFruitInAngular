@@ -8,6 +8,22 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { of } from 'rxjs/observable/of';
+/**
+ * Function to do Access autorization for buyer & Seller
+ * @param user 
+ */
+function doAuthorization( user: IUser){
+  console.log(user);
+  if(!this.user){
+    
+    return false;
+  }else if(this.user && this.user.userType !='Admin' && this.user.aprroved!=1){
+    
+    return false;
+  }
+  console.log('End of Do Authorization')
+  return true;
+}
 
 @Injectable()
 export class LoginService {
@@ -19,9 +35,17 @@ export class LoginService {
     const options = new RequestOptions({headers: headers});
     return this.http.post(AppSettings.USER_AUTH_SERVICE, userJson, options).map((response: Response) => {
       // login successful if there's a jwt token in the response
+      
       let user = response.json();
-
-      if (user) {
+      this.user =user;
+     
+     // let autoFlag = doAuthorization(this.user);
+      // console.log(autoFlag);
+      if(this.user && this.user.userType !='Admin' && this.user.aprroved!=1){
+        console.log('[Login is not authorized]' + JSON.stringify(this.user));
+         return Observable.throw(new Error('Login is not authorized'));
+      }
+      else if (user) {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
       }

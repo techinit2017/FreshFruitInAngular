@@ -36,10 +36,17 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
       data => {
+      
+        if(data && data.error){
+          this.alertService.error(data.error);
+          this.loading = false;
+        }else{
+        
         if (AppSettings.IS_DEV) {
           console.log(this.returnUrl);
         }
         this.router.navigate(['/']);
+      }
       },
       error => {
         if (AppSettings.IS_DEV) {
