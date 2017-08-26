@@ -4,7 +4,6 @@ import {UserService} from './user/user.service';
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { menuItems } from "app/_model/menuItems";
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,7 +17,7 @@ export class AppComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.getMenu();
@@ -39,7 +38,7 @@ export class AppComponent {
     if (!localStorage.getItem('currentUser')) {
       console.log('logout successfully done!!');
       this.currentUser = null;
-      //this.router.navigate(['Home']);
+      this.router.navigate(['Home']);
     }
 
     

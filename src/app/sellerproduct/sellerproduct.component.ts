@@ -4,17 +4,18 @@ import { SellerproductService } from "app/sellerproduct/sellerproduct.service";
 import { IProduct } from "app/product/product";
 import { AlertService } from "app/_services/alert.service";
 import { AppSettings } from "app/AppSettings";
+import { ProductService } from "app/product/product.service";
 
 @Component({
   selector: 'app-sellerproduct',
   templateUrl: './sellerproduct.component.html',
   styleUrls: ['./sellerproduct.component.css'],
-  providers: [SellerproductService, AlertService],
+  providers: [SellerproductService, AlertService,ProductService],
 })
 export class SellerproductComponent implements OnInit {
  currentUser: IUser;
  products: IProduct[];
-  constructor(private sellerservice: SellerproductService,private alertService: AlertService) {
+  constructor(private sellerservice: SellerproductService,private alertService: AlertService,private productService:ProductService) {
 
    }
 
@@ -40,6 +41,19 @@ export class SellerproductComponent implements OnInit {
   onRequestComplete() {
     if (AppSettings.IS_DEV){
       console.log('Finished');
+    }
+  }
+
+  changeProduct(product:IProduct,status:number){
+    if(product){
+      product.isActive =status;
+      this.productService.save(product).subscribe(data => {
+        this.getSellerProduct();
+      },
+      err =>{
+                this.alertService.error('Error: Product Creation');
+            },
+              () => this.onRequestComplete());;
     }
   }
 }

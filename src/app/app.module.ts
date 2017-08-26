@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule, FormControlDirective, FormGroupDirective } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule, MdButtonModule, MdNativeDateModule } from '@angular/material';
+import { MaterialModule, MdButtonModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -30,6 +30,8 @@ import { SellerproductComponent } from './sellerproduct/sellerproduct.component'
 import { AddproductComponent } from './sellerproduct/addproduct/addproduct.component';
 import { AdddemandComponent } from './demand/adddemand/adddemand.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { MyprofileComponent } from './login/myprofile/myprofile.component';
+
 // import { APP_BASE_HREF, Location } from '@angular/common';
 
 @NgModule({
@@ -51,15 +53,15 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     SellerproductComponent,
     AddproductComponent,
     AdddemandComponent,
-    AboutusComponent
-  ],
+    AboutusComponent,
+    MyprofileComponent,
+ ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MdNativeDateModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, initialNavigation: 'enabled' }),
   ],

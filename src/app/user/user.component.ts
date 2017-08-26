@@ -185,4 +185,17 @@ export class UserComponent implements OnInit {
       } );
       
   }
+
+  onReset(){
+    // clear all select
+    this.user.currentOpCountryArray = null;
+    this.user.countryOfOperationArray=null;
+    this.user.secretQuestion =null;
+    this.user.primaryActivity=null;
+    this.user.operationSince =null;
+    this.user.typeFruitVarietyArray = null;
+    this.user.typeFruit=null;
+    this.user.country =null;
+    this.user.userType = null;
+  }
 }

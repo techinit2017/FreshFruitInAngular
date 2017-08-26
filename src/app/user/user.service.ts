@@ -70,6 +70,18 @@ export class UserService {
       return this.http.put(AppSettings.PUT_USER_SAVE, param, options).map(res => res.json()).catch(this.handleError);
     }
   }
+
+
+  resetPassword(user: IUser) {
+
+    const json = JSON.stringify(user);
+    const param = json;
+    console.log(json);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+      return this.http.put(AppSettings.POST_PASSWORD_RESET, param, options).map(res => res.json()).catch(this.handleError);
+    
+  }
   /**
    * Approve User Service
    * @param user 

@@ -66,29 +66,16 @@ export class LoginService {
   }
 
 
-  validateRecoveryIdentify(username: string): Observable<IUser> {
-   return this.http.get(AppSettings.GET_USER_BY_IDENTITY + username).map((response: Response) => <IUser>response.json())
+  validateRecoveryIdentify(user: IUser): Observable<IUser> {
+    const userJson = JSON.stringify(user);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+   return this.http.post(AppSettings.POST_FORGET_PASSWORD_VALIDATE,userJson,options).map((response: Response) => <IUser>response.json())
       .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))
         }
-        //  this.user = data;
       }) .catch(this.handleError);
-    
-    // console.log(this.user);
-    /* if (!this.user) {
-      user = this.http.get(AppSettings.USER_GET_BY_EMAIL + username + '/').map((response: Response) => <IUser>response.json())
-        .do(data => {
-          if (AppSettings.IS_DEV) {
-            console.log(JSON.stringify(data))
-          }
-            this.user = data;
-        })
-        .catch(this.handleError);
-    }
-
-    return user; */
-
-
+  
   }
 }

@@ -20,6 +20,7 @@ import {DemandComponent} from './demand/demand.component';
 import { AddproductComponent } from './sellerproduct/addproduct/addproduct.component';
 import {SellerproductComponent} from './sellerproduct/sellerproduct.component';
 import { AboutusComponent } from "app/aboutus/aboutus.component";
+import { MyprofileComponent } from "app/login/myprofile/myprofile.component";
 
 export const AppRoutes: Routes = [
   {
@@ -82,8 +83,16 @@ export const AppRoutes: Routes = [
     component: AddproductComponent
   },
   {
+    path: 'sellerProduct/editProduct/:id/:pid',
+    component: AddproductComponent
+  },
+  {
     path: 'aboutus',
     component: AboutusComponent
+  },
+  {
+    path: 'myprofile',
+    component: MyprofileComponent
   },
 
   {path: '**', component: ErrorComponent}

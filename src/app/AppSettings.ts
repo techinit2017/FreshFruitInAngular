@@ -27,8 +27,12 @@ export class AppSettings {
   // End Point GET_USER
   public static GET_USER_BY_IDENTITY = AppSettings.IP_ADDRESS + 'profile/getUserProfileByUniqueIdentity/';
 
+  public static POST_FORGET_PASSWORD_VALIDATE = AppSettings.IP_ADDRESS + 'profile/validate';
+  public static POST_PASSWORD_RESET = AppSettings.IP_ADDRESS + 'profile/resetPassword';
+
   // product End point
   public static GET_PRODUCTS = AppSettings.IP_ADDRESS + 'product/getAllProducts';
+  public static GET_PRODUCT_BY_ID = AppSettings.IP_ADDRESS + 'product/getProductByID';
   public static POST_PRODUCT = AppSettings.IP_ADDRESS + 'product/create';
   public static PUT_PRODUCT = AppSettings.IP_ADDRESS + 'product/save';
   // product Search End point

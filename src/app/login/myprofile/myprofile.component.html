@@ -1,0 +1,263 @@
+<div class="panel panel-default ffp-mt-10">
+  <div class="panel-heading">
+    <h3 class="panel-title">My Profile</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2 col-md-2 sidebar">
+        <div class="mini-submenu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </div>
+        <div class="list-group">
+          <span class="list-group-item active">
+                    Settings
+                    <span class="pull-right" id="slide-submenu">
+                        <i class="fa fa-times"></i>
+                    </span>
+          </span>
+          <a class="list-group-item" (click)="onLinkClick('PERSONAL_PROFILE')">
+                    <i class="fa fa-comment-o"></i> Personal Profile
+                </a>
+          <a class="list-group-item" (click)="onLinkClick('EMAIL_CHANGE')">
+                    <i class="fa fa-search"></i> Change Email
+                </a>
+          <a class="list-group-item" (click)="onLinkClick('PASSWORD_CHANGE')">
+                    <i class="fa fa-user"></i> Change Password
+                </a>
+          <a class="list-group-item" (click)="onLinkClick('PROFESSIONAL_PROFILE')">
+                    <i class="fa fa-folder-open-o"></i> Professional Profile <span class="badge"></span>
+                </a>
+
+        </div>
+      </div>
+      <div class="container">
+        <alert></alert>
+        <div class="table-responsive panel panel-info" *ngIf="link=='PERSONAL_PROFILE'">
+          <div class="panel-heading">
+            <h3 class="panel-title">PERSONAL_PROFILE</h3>
+          </div>
+          <form #Form="ngForm" (ngSubmit)="updateProfile()" novalidate>
+            <table class="table  table-bordered">
+              <tr>
+                <th>ID</th>
+                <td>{{myProfile.id}}</td>
+              </tr>
+              <tr>
+                <th>CompanyName</th>
+                <td> <input class="form-control" name="companyName" placeholder="Company Name" [(ngModel)]="myProfile.companyName"></td>
+
+              </tr>
+
+              <tr>
+                <th>First Name</th>
+                <td> <input class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="myProfile.firstName"></td>
+
+              </tr>
+              <tr>
+                <th>Last Name</th>
+                <td> <input class="form-control" name="LastName" placeholder="Last Name" [(ngModel)]="myProfile.lastName"></td>
+
+              </tr>
+              <tr>
+                <th>User Type</th>
+                <td> {{myProfile.userType}}</td>
+              </tr>
+              <tr>
+                <th>UserName</th>
+                <td> {{myProfile.userName}}</td>
+              </tr>
+              <tr>
+                <th>PhoneNo.</th>
+                <td><input class="form-control" name="phoneNumber"  [(ngModel)]="myProfile.phoneNumber">                  </td>
+              </tr>
+              <tr>
+                <th>Alternate No.</th>
+                <td><input class="form-control" name="alterNateNumber"  [(ngModel)]="myProfile.secondaryContact">                  </td>
+              </tr>
+
+              <tr>
+                <th>Address</th>
+                <td><input class="form-control" name="address"  [(ngModel)]="myProfile.address"> </td>
+              </tr>
+
+              <tr>
+                <th>City</th>
+                <td><input class="form-control" name="city"  [(ngModel)]="myProfile.city"> </td>
+              </tr>
+              <tr>
+                <th>Country</th>
+                <td>
+                  <md-select name="AdCountry" class="form-control form-control-height" [(ngModel)]="myProfile.country">
+                    <md-option *ngFor="let name of country" [value]="name.country">{{ name.country }}</md-option>
+                  </md-select>
+                </tr>
+            </table>
+            <tr>
+              <td colspan=2>
+                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-primary navbar-btn ffp-ml-10" type="reset">Reset</button>
+              </td>
+
+            </tr>
+          </form>
+        </div>
+
+
+        <div class="table-responsive panel panel-info" *ngIf="link=='EMAIL_CHANGE'">
+          <div class="panel-heading">
+            <h3 class="panel-title">EMAIL_CHANGE</h3>
+          </div>
+          <form #emailForm="ngForm" (ngSubmit)="updateProfile()" novalidate>
+            <table class="table  table-bordered">
+              <tr>
+                <th>Email Address</th>
+                <td> <input type="email" class="form-control" name="EmailID" placeholder="Email Address" [(ngModel)]="myProfile.emailId"></td>
+
+              </tr>
+              <tr>
+                <td colspan=2>
+                  <button class="btn btn-primary" type="submit">Save</button>
+                  <button class="btn btn-primary navbar-btn ffp-ml-10" type="reset">Reset</button>
+                </td>
+
+              </tr>
+            </table>
+          </form>
+        </div>
+
+        <div class="table-responsive panel panel-info" *ngIf="link=='PASSWORD_CHANGE'">
+          <div class="panel-heading">
+            <h3 class="panel-title">PASSWORD_CHANGE</h3>
+          </div>
+          <form #passwordForm="ngForm" (ngSubmit)="changePassword(passwordForm)" novalidate>
+            <table class="table  table-bordered">
+              <tr>
+                <th>Password</th>
+                <td> <input type="password" ngModel class="form-control" name="password" placeholder="Password"></td>
+
+              </tr>
+              <tr>
+                <th>Confirm Password</th>
+                <td> <input class="form-control" ngModel name="confirmPassword" placeholder="Confirm Password"></td>
+              </tr>
+              <tr>
+                <td colspan=2>
+                  <button class="btn btn-primary" type="submit">Save</button>
+                  <button class="btn btn-primary navbar-btn ffp-ml-10" type="reset">Reset</button>
+                </td>
+
+              </tr>
+            </table>
+          </form>
+        </div>
+
+        <div class="table-responsive panel panel-info" *ngIf="link=='PROFESSIONAL_PROFILE'">
+          <div class="panel-heading">
+            <h3 class="panel-title">PROFESSIONAL_PROFILE</h3>
+          </div>
+          <form #Form="ngForm" (ngSubmit)="updateProfile()" novalidate>
+            <table class="table  table-bordered">
+              <tr>
+                <th>Fruit Type</th>
+                <td>
+                  <md-select class="form-control form-control-height" [(ngModel)]="myProfile.typeFruit" [ngModelOptions]="{standalone: true}">
+                    <md-option *ngFor="let name of productlist" [value]="name">{{name}}</md-option>
+                  </md-select>
+                </td>
+
+              </tr>
+
+              <tr>
+                <th>Variety</th>
+                <td>
+                  <md-select class="form-control form-control-height" [(ngModel)]="myProfile.typeFruitVarietyArray" [ngModelOptions]="{standalone: true}"
+                    multiple>
+                    <md-option *ngFor="let name of variety" [value]="name.variety">{{name.variety }}
+                    </md-option>
+                  </md-select>
+                </td>
+
+              </tr>
+              <tr>
+                <th>SecurityQuestion</th>
+                <td>
+                  <div class="col-md-6">
+                    <md-select name="secretQuestion" [(ngModel)]="myProfile.secretQuestion" class="form-control form-control-height">
+                      <md-option *ngFor="let name of securityQuestions" [value]="name.variety">{{ name.variety }}</md-option>
+                    </md-select>
+                  </div>
+                  <div class="col-md-4">
+                    <input name="secuAns" [(ngModel)]="myProfile.secretAnswer" class="form-control form-control-height" placeholder="Security Answer"
+                    />
+                  </div>
+
+                </td>
+
+              </tr>
+              <tr>
+                <th>Primary Activity</th>
+                <td *ngIf="myProfile.userType!='Buyer'">
+                  <md-select name="primaryActivityS" class="form-control form-control-height" [(ngModel)]="myProfile.primaryActivity">
+                    <md-option *ngFor="let name of primaryActivitySeller" [value]="name">{{ name }}</md-option>
+                  </md-select>
+                </td>
+                <td *ngIf="myProfile.userType=='Buyer'">
+                  <md-select name="primaryActivityB" class="form-control form-control-height" [(ngModel)]="myProfile.primaryActivity">
+                    <md-option *ngFor="let name of primaryActivityBuyer" [value]="name">{{ name }}</md-option>
+                  </md-select>
+                </td>
+              </tr>
+              <tr>
+                <th>Operational Year</th>
+                <td>
+                  <md-select name="year" class="form-control form-control-height" [(ngModel)]="myProfile.operationSince">
+                    <md-option *ngFor="let year of years" [value]="year">{{year }}</md-option>
+                  </md-select>
+                </td>
+              </tr>
+              <tr>
+                <th>Measurement</th>
+                <td><input name="weightIn" type="text" [(ngModel)]="myProfile.weightIn" class="form-control" /></td>
+              </tr>
+              <tr>
+                <th>Annual Production/Availability</th>
+                <td><input name="annualOpQuantity" type="text" [(ngModel)]="myProfile.annualOpQuantity" class="form-control "
+                  /></td>
+              </tr>
+              <tr>
+                <th>Country of production </th>
+                <td>
+                  <md-select name="country" name="ctryProd" class="form-control form-control-height" [(ngModel)]="myProfile.countryOfOperationArray"
+                    multiple>
+                    <md-option *ngFor="let name of country" [value]="name.country">{{ name.country }}</md-option>
+                  </md-select>
+                </td>
+              </tr>
+              <tr>
+                <th>Current Selling Markets</th>
+                <td>
+                  <md-select name="currOpCountry" class="form-control form-control-height" [(ngModel)]="myProfile.currentOpCountryArray" multiple>
+                    <md-option *ngFor="let name of country" [value]="name.country">{{ name.country }}</md-option>
+                  </md-select>
+                </td>
+
+              </tr>
+              <tr>
+                <td colspan=2>
+                  <button class="btn btn-primary" type="submit">Save</button>
+                  <button class="btn btn-primary navbar-btn ffp-ml-10" type="reset">Reset</button>
+                </td>
+
+              </tr>
+            </table>
+          </form>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

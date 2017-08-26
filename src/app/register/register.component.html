@@ -214,9 +214,10 @@
 					</div>
 	
 					<div class="col-lg-6">
-						<md-select placeholder="Country of production "
+						<md-select name="ctryProd" placeholder="Country of production "
 							class="form-control" [(ngModel)]="user.countryOfOperationArray"
-							[ngModelOptions]="{standalone: true}" multiple> <md-option
+							[ngModelOptions]="{standalone: true}" multiple>
+							<md-option
 							*ngFor="let name of country" [value]="name.country">{{
 						name.country }}</md-option> </md-select>
 	
@@ -233,7 +234,7 @@
 				<br>
 				<div class="row">
 						<div class="col-lg-6">
-								<md-select placeholder="Current Selling Markets"
+								<md-select placeholder="Current Selling Markets" 
 									class="form-control" [(ngModel)]="user.currentOpCountryArray"
 									[ngModelOptions]="{standalone: true}" multiple> <md-option
 									*ngFor="let name of country" [value]="name.country">{{
@@ -245,7 +246,7 @@
 			
 									<button class="btn btn-primary"
 										[disabled]="!userForm.valid">Save</button>
-									<button class="btn btn-primary navbar-btn ffp-ml-10" type="reset">Reset</button>
+									<button class="btn btn-primary navbar-btn ffp-ml-10" type="reset" (click)="onReset()">Reset</button>
 			
 								</div>
 							</div>

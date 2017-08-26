@@ -25,9 +25,10 @@
 									Action <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Edit</a></li>
+									<li><a [routerLink]="['/sellerProduct/editProduct',currentUser.id,product.id]">Edit</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="#">In-Active</a></li>
+									<li *ngIf="product.isActive"><a (click)="changeProduct(product,0)">In-Active</a></li>
+									<li *ngIf="!product.isActive"><a (click)="changeProduct(product,1)">Active</a></li>
 		
 								</ul>
 							</div>
@@ -116,6 +117,10 @@
 															<th><h4>Description</h4></th>
 															<th><h5>
 																	{{product.productDesc}}
+															</h5></th>
+															<th><h4>Status</h4></th>
+															<th><h5>
+																	{{product.isActive==1?'Active':'In-Active'}}
 															</h5></th>
 						
 														</tr>

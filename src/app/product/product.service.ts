@@ -28,6 +28,20 @@ export class ProductService {
       })
       .catch(this.handleError);
   }
+
+  /**
+   * Get list of Products
+   */
+  getProductById(id:number): Observable<IProduct> {
+    return this.http.get(AppSettings.GET_PRODUCT_BY_ID +"/" + id).map((response: Response) => <IProduct[]>response.json())
+      .do(data => {
+        if (AppSettings.IS_DEV) {
+          console.log(JSON.stringify(data))
+        }
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
     console.error(error.status);
     // if (error.status === 404) {

@@ -4,7 +4,7 @@ import {MasterdataService} from '../_services/masterdata.service';
 import {IProduct} from '../product/product';
 import {ISearch, Country, PriceDelimiter, Availbility, ProductVariety} from './search';
 import {SearchService} from './search.service';
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   Router,
   RouterLink,
@@ -18,7 +18,8 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./search.component.css'],
   providers: [SearchService, MasterdataService, AlertService],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit,OnDestroy {
+
   // form UI component controller variable
   loading = false;
   count;
@@ -53,11 +54,11 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     const name: Observable<string> = this.route.params.map(p => p.name);
-    console.log(name);
-    if(name){
+    let searchQuery:string;
+    name.subscribe(e => searchQuery = e);
+    if(searchQuery){
       let searchObj = new ISearch();
-       name.subscribe(e => searchObj.type = e);
-
+      searchObj.type =searchQuery;
        this.filterSearch(searchObj);
     }
 
@@ -118,7 +119,7 @@ export class SearchComponent implements OnInit {
 
   filterSearch(searchObj: ISearch) {
 
-    this.iProduct = null;
+    // this.iProduct = null;
      // console.log(searchObj);
     if (AppSettings.IS_DEV) { 
       console.log(searchObj);
@@ -146,5 +147,10 @@ export class SearchComponent implements OnInit {
 //      err => this.errorMsg = <any>err);
   }
 
+
+  ngOnDestroy(): void {
+    this.iProduct =  null;
+    this.count =null;
+  }
 }
 
