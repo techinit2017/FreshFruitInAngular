@@ -84,6 +84,17 @@ export class DemandService {
       })
       .catch(this.handleError);
   }
+
+  
+  fetchDemand(demandid: number){
+    return this.http.get(AppSettings.GET_DEMAND_BY_ID + '/'+demandid ).map((response: Response) => <IDemand>response.json())
+    .do(data => {
+      if (AppSettings.IS_DEV) {
+        console.log(JSON.stringify(data))
+      }
+    })
+    .catch(this.handleError);
+  }
   /**
    * Save or Update Demand
    * @param demand IDemand
@@ -104,7 +115,7 @@ export class DemandService {
     if(!demand.id || demand.id==0){
       return this.http.post(AppSettings.POST_DEMAND_SAVE, json, options).map(res => res.json()).catch(this.handleError);
     }else{
-    return this.http.put(AppSettings.POST_DEMAND_SAVE, json, options).map(res => res.json()).catch(this.handleError);
+    return this.http.put(AppSettings.PUT_DEMAND_SAVE, json, options).map(res => res.json()).catch(this.handleError);
     }
   }
 

@@ -6,7 +6,7 @@ import {FormControl, Validators, FormGroup} from '@angular/forms';
 import { DemandService } from "app/demand/demand.service";
 import { IUser } from "app/user/user";
 import { AlertService } from "app/_services/alert.service";
-import { Routes, Router } from '@angular/router';
+import { Routes, Router, ActivatedRoute } from '@angular/router';
 import { AppSettings } from "app/AppSettings";
 
 
@@ -17,7 +17,7 @@ import { AppSettings } from "app/AppSettings";
   providers: [MasterdataService, DemandService, AlertService]
 })
 export class AdddemandComponent implements OnInit {
-  
+  private sub: any;
   demand: IDemand;
   currentUser: IUser;
   demandForm;
@@ -33,7 +33,7 @@ export class AdddemandComponent implements OnInit {
   grades: Grade[];
   requiredControl = new FormControl('', [
     Validators.required]);
-  constructor(public masterDataService: MasterdataService, public demandService: DemandService, private alertService: AlertService, private router: Router) {
+  constructor(public masterDataService: MasterdataService, public demandService: DemandService, private alertService: AlertService,private route: ActivatedRoute, private router: Router) {
     const group: any = {};
     group.requiredControl = this.requiredControl;
     this.demandForm = new FormGroup(group);
@@ -42,6 +42,18 @@ export class AdddemandComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.onLoad();
+    let demandId: number;
+    this.sub = this.route.params.subscribe(params => {
+      demandId = +params['id']; // (+) converts string 'id' to a number
+     
+      if (demandId) {
+        this.getDemandById(demandId);
+        // this.productAdd.id = productId;
+        // this.getProductById(productId);
+      }
+      //if()
+      // In a real app: dispatch action to load the details here.
+    });
   }
 
   onbackClick() {
@@ -118,5 +130,20 @@ export class AdddemandComponent implements OnInit {
     err => {this.alertService.error("Error: Create or Update Error");},
     () => this.onRequestComplete());
   } 
+
+  getDemandById(demandid: number) {
+    this.demandService.fetchDemand(demandid).
+    subscribe(data => {
+      console.log(data);
+      this.demand = data; 
+      this.demand.varietyArray=this.demand.variety.split(','); 
+      this.demand.countryArray=this.demand.country.split(',');
+       
+    },
+    err =>{
+    this.alertService.error('Error:Demand not found');
+    }
+    );
+  }
 
 }

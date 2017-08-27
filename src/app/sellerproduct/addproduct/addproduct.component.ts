@@ -105,6 +105,7 @@ export class AddproductComponent implements OnInit, OnDestroy {
         this.productAdd.userProfile.id = arg;
       }
     });*/
+    this.onLoad();
     this.productAdd = new IProduct();
     let userId: number, productId: number;
     this.sub = this.route.params.subscribe(params => {
@@ -119,7 +120,7 @@ export class AddproductComponent implements OnInit, OnDestroy {
       // In a real app: dispatch action to load the details here.
     });
 
-    this.onLoad();
+   
   }
 
   isEmptyObject(obj) {

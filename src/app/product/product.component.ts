@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
 import * as _ from 'underscore';
+import { IUser } from "app/user/user";
 
  @Component ({
   selector: 'product',
@@ -20,9 +21,10 @@ export class ProductComponent implements OnInit {
   errorMsg:  string;
   postData: string;
   @Input() product: IProduct;
+  currentUser: IUser;
    
   constructor(private http: Http, private _productService: ProductService, private pagerService: PagerService) {
-       
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   
     // array of all items to be paged

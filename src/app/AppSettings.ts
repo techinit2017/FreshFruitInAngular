@@ -54,6 +54,7 @@ export class AppSettings {
   public static POST_DEMAND_SAVE = AppSettings.IP_ADDRESS + 'demand/create';
 
   public static PUT_DEMAND_SAVE = AppSettings.IP_ADDRESS + 'demand/update';
+  public static GET_DEMAND_BY_ID = AppSettings.IP_ADDRESS + 'demand/getDemandByID';
 
 
     // Get Seller Product
@@ -61,5 +62,7 @@ export class AppSettings {
 
   public static GET_ROLE = '';
 
+
+  public static POST_CONTACT_US =AppSettings.IP_ADDRESS + 'contactus/create';
 }
 

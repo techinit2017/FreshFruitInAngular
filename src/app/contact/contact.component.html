@@ -2,8 +2,7 @@
 <br>
 <br>
 
-<form class="contact-form"
- name="contactForm" novalidate>
+<form class="contact-form" name="contactForm" (ngSubmit)="onSubmit(contact)" novalidate>
 		<div class="panel panel-default panelwidth">
  			 <div class="panel-heading">
     			<h3 class="panel-title">Contact Us</h3>
@@ -13,28 +12,35 @@
 					<div class="row">
 						<div class="col-md-10">
 				        	<input type="text" class="form-control" placeholder="Your Name*"
-						       aria-label="yourname" aria-describedby="basic-addon2">
+						       aria-label="yourname" aria-describedby="basic-addon2" [(ngModel)]="contact.name" [ngModelOptions]="{standalone: true}" >
 				       </div>
 					</div>
 					<br>
 					<div class="row">
 					   <div class="col-md-10">
 				        	<input type="text" class="form-control" placeholder="Email*"
-						       aria-label="email" aria-describedby="basic-addon2">
+						       aria-label="email" aria-describedby="basic-addon2" [(ngModel)]="contact.email" [ngModelOptions]="{standalone: true}" >
 				       </div>
 					</div>
 					<br>
 					<div class="row">
+						<div class="col-md-10">
+							 <input type="text" class="form-control" placeholder="Mobile no*"
+								aria-label="mobile" aria-describedby="basic-addon2" [(ngModel)]="contact.phone" [ngModelOptions]="{standalone: true}" >
+						</div>
+					 </div>
+					<br>
+					<div class="row">
 						<div class="col-lg-10">
 					       <textarea class="form-control" rows="5" placeholder="Please enter your queries here."
-						    aria-label="enterqueries"></textarea>
+						    aria-label="enterqueries"  [ngModelOptions]="{standalone: true}" [(ngModel)]="contact.desc"></textarea>
 						</div>
 					</div>
 					<br>
 					<div class="row" align="right">
 				       <div class="col-lg-6">
 					     <div class="input-group">
-							<button type="button" class="btn btn-default navbar-btn savebtn">Save</button>
+							<button type="button" class="btn btn-primary" type="submit">Save</button>
 						 </div>
 				      </div>
 			      </div>

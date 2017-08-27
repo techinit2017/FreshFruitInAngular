@@ -62,7 +62,8 @@
                     <li *ngIf="currentUser?.userName"><a [routerLink]="['/myprofile']">My Profile</a></li>
                     <li class="divider"></li>
                     <li *ngIf="!currentUser?.userName"><a [routerLink]="['/register']">Register</a></li>
-                    <li *ngIf="currentUser?.userName"><a (click)="doLogout()" onclick="window.location.reload();">Logout</a></li>
+                    <!-- <li *ngIf="currentUser?.userName"><a (click)="doLogout()" onclick="window.location.reload();">Logout</a></li>-->
+                    <li *ngIf="currentUser?.userName"><a (click)="openLogoutDialog()" onclick="window.location.reload();">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -71,6 +72,6 @@
     </div>
 
 </div>
+<router-outlet>
 
-
-<router-outlet> </router-outlet>
+</router-outlet>

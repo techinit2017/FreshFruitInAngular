@@ -14,6 +14,13 @@ export class Role{
     rolesRequired:string;
 }
 
+export class DialogModel{
+    public headerText: string = '';
+    public boxLabel: string ='';
+    public confirmButtonLabel: string;
+    public cancelButtonLabel: string;
+}
+
 /*
 
 {

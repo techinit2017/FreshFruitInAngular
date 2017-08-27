@@ -31,6 +31,7 @@ import { AddproductComponent } from './sellerproduct/addproduct/addproduct.compo
 import { AdddemandComponent } from './demand/adddemand/adddemand.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { MyprofileComponent } from './login/myprofile/myprofile.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 // import { APP_BASE_HREF, Location } from '@angular/common';
 
@@ -55,7 +56,8 @@ import { MyprofileComponent } from './login/myprofile/myprofile.component';
     AdddemandComponent,
     AboutusComponent,
     MyprofileComponent,
- ],
+    DialogComponent,
+ ],  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

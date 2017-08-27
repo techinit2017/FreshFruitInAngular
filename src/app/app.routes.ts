@@ -75,6 +75,10 @@ export const AppRoutes: Routes = [
     component: AdddemandComponent
   },
   {
+    path: 'demand/editDemand/:id',
+    component: AdddemandComponent
+  },  
+  {
     path: 'sellerProduct',
     component: SellerproductComponent
   },

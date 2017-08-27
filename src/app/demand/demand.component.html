@@ -25,7 +25,7 @@
 			
 		</tr>
 		<tr *ngFor="let demand of demands">
-			<td>{{demand.id}}</td>
+				<td><a [routerLink]="['/demand/editDemand',demand.id]">{{demand.id}}</a></td>
 			<td>{{demand.userProfile?.userName}} </td>
 			<td>{{demand.product}}</td>
 			<td>{{demand.variety}}</td>

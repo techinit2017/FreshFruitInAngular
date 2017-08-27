@@ -2,7 +2,7 @@
 			 <nav class="navbar navbar-default" >
 				<div class="panel panel-primary">
 
-					<div class="btn-group pull-right">
+					<div class="btn-group pull-right" *ngIf="currentUser?.id>0">
 						<button type="button" class="btn btn-primary"
 							style="background-color: #EB2026; font-style: bold; border: 1px solid; margin-right: 30px">Contact
 							Supplier</button>
