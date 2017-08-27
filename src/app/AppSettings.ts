@@ -1,6 +1,6 @@
 export class AppSettings {
   public static IS_DEV = false;
-  public static IP_ADDRESS = 'http://localhost:8082/';
+  public static IP_ADDRESS = 'http://13.90.152.165:8080/FFP_APP_REST/';
   constructor() {
     if (AppSettings.IS_DEV) {
       AppSettings.IP_ADDRESS = 'http://localhost:8082/';
