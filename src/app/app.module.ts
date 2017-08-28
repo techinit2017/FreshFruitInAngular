@@ -32,6 +32,7 @@ import { AdddemandComponent } from './demand/adddemand/adddemand.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { MyprofileComponent } from './login/myprofile/myprofile.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { MailboxComponent } from './mailbox/mailbox.component';
 
 // import { APP_BASE_HREF, Location } from '@angular/common';
 
@@ -57,6 +58,7 @@ import { DialogComponent } from './dialog/dialog.component';
     AboutusComponent,
     MyprofileComponent,
     DialogComponent,
+    MailboxComponent,
  ],  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,

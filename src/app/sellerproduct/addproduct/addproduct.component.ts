@@ -285,4 +285,11 @@ export class AddproductComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  onChange(value) {
+    console.log(value);
+    if (value) {
+      this.getProductByVariety(value);
+    }
+  }
+
 }

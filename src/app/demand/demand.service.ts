@@ -17,35 +17,50 @@ export class DemandService {
   constructor(http: Http) {
     this.http = http;
   }
+
   /**
    * Get Demand list based on User
    */
-  getDemandList(user: IUser): Observable<IDemand[]> {
+  getDemandList(user: IUser,pager: any) {
+    console.log(pager);
+    let pageParam = new PageParam(pager.currentPage-1,pager.pageSize);
     if(!user){
       return;
     }
     if(user.userType.match('Admin')){
-    return this.http.get(AppSettings.GET_ALL_DEMANDS).map((response: Response) => <IDemand[]>response.json())
+
+    return this.http.get(AppSettings.GET_ALL_DEMANDS).toPromise()
+    .then((resp: Response) => ({
+      demands: resp.json(),
+      count: Number(resp.headers.get('RECORD_COUNT')),
+      // test:resp.json()
+    }));
+   /* return this.http.get(AppSettings.GET_ALL_DEMANDS).map((response: Response) => <IDemand[]>response.json())
       .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))
         }
       })
-      .catch(this.handleError);
+      .catch(this.handleError);*/
      }else {
-      let pageParam = new PageParam(0,100);
+      
       const pageParamJson = JSON.stringify(pageParam);
       console.log(pageParamJson);
       const headers = new Headers({'Content-Type': 'application/json'});
   
       const options = new RequestOptions({headers: headers});
-      return this.http.post(AppSettings.POST_USER_DEMAND + '/' + user.id,pageParamJson,options).map((response: Response) => <IDemand[]>response.json())
+      return this.http.post(AppSettings.POST_USER_DEMAND + '/' + user.id,pageParamJson,options).toPromise()
+      .then((resp: Response) => ({
+        demands: resp.json(),
+        count: Number(resp.headers.get('RECORD_COUNT'))
+      }));
+     /* return this.http.post(AppSettings.POST_USER_DEMAND + '/' + user.id,pageParamJson,options).map((response: Response) => <IDemand[]>response.json())
       .do(data => {
         if (AppSettings.IS_DEV) {
           console.log(JSON.stringify(data))
         }
       })
-      .catch(this.handleError);
+      .catch(this.handleError);*/
     }
   }
 

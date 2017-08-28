@@ -10,7 +10,7 @@
 					<div class="input-group">
 						<span class="input-group-addon">Type</span> 
 						<select placehol
-							name="price" class="form-control" [(ngModel)]="searchObj.type">
+							name="Type" class="form-control" [(ngModel)]="searchObj.type" (ngModelChange)="onChange($event)">
 							<option></option>
 							<option *ngFor="let name of productlist" [value]="name">{{name}}</option>
 						</select>

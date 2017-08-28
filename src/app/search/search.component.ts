@@ -1,9 +1,9 @@
-import {AppSettings} from '../AppSettings';
+import { AppSettings } from '../AppSettings';
 import { AlertService } from '../_services/alert.service';
-import {MasterdataService} from '../_services/masterdata.service';
-import {IProduct} from '../product/product';
-import {ISearch, Country, PriceDelimiter, Availbility, ProductVariety} from './search';
-import {SearchService} from './search.service';
+import { MasterdataService } from '../_services/masterdata.service';
+import { IProduct } from '../product/product';
+import { ISearch, Country, PriceDelimiter, Availbility, ProductVariety } from './search';
+import { SearchService } from './search.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   Router,
@@ -18,7 +18,7 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./search.component.css'],
   providers: [SearchService, MasterdataService, AlertService],
 })
-export class SearchComponent implements OnInit,OnDestroy {
+export class SearchComponent implements OnInit, OnDestroy {
 
   // form UI component controller variable
   loading = false;
@@ -27,13 +27,13 @@ export class SearchComponent implements OnInit,OnDestroy {
   country: Country[];
   variety: ProductVariety[];
   productlist: string[];
-  
+
   priceDelimiter: string[] = Object.keys(PriceDelimiter);
   avail: string[] = Object.keys(Availbility);
 
   // country: Country.India;
   searchObj: ISearch;
-  
+
 
   result: string;
   query: string;
@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit,OnDestroy {
   searchPriceQuery: string;
 
   constructor(private searchService: SearchService, private router: Router, private masterDataService: MasterdataService
-    , private alertService: AlertService,private route: ActivatedRoute) {
+    , private alertService: AlertService, private route: ActivatedRoute) {
     this.query = '';
     this.searchObj = new ISearch();
     this.priceDelimiter = this.priceDelimiter.slice(this.priceDelimiter.length / 2);
@@ -54,12 +54,12 @@ export class SearchComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     const name: Observable<string> = this.route.params.map(p => p.name);
-    let searchQuery:string;
+    let searchQuery: string;
     name.subscribe(e => searchQuery = e);
-    if(searchQuery){
+    if (searchQuery) {
       let searchObj = new ISearch();
-      searchObj.type =searchQuery;
-       this.filterSearch(searchObj);
+      searchObj.type = searchQuery;
+      this.filterSearch(searchObj);
     }
 
     this.search();
@@ -75,7 +75,7 @@ export class SearchComponent implements OnInit,OnDestroy {
 
   submit(query: string): void {
     this.loading = this.isLoading();
-    this.router.navigate(['/Search', {query: query}]);
+    this.router.navigate(['/Search', { query: query }]);
     this.query = query;
     this.result = 'Find [' + this.query;
     this.search();
@@ -120,16 +120,16 @@ export class SearchComponent implements OnInit,OnDestroy {
   filterSearch(searchObj: ISearch) {
 
     // this.iProduct = null;
-     // console.log(searchObj);
-    if (AppSettings.IS_DEV) { 
+    // console.log(searchObj);
+    if (AppSettings.IS_DEV) {
       console.log(searchObj);
     }
     this.searchService.getSearchProduct(searchObj).then(result => {
-     //  console.log(result);
+      //  console.log(result);
       this.iProduct = result.products;
       this.count = result.count;
-     //  console.log(this.iProduct);
-      if (this.count == 0){
+      //  console.log(this.iProduct);
+      if (this.count == 0) {
         console.log('No search result found.. Please try with different filter');
         this.alertService.success('No search result found.. Please try with different filter');
       }
@@ -141,16 +141,20 @@ export class SearchComponent implements OnInit,OnDestroy {
       this.alertService.error('Error: Service unavailable');
       this.loading = false;
     });
-    
-//    this.searchService.getSearchProduct(searchObj)
-//      .subscribe(iProduct => this.iProduct = iProduct,
-//      err => this.errorMsg = <any>err);
+
+    //    this.searchService.getSearchProduct(searchObj)
+    //      .subscribe(iProduct => this.iProduct = iProduct,
+    //      err => this.errorMsg = <any>err);
   }
-
-
+  onChange(value) {
+    console.log(value);
+    if (value) {
+      this.getProductByVariety(value);
+    }
+  }
   ngOnDestroy(): void {
-    this.iProduct =  null;
-    this.count =null;
+    this.iProduct = null;
+    this.count = null;
   }
 }
 

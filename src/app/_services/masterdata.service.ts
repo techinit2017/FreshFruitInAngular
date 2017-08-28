@@ -17,6 +17,7 @@ export class MasterdataService {
 
 
   getCountries(): Observable<Country[]> {
+    console.log('inside serivce countries')
     return this.http.get(AppSettings.GET_COUNTRY_INFO).map((response: Response) => <Country[]>response.json())
       .do(data => {
         if (AppSettings.IS_DEV) {

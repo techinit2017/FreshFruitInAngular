@@ -198,4 +198,11 @@ export class UserComponent implements OnInit {
     this.user.country =null;
     this.user.userType = null;
   }
+
+  onChange(value) {
+    console.log(value);
+    if (value) {
+      this.getProductByVariety(value);
+    }
+  }
 }

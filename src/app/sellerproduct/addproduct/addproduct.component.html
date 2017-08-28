@@ -6,7 +6,7 @@
 		<form class="addSupplierProduct-form" (ngSubmit)="onSubmit(productAdd)" novalidate>
 			<div class="row">
 				<div class="col-md-3">
-					<md-select name="prodType" placeholder="Type" class="form-control" [(ngModel)]="productAdd.type">
+					<md-select name="prodType" placeholder="Type" class="form-control" [(ngModel)]="productAdd.type" (ngModelChange)="onChange($event)">
 						<md-option *ngFor="let name of productlist" [value]="name">{{name }}
 						</md-option>
 					</md-select>
@@ -83,7 +83,7 @@
 
 				</div>
 				<div class="col-md-2">
-					<input name="prodAvailDate" type="date" class="form-control" [(ngModel)]="productAdd.available" pattern="dd-MM-yyyy" placeholder="(Available Date) dd-MM-yyyy"
+					<input name="prodAvailDate" type="text" class="form-control" [(ngModel)]="productAdd.available" pattern="dd-MM-yyyy" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" placeholder="(Available Date)"
 					 min="2017-01-01" />
 
 

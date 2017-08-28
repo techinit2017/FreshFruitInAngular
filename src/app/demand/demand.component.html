@@ -6,6 +6,7 @@
 	  <p><a class="btn btn-primary" role="button" [routerLink]="['/demand/adddemand']">AddDemand</a></p>
 	</div>
 	<alert> </alert>
+	
 	<div class="table-responsive">    
 	<table class="table table-hover table-striped table-bordered">
 		<tr *ngIf="demands?.length > 0">
@@ -22,7 +23,9 @@
 			<th>Available Date</th>
 			<th>Country</th>
 			<th>City</th>
-			
+			<th>Available Date</th>
+			<th>Country</th>
+			<th>City</th>
 		</tr>
 		<tr *ngFor="let demand of demands">
 				<td><a [routerLink]="['/demand/editDemand',demand.id]">{{demand.id}}</a></td>
@@ -38,10 +41,44 @@
 			<td>{{demand.availableDate}}</td>
 			<td>{{demand.country}}</td>
 			<td>{{demand.city}}</td>
-			
+			<td>{{demand.availableDate}}</td>
+			<td>{{demand.country}}</td>
+			<td>{{demand.city}}</td>
 		</tr>
 	
 	</table>
+	<nav aria-label="Page navigation">
+	<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+		<li [ngClass]="{disabled:pager.currentPage === 1}">
+			<a (click)="fetch(1)"><span aria-hidden="true">&laquo;</span></a>
+		</li>
+		<li [ngClass]="{disabled:pager.currentPage === 1}" class="previous">
+			<a (click)="fetch(pager.currentPage - 1)">Previous</a>
+		</li>
+		<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+			<a (click)="fetch(page)">{{page}}</a>
+		</li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="next">
+			<a (click)="fetch(pager.currentPage + 1)">Next</a>
+		</li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="fetch(pager.totalPages)"><span aria-hidden="true">&raquo;</span></a>
+		</li>
+
+		<li>
+		<select [(ngModel)]="pager.pageSize" (ngModelChange)="onPaginationChange($event)">
+			<option>10</option>
+			<option>50</option>
+			<option>100</option>
+			<option>200</option>
+			<option>500</option>
+			<option>1000</option>
+		</select>
+		</li>
+		
+	</ul>
+	
+	</nav>
 	</div>
 </div>
 

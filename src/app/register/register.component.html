@@ -181,7 +181,7 @@
 	
 					<div class="col-md-2">
 						<md-select placeholder="Fruit Type" class="form-control"
-							[(ngModel)]="user.typeFruit" [ngModelOptions]="{standalone: true}">
+							[(ngModel)]="user.typeFruit" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)">
 						<md-option *ngFor="let name of productlist" [value]="name">{{name}}</md-option>
 						</md-select>
 	

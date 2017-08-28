@@ -124,7 +124,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getCountries(): void {
-    this.masterDataService
+  this.masterDataService
       .getCountries()
       .subscribe(country => this.country = country,
       err => this.errorMsg = <any>err);
@@ -170,6 +170,13 @@ export class RegisterComponent implements OnInit {
     this.user.typeFruit=null;
     this.user.country =null;
     this.user.userType = null;
+  }
+
+  onChange(value) {
+    console.log(value);
+    if (value) {
+      this.getProductByVariety(value);
+    }
   }
 
 }

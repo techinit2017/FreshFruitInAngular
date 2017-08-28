@@ -13,8 +13,8 @@
 		
 				<div class="row ffp-mt-10">
 					<div class="col-md-3">
-							<md-select placeholder="Product*" class="form-control" [(ngModel)]="demand.product" 
-							[ngModelOptions]="{standalone: true}"> 
+							<md-select placeholder="Type*" class="form-control" [(ngModel)]="demand.product" 
+							[ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)"> 
 							<md-option *ngFor="let productName of productList" [value]="productName">{{productName }}</md-option> </md-select>
 				   </div>
 				   <div class="col-md-5">

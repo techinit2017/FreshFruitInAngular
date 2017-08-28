@@ -138,12 +138,19 @@ export class AdddemandComponent implements OnInit {
       this.demand = data; 
       this.demand.varietyArray=this.demand.variety.split(','); 
       this.demand.countryArray=this.demand.country.split(',');
-       
+
     },
     err =>{
     this.alertService.error('Error:Demand not found');
     }
     );
+  }
+
+  onChange(value) {
+    console.log(value);
+    if (value) {
+      this.getProductByVariety(value);
+    }
   }
 
 }

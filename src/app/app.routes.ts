@@ -21,6 +21,7 @@ import { AddproductComponent } from './sellerproduct/addproduct/addproduct.compo
 import {SellerproductComponent} from './sellerproduct/sellerproduct.component';
 import { AboutusComponent } from "app/aboutus/aboutus.component";
 import { MyprofileComponent } from "app/login/myprofile/myprofile.component";
+import { MailboxComponent } from "app/mailbox/mailbox.component";
 
 export const AppRoutes: Routes = [
   {
@@ -97,6 +98,10 @@ export const AppRoutes: Routes = [
   {
     path: 'myprofile',
     component: MyprofileComponent
+  },
+  {
+    path: 'mailbox',
+    component: MailboxComponent
   },
 
   {path: '**', component: ErrorComponent}
